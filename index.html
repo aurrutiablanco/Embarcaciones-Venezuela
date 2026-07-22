@@ -22,9 +22,23 @@
     <!-- Header & Navegación -->
     <header id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">EMBARCACIONES <span class="gold-text">VENEZUELA</span></a>
+            <!-- Nombre de marca y Logo Circular a la derecha -->
+            <a href="#" class="logo">
+                <img src="ruta-de-tu-logo.png" alt="Logo Embarcaciones Venezuela" class="logo-img">
+                EMBARCACIONES VENEZUELA
+                <!-- ==========================================================================
+                     ¡AGREGAR LOGO AQUÍ! Reemplaza "ruta-de-tu-logo.png" por tu archivo (ej. logo.png)
+                     ========================================================================== -->
+                
+            </a>
+            
+            <!-- Botón de Menú Móvil -->
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
             <nav>
-                <ul class="nav-links">
+                <ul class="nav-links" id="nav-links">
                     <li><a href="#hero">Inicio</a></li>
                     <li><a href="#autoridad">Trayectoria</a></li>
                     <li><a href="#servicios">Servicios</a></li>
@@ -36,11 +50,11 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Fondo personalizable en CSS) -->
     <section id="hero" class="hero-section">
         <div class="hero-overlay"></div>
         <div class="container hero-content fade-in-element">
-            <h2 class="hero-signature gold-text">Embarcaciones Venezuela</h2>
+            <p class="hero-signature gold-text" aria-hidden="true">Embarcaciones Venezuela</p>
             <h1>No alquilamos lanchas.<br><span class="highlight">Diseñamos experiencias.</span></h1>
             <p class="hero-subtitle">La principal autoridad náutica y de hospitalidad en el Parque Nacional Morrocoy.</p>
         </div>
@@ -50,7 +64,7 @@
     <section id="video-autoridad" class="video-section bg-dark-navy">
         <div class="container fade-in-element">
             <div class="video-wrapper">
-                <!-- Código Embed de Wistia -->
+                <!-- Código Embed de Wistia o YouTube -->
                 <script src="https://fast.wistia.com/player.js" async></script>
                 <script src="https://fast.wistia.com/embed/87lwihcxmb.js" async type="module"></script>
                 <style>wistia-player[media-id='87lwihcxmb']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/87lwihcxmb/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style> 
@@ -60,9 +74,10 @@
         </div>
     </section>
 
-    <!-- Historial de Ejecución Impecable -->
+    <!-- Historial de Ejecución Impecable (Fondo personalizable en CSS) -->
     <section id="autoridad" class="stats-section bg-maritime">
-        <div class="container">
+        <div class="stats-overlay"></div>
+        <div class="container relative-z">
             <h2 class="section-title white-text fade-in-element">Historial de Ejecución Impecable</h2>
             <div class="stats-grid">
                 <div class="stat-card glass-panel fade-in-element">
@@ -85,53 +100,77 @@
         </div>
     </section>
 
-    <!-- Beneficios Top (Propuesta de Valor) -->
+    <!-- Beneficios con espacio para Imagen -->
     <section id="beneficios" class="benefits-section bg-light">
         <div class="container">
             <h2 class="section-title navy-text fade-in-element">¿Por qué eligen a Embarcaciones Venezuela?</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card content-box fade-in-element">
-                    <i class="fa-solid fa-concierge-bell gold-text"></i>
-                    <h3>Organizamos TODO</h3>
-                    <p>Diseñamos tu experiencia al detalle, incluyendo logística integral, paquetes de hidratación, snacks y accesorios de lujo.</p>
+            
+            <div class="split-layout">
+                <div class="split-image fade-in-element">
+                    <!-- ==========================================================================
+                         ¡AGREGAR IMAGEN SECCIÓN BENEFICIOS AQUÍ!
+                         ========================================================================== -->
+                    <img src="img/ruta-de-foto-beneficios.jpg" alt="Experiencia VIP en Morrocoy">
                 </div>
-                <div class="benefit-card content-box fade-in-element">
-                    <i class="fa-solid fa-file-invoice-dollar gold-text"></i>
-                    <h3>Sin Costos Ocultos</h3>
-                    <p>Transparencia absoluta. Nuestra cotización es todo incluido, brindándote tranquilidad financiera desde el primer contacto.</p>
-                </div>
-                <div class="benefit-card content-box fade-in-element">
-                    <i class="fa-solid fa-shield-halved gold-text"></i>
-                    <h3>Servicios Garantizados</h3>
-                    <p>Respaldo total ante cualquier contingencia o falla técnica. Nuestro compromiso es que tu experiencia sea perfecta, sin excepciones.</p>
+                <div class="benefits-grid">
+                    <div class="benefit-card content-box fade-in-element">
+                        <i class="fa-solid fa-concierge-bell gold-text"></i>
+                        <h3>Organizamos TODO</h3>
+                        <p>Diseñamos tu experiencia al detalle, incluyendo logística integral, paquetes de hidratación, snacks y accesorios de lujo.</p>
+                    </div>
+                    <div class="benefit-card content-box fade-in-element">
+                        <i class="fa-solid fa-file-invoice-dollar gold-text"></i>
+                        <h3>Sin Costos Ocultos</h3>
+                        <p>Transparencia absoluta. Nuestra cotización es todo incluido, brindándote tranquilidad financiera desde el primer contacto.</p>
+                    </div>
+                    <div class="benefit-card content-box fade-in-element">
+                        <i class="fa-solid fa-shield-halved gold-text"></i>
+                        <h3>Servicios Garantizados</h3>
+                        <p>Respaldo total ante cualquier contingencia o falla técnica. Nuestro compromiso es que tu experiencia sea perfecta, sin excepciones.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Servicios y Planes Especializados -->
+    <!-- Servicios Especializados con espacio para Imagen -->
     <section id="servicios" class="services-section bg-white">
         <div class="container">
             <h2 class="section-title navy-text fade-in-element">Nuestros Servicios Exclusivos</h2>
-            <ul class="services-list fade-in-element">
-                <li class="content-box"><i class="fa-solid fa-anchor gold-text"></i> Alquiler de lanchas</li>
-                <li class="content-box"><i class="fa-solid fa-water gold-text"></i> Buceo recreacional</li>
-                <li class="content-box"><i class="fa-solid fa-utensils gold-text"></i> Catering de alto nivel</li>
-                <li class="content-box"><i class="fa-solid fa-camera gold-text"></i> Grabaciones y fotografías profesionales</li>
-                <li class="content-box"><i class="fa-solid fa-champagne-glasses gold-text"></i> Kits de entretenimiento</li>
-            </ul>
+            
+            <div class="split-layout reverse-layout">
+                <div class="services-content fade-in-element">
+                    <ul class="services-list">
+                        <li class="content-box"><i class="fa-solid fa-anchor gold-text"></i> Alquiler de lanchas</li>
+                        <li class="content-box"><i class="fa-solid fa-water gold-text"></i> Buceo recreacional</li>
+                        <li class="content-box"><i class="fa-solid fa-utensils gold-text"></i> Catering de alto nivel</li>
+                        <li class="content-box"><i class="fa-solid fa-camera gold-text"></i> Grabaciones y fotografías profesionales</li>
+                        <li class="content-box"><i class="fa-solid fa-champagne-glasses gold-text"></i> Kits de entretenimiento</li>
+                    </ul>
+                </div>
+                <div class="split-image fade-in-element">
+                    <!-- ==========================================================================
+                         ¡AGREGAR IMAGEN SECCIÓN SERVICIOS AQUÍ!
+                         ========================================================================== -->
+                    <img src="ruta-de-foto-servicios1.jpg">
+                
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Arquitectura de tu Experiencia: Nuestra Flota -->
+    <!-- Flota (Estricto: Solo Lancha y Yate, Catamarán Eliminado) -->
     <section id="flota" class="fleet-section bg-maritime">
-        <div class="container">
+        <div class="container relative-z">
             <h2 class="section-title white-text fade-in-element">Arquitectura de tu Experiencia: Nuestra Flota</h2>
             <div class="fleet-grid">
                 <!-- Lancha -->
                 <div class="fleet-card glass-panel fade-in-element">
                     <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1565019056463-5c8e2da81699?auto=format&fit=crop&q=80&w=600" alt="Lancha" class="card-img">
+                        <!-- ==========================================================================
+                             ¡AGREGAR IMAGEN LANCHA AQUÍ!
+                             ========================================================================== -->
+                        <img src="ruta-de-foto-lancha.jpg" alt="Lancha Premium" class="card-img">
                     </div>
                     <div class="card-body">
                         <h3 class="card-title white-text">Lancha</h3>
@@ -142,7 +181,10 @@
                 <!-- Yate -->
                 <div class="fleet-card glass-panel fade-in-element">
                     <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&q=80&w=600" alt="Yate" class="card-img">
+                        <!-- ==========================================================================
+                             ¡AGREGAR IMAGEN YATE AQUÍ!
+                             ========================================================================== -->
+                        <img src="img/ruta-de-foto-servicios.jpg" alt="Yate de Lujo" class="card-img">
                     </div>
                     <div class="card-body">
                         <h3 class="card-title white-text">Yate</h3>
@@ -150,125 +192,47 @@
                         <p class="card-text white-text">Espacio superior y comodidades premium. Diseñado para ocasiones de alto nivel donde el estatus y el confort son innegociables.</p>
                     </div>
                 </div>
-                <!-- Catamarán -->
-                <div class="fleet-card glass-panel fade-in-element">
-                    <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1596495610228-569b9195cf60?auto=format&fit=crop&q=80&w=600" alt="Catamarán" class="card-img">
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title white-text">Catamarán <small>(Jolly Country)</small></h3>
-                        <p class="card-vibe"><span class="gold-text">Vibra:</span> Celebración & Escala.</p>
-                        <p class="card-text white-text">Capacidad masiva (flota de 4 unidades). Ideal para salidas privadas o compartidas y eventos corporativos a gran escala.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Clientes Certificados -->
-    <section id="testimonios" class="testimonials-section bg-light">
-        <div class="container">
-            <h2 class="section-title navy-text fade-in-element">Clientes Certificados</h2>
-            <p class="section-subtitle navy-text fade-in-element">La confianza de quienes exigen lo mejor.</p>
-            
-            <div class="testimonials-grid fade-in-element">
-                <!-- Testimonio 1 -->
-                <div class="testimony-card content-box">
-                    <div class="client-info">
-                        <div class="client-avatar">
-                            <i class="fa-solid fa-user-check"></i>
-                        </div>
-                        <div>
-                            <h4>Yamelis Abg.</h4>
-                            <span class="client-ig"><i class="fa-brands fa-instagram gold-text"></i> @usuario_yamelis</span>
-                        </div>
-                    </div>
-                    <p class="quote">"Una experiencia impecable de principio a fin. El nivel de atención y el estado de la lancha demostraron por qué son la autoridad en Morrocoy."</p>
-                </div>
-                <!-- Testimonio 2 -->
-                <div class="testimony-card content-box">
-                    <div class="client-info">
-                        <div class="client-avatar">
-                            <i class="fa-solid fa-user-check"></i>
-                        </div>
-                        <div>
-                            <h4>Cliente VIP</h4>
-                            <span class="client-ig"><i class="fa-brands fa-instagram gold-text"></i> @cliente_vip</span>
-                        </div>
-                    </div>
-                    <p class="quote">"Nuestros clientes son nuestra credencial más contundente. La gran mayoría de nuestras reservas provienen de recomendaciones directas."</p>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ (Preguntas Frecuentes) -->
-    <section id="faq" class="faq-section bg-white">
+    <section id="faq" class="faq-section bg-light">
         <div class="container fade-in-element">
             <h2 class="section-title navy-text">Preguntas Frecuentes</h2>
             
             <div class="accordion">
-                <!-- Q1 -->
                 <div class="accordion-item content-box">
                     <button class="accordion-header">¿Cómo puedo hacer una reserva? <i class="fa-solid fa-chevron-down"></i></button>
                     <div class="accordion-content">
-                        <p>¡Facilísimo! Escríbenos por Instagram (@embarcacionesvenezuela) o por WhatsApp Business y nuestro equipo te ayuda a armar el plan perfecto según tu fecha, grupo y el tipo de experiencia que tienes en mente. Para asegurar tu cupo solo necesitas un anticipo del 30% del total. El resto lo cancelas el día de la salida. Así de simple.</p>
+                        <p>¡Facilísimo! Escríbenos por Instagram o por WhatsApp Business y nuestro equipo te ayuda a armar el plan perfecto. Para asegurar tu cupo solo necesitas un anticipo del 30% del total. El resto lo cancelas el día de la salida.</p>
                     </div>
                 </div>
-                <!-- Q2 -->
                 <div class="accordion-item content-box">
                     <button class="accordion-header">¿Cuáles son los destinos que puedo visitar? <i class="fa-solid fa-chevron-down"></i></button>
                     <div class="accordion-content">
-                        <p>Operamos en el Parque Nacional Morrocoy. Algunos destinos son: Cayo Sombrero, Playuela, Pescadores, Los Juanes, 360, Tucupido y Cueva de la Virgen. <strong>Nota:</strong> No incluimos paseos hacia Chichiriviche. El itinerario es tuyo — lo adaptamos a lo que quieras vivir.</p>
+                        <p>Operamos en el Parque Nacional Morrocoy. Algunos destinos son: Cayo Sombrero, Playuela, Pescadores, Los Juanes, 360, Tucupido y Cueva de la Virgen.</p>
                     </div>
                 </div>
-                <!-- Q3 -->
                 <div class="accordion-item content-box">
                     <button class="accordion-header">¿Cuántos cayos puedo visitar en un día? <i class="fa-solid fa-chevron-down"></i></button>
                     <div class="accordion-content">
-                        <p>En un recorrido estándar puedes visitar hasta 3 cayos durante el día. El itinerario lo defines tú junto al capitán según lo que más te llame: snorkeling, playa, descanso o explorar varios puntos del parque.</p>
+                        <p>En un recorrido estándar puedes visitar hasta 3 cayos durante el día. El itinerario lo defines tú junto al capitán.</p>
                     </div>
                 </div>
-                <!-- Q4 -->
                 <div class="accordion-item content-box">
                     <button class="accordion-header">¿Cuál es el horario de navegación? <i class="fa-solid fa-chevron-down"></i></button>
                     <div class="accordion-content">
-                        <p>Salimos a las 9:30 a.m. y regresamos a las 5:00 p.m. — el horario ideal para aprovechar el día completo bajo el sol de Morrocoy. No realizamos salidas fuera de este horario como servicio estándar.</p>
-                    </div>
-                </div>
-                <!-- Q5 -->
-                <div class="accordion-item content-box">
-                    <button class="accordion-header">¿Puedo llevar mascotas a bordo? <i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="accordion-content">
-                        <p>Por políticas del INEA e INPARQUES, las mascotas no pueden viajar con nosotros. Te pedimos tenerlo en cuenta al organizar tu salida.</p>
-                    </div>
-                </div>
-                <!-- Q6 -->
-                <div class="accordion-item content-box">
-                    <button class="accordion-header">¿Cuál es la diferencia entre una lancha y un yate? <i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="accordion-content">
-                        <p><strong>Lancha:</strong> Cómoda, ágil y perfecta para un plan chill y recorrer los cayos al mejor precio.<br><strong>Yate:</strong> Exclusivo, con más espacio y comodidades para vivir una experiencia náutica de otro nivel.<br><em>En ambas opciones va incluido el capitán, y la capacidad varía según la embarcación.</em></p>
-                    </div>
-                </div>
-                <!-- Q7 -->
-                <div class="accordion-item content-box">
-                    <button class="accordion-header">¿Tienen planes adicionales al alquiler? <i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="accordion-content">
-                        <p>¡Claro que sí! Puedes agregar: Equipo de snorkeling, Catering y bebidas, Traslado al parque, Fotografía y video, y Kits de entretenimiento. Pregunta por disponibilidad y precios al reservar.</p>
-                    </div>
-                </div>
-                <!-- Q8 -->
-                <div class="accordion-item content-box">
-                    <button class="accordion-header">¿Qué métodos de pago aceptan? <i class="fa-solid fa-chevron-down"></i></button>
-                    <div class="accordion-content">
-                        <p>Aceptamos varias opciones: Zelle (Bank of America), Efectivo en USD y Bolívares.</p>
+                        <p>Salimos a las 9:30 a.m. y regresamos a las 5:00 p.m. — el horario ideal para aprovechar el día completo bajo el sol de Morrocoy.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Corporativo de Cierre -->
+    
+
+    <!-- Footer Corporativo (Fondo personalizable en CSS) -->
     <footer id="contacto" class="footer-section bg-dark-navy">
         <div class="container footer-container">
             
@@ -290,12 +254,6 @@
                 <div class="footer-col">
                     <a href="https://instagram.com/embarcacionesvenezuela" target="_blank">
                         <i class="fa-brands fa-instagram gold-text"></i> @embarcacionesvenezuela
-                    </a>
-                </div>
-                <div class="footer-separator"></div>
-                <div class="footer-col">
-                    <a href="https://instagram.com/catamaranesjollycountry" target="_blank">
-                        <i class="fa-brands fa-instagram gold-text"></i> @catamaranesjollycountry
                     </a>
                 </div>
             </div>
