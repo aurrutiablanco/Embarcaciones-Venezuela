@@ -16,33 +16,52 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-family: var(--font-primary); color: var(--text-dark); }
+html { scroll-behavior: smooth; font-family: var(--font-primary); color: var(--text-dark); overflow-x: hidden; }
 body { background-color: var(--white); line-height: 1.7; overflow-x: hidden; }
 
-.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+/* Ajuste de contenedor para pantallas pequeñas */
+.container { width: 90%; max-width: 1200px; margin: 0 auto; position: relative; }
+.relative-z { z-index: 2; position: relative; }
+@media (max-width: 768px) { 
+.container { width: 95%; }
+
+.hero-section {
+    background-position: 15% center; /* Revela la lancha a la izquierda */
+    align-items: flex-end; /* Desplaza la tarjeta hacia abajo */
+    padding-bottom: 3rem;
+}
+.hero-content {
+    padding: 1.5rem;
+    margin-top: 0;
+    width: 100%;
+}
+.hero-signature { font-size: 1.2rem; }
+.hero-content h1 { font-size: 1.6rem; }
+.hero-content h1 .highlight { font-size: 2.1rem; }
+.hero-subtitle { font-size: 1rem; } }
+
 .gold-text { color: var(--gold); }
 .navy-text { color: var(--navy-deep); }
 .white-text { color: var(--white); }
 .bg-dark-navy { background-color: var(--navy-deep); color: var(--white); }
 .bg-light { background-color: var(--light-gray); }
 
-/* Fondos Marítimos (Secciones Oscuras) */
-.bg-maritime {
-    background: linear-gradient(180deg, var(--navy-deep) 0%, #081B33 100%);
-    position: relative;
-}
-
-/* Tipografía */
+/* Tipografía Responsiva */
 h1, h2, h3, h4 { font-weight: 700; line-height: 1.3; }
 .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 3.5rem; position: relative; padding-bottom: 1rem; }
 .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--gold); }
 .section-subtitle { text-align: center; font-size: 1.2rem; margin-top: -2.5rem; margin-bottom: 3rem; font-weight: 400; }
 
-/* Botones (WhatsApp - Authority Focus) */
+@media (max-width: 768px) {
+    .section-title { font-size: 1.8rem; margin-bottom: 2.5rem; }
+    .section-subtitle { font-size: 1rem; margin-top: -1.5rem; margin-bottom: 2rem; }
+}
+
+/* Botones */
 .cta-btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem;
     padding: 1.1rem 2.5rem; font-size: 1rem; font-weight: 700;
-    border-radius: 4px; transition: var(--transition-smooth); cursor: pointer; text-decoration: none;
+    border-radius: 4px; transition: var(--transition-smooth); cursor: pointer; text-decoration: none; text-align: center;
 }
 .primary-cta {
     background: linear-gradient(90deg, #1B4B36 0%, #25D366 100%);
@@ -53,118 +72,287 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.3; }
 
 /* NAVBAR */
 header { position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 0; z-index: 1000; transition: var(--transition-smooth); background: transparent; }
-header.scrolled { background-color: rgba(5, 12, 26, 0.96); backdrop-filter: blur(12px); padding: 1rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-bottom: 1px solid rgba(197, 168, 128, 0.3); }
-.nav-container { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 1.2rem; font-weight: 800; color: var(--white); letter-spacing: 1px; text-decoration: none; }
-.nav-links { display: none; list-style: none; gap: 2rem; align-items: center; }
+header.scrolled, header.menu-open { background-color: rgba(5, 12, 26, 0.98); backdrop-filter: blur(12px); padding: 1rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-bottom: 1px solid rgba(197, 168, 128, 0.3); }
+.nav-container { display: flex; justify-content: space-between; align-items: center; position: relative; }
+
+/* LOGO: Configurado para estar a la derecha del texto */
+.logo { 
+    font-size: 1.2rem; 
+    font-weight: 800; 
+    color: var(--white); 
+    letter-spacing: 1px; 
+    text-decoration: none; 
+    z-index: 1001; 
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem; 
+    flex-direction: row; 
+}
+
+/* Ajuste circular del logo, hereda tamaño del texto para verse proporcionado */
+.logo-img {
+    height: 1.25em; 
+    width: 1.25em;
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 1.5px solid var(--gold); 
+    background-color: var(--white); 
+}
+
+.nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
 .nav-links a { color: rgba(255,255,255,0.85); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; text-decoration: none; transition: var(--transition-smooth); }
 .nav-links a:hover { color: var(--gold); }
 .nav-cta { border: 1px solid var(--gold); padding: 0.6rem 1.2rem; border-radius: 4px; color: var(--gold) !important; }
 .nav-cta:hover { background-color: var(--gold); color: var(--navy-deep) !important; }
-@media (min-width: 992px) { .nav-links { display: flex; } }
+.menu-toggle { display: none; color: var(--gold); font-size: 1.8rem; cursor: pointer; z-index: 1001; }
 
-/* HERO SECTION */
+@media (max-width: 991px) {
+    .menu-toggle { display: block; }
+    .nav-links {
+        position: absolute; top: 100%; left: 0; width: 100%;
+        background: var(--navy-deep); flex-direction: column;
+        padding: 2rem 0; gap: 1.5rem; border-bottom: 1px solid var(--gold);
+        opacity: 0; visibility: hidden; transform: translateY(-20px); transition: var(--transition-smooth);
+    }
+    .nav-links.active { opacity: 1; visibility: visible; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   SECCIONES CON FONDOS (BACKGROUNDS)
+   ========================================================================== */
+
+/* HERO SECTION - FONDO PERSONALIZABLE */
 .hero-section {
     position: relative; height: 100vh; min-height: 600px;
-    background: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
     display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white);
+    padding-top: 80px; 
+    
+    /* ==========================================================================
+       ¡AGREGAR IMAGEN DE FONDO HERO AQUÍ! Cambia la URL por tu foto de fondo
+       ========================================================================== */
+    background: url('img/ruta-de-tu-fondo-hero.jpg') center/cover no-repeat;
+    background-color: var(--navy-deep); /* Respaldo si no hay foto */
 }
 .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(5,12,26,0.6) 0%, rgba(5,12,26,0.9) 100%); z-index: 1; }
-.hero-content { position: relative; z-index: 2; max-width: 800px; padding: 3rem; background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid rgba(197, 168, 128, 0.5); border-radius: 12px; }
+.hero-content { position: relative; z-index: 2; max-width: 800px; padding: 3rem; background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid rgba(197, 168, 128, 0.5); border-radius: 12px; margin-top: 40px; }
 .hero-signature { font-family: cursive; font-style: italic; font-size: 2rem; margin-bottom: 1rem; font-weight: 300; }
-.hero-content h1 { font-size: 2.5rem; font-weight: 400; margin-bottom: 1.5rem; }
-.hero-content h1 .highlight { font-weight: 800; font-size: 3.5rem; color: var(--white); display: block; }
+.hero-content h1 { font-size: 3rem; font-weight: 400; margin-bottom: 1.5rem; }
+.hero-content h1 .highlight { font-weight: 800; font-size: 4rem; color: var(--white); display: block; }
 .hero-subtitle { font-size: 1.2rem; color: var(--gold); }
-@media (min-width: 768px) { .hero-content h1 { font-size: 3rem; } .hero-content h1 .highlight { font-size: 4rem; } }
+
+@media (max-width: 768px) {
+    .logo { font-size: 1rem; }
+    .hero-content { padding: 2rem 1.5rem; margin-top: 60px; }
+    .hero-signature { font-size: 1.5rem; }
+    .hero-content h1 { font-size: 1.8rem; }
+    .hero-content h1 .highlight { font-size: 2.3rem; }
+    .hero-subtitle { font-size: 1rem; }
+}
 
 /* VIDEO AUTORIDAD */
 .video-section { padding: 5rem 0; text-align: center; }
-.video-wrapper { 
-    max-width: 900px; 
-    margin: 0 auto; 
-    border: 3px solid var(--gold); /* Borde completo dorado como solicitaste */
-    border-radius: 8px; 
-    overflow: hidden; 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
-}
+.video-wrapper { max-width: 900px; margin: 0 auto; border: 3px solid var(--gold); border-radius: 8px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
 .video-caption { margin-top: 1.5rem; font-size: 1.1rem; color: rgba(255,255,255,0.7); font-style: italic; }
 
-/* BORDES COMPLETOS GLOBALES (Requerimiento) */
-.content-box {
-    border: 1px solid rgba(197, 168, 128, 0.6); /* Borde completo dorado translúcido */
-    border-radius: 8px;
-}
+/* BORDES Y PANELES CRISTAL */
+.content-box { border: 1px solid rgba(197, 168, 128, 0.6); border-radius: 8px; }
+.glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(197, 168, 128, 0.6); border-radius: 8px; position: relative; overflow: hidden; }
 
-/* GLASSMORPHISM PANELS (Usado en Estadísticas y Flota) */
-.glass-panel {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(197, 168, 128, 0.6); /* Borde completo diferenciador */
-    border-radius: 8px;
+/* TRAYECTORIA / ESTADÍSTICAS - FONDO PERSONALIZABLE */
+.bg-maritime {
     position: relative;
-    overflow: hidden;
+    
+    /* ==========================================================================
+       ¡AGREGAR IMAGEN DE FONDO TRAYECTORIA AQUÍ! (Descomenta la línea de abajo y añade tu ruta)
+       ========================================================================== */
+     background: url('') center/cover no-repeat fixed; 
+    background-color: var(--navy-deep); /* Respaldo si no hay foto */
 }
+.stats-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(5,12,26,0.92) 0%, rgba(5,12,26,0.97) 100%); z-index: 1; }
 
-/* ESTADÍSTICAS */
 .stats-section { padding: 6rem 0; }
 .stats-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
 .stat-card { padding: 3rem 2rem; text-align: center; transition: var(--transition-smooth); }
 .stat-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.08); }
 .stat-number { display: block; font-size: 4rem; font-weight: 800; line-height: 1; margin-bottom: 1rem; }
 .stat-desc { font-size: 0.95rem; color: rgba(255,255,255,0.8); }
-@media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 500px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* ==========================================================================
+   LAYOUTS DIVIDIDOS CON FOTOGRAFÍA (Alineación y Espaciados)
+   ========================================================================== */
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+.reverse-layout {
+    direction: rtl; /* Invierte columnas para que la foto pase al lado contrario */
+}
+.reverse-layout > * {
+    direction: ltr; /* Devuelve el sentido de lectura estándar a los textos */
+}
+.split-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid var(--gold);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    transition: var(--transition-smooth);
+}
+.split-image img:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 991px) { 
+    .split-layout { grid-template-columns: 1fr; gap: 2.5rem; } 
+    .reverse-layout { direction: ltr; }
+    .split-image img { min-height: 300px; }
+}
 
 /* BENEFICIOS TOP */
 .benefits-section { padding: 6rem 0; }
-.benefits-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
-.benefit-card { background: var(--white); padding: 3rem 2rem; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
-.benefit-card i { font-size: 3rem; margin-bottom: 1.5rem; }
-.benefit-card h3 { color: var(--navy-deep); margin-bottom: 1rem; font-size: 1.3rem; }
-.benefit-card p { color: var(--text-muted); font-size: 0.95rem; }
-@media (min-width: 768px) { .benefits-grid { grid-template-columns: repeat(3, 1fr); } }
+.benefits-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+.benefit-card { background: var(--white); padding: 2.5rem 1.5rem; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+.benefit-card i { font-size: 2.5rem; margin-bottom: 1rem; }
+.benefit-card h3 { color: var(--navy-deep); margin-bottom: 0.8rem; font-size: 1.2rem; }
+.benefit-card p { color: var(--text-muted); font-size: 0.9rem; }
 
-/* SERVICIOS ESTRICTOS */
+/* SERVICIOS EXCLUSIVOS */
 .services-section { padding: 5rem 0 7rem; border-top: 1px solid rgba(197, 168, 128, 0.3); }
-.services-list { list-style: none; max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
-.services-list li { font-size: 1.2rem; font-weight: 600; color: var(--navy-deep); display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: var(--light-gray); transition: var(--transition-smooth); }
+.services-list { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+.services-list li { font-size: 1.1rem; font-weight: 600; color: var(--navy-deep); display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: var(--light-gray); transition: var(--transition-smooth); }
 .services-list li:hover { background: var(--navy-deep); color: var(--white); transform: scale(1.02); border-color: var(--gold); }
-.services-list li i { font-size: 1.5rem; }
 
-/* FLOTA */
+/* ==========================================================================
+   FLOTA (Centrado y Ajuste para solo Lancha y Yate)
+   ========================================================================== */
 .fleet-section { padding: 7rem 0; }
-.fleet-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
-.card-image-wrapper { height: 250px; overflow: hidden; border-bottom: 1px solid rgba(197, 168, 128, 0.6); }
-.card-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%) contrast(120%); transition: var(--transition-smooth); }
+.fleet-grid { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 3rem; 
+    max-width: 1000px; 
+    margin: 0 auto; 
+}
+.card-image-wrapper { height: 300px; overflow: hidden; border-bottom: 1px solid rgba(197, 168, 128, 0.6); }
+.card-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(40%) contrast(110%); transition: var(--transition-smooth); }
 .fleet-card:hover .card-img { filter: grayscale(0%); transform: scale(1.05); }
 .card-body { padding: 2.5rem; }
 .card-title { font-size: 1.8rem; margin-bottom: 0.5rem; }
 .card-vibe { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; font-weight: 600; }
-@media (min-width: 992px) { .fleet-grid { grid-template-columns: repeat(3, 1fr); } }
-
-/* TESTIMONIOS (CLIENTES CERTIFICADOS) */
-.testimonials-section { padding: 7rem 0; }
-.testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 900px; margin: 0 auto; }
-.testimony-card { background: var(--white); padding: 3rem; box-shadow: 0 15px 40px rgba(0,0,0,0.06); }
-.client-info { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
-.client-avatar { width: 50px; height: 50px; background: var(--navy-deep); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-.client-info h4 { color: var(--navy-deep); margin: 0; font-size: 1.1rem; }
-.client-ig { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
-.quote { font-style: italic; color: var(--text-dark); font-size: 1.1rem; line-height: 1.8; }
-@media (min-width: 768px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 800px) { 
+    .fleet-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+}
+@media (max-width: 768px) { .fleet-section { padding: 4rem 0; } .card-image-wrapper { height: 250px; } .card-body { padding: 1.5rem; } }
 
 /* FAQ ACORDEÓN */
 .faq-section { padding: 7rem 0; border-top: 1px solid rgba(197, 168, 128, 0.3); }
 .accordion { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
-.accordion-item { overflow: hidden; background: var(--light-gray); }
+.accordion-item { overflow: hidden; background: var(--white); }
 .accordion-header { width: 100%; text-align: left; padding: 1.5rem; background: transparent; border: none; font-size: 1.1rem; font-weight: 600; color: var(--navy-deep); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transition-smooth); font-family: var(--font-primary); }
 .accordion-header:hover, .accordion-item.active .accordion-header { background: var(--navy-deep); color: var(--white); }
 .accordion-content { background: var(--white); padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--text-muted); }
-.accordion-item.active .accordion-content { padding: 1.5rem; max-height: 500px; border-top: 1px solid rgba(197, 168, 128, 0.3); }
+.accordion-item.active .accordion-content { padding: 1.5rem; max-height: 800px; border-top: 1px solid rgba(197, 168, 128, 0.3); }
 
-/* FOOTER CORPORATIVO */
-.footer-section { padding: 6rem 0 2rem; background-image: url('https://images.unsplash.com/photo-1518991206869-79a022420b92?auto=format&fit=crop&q=80&w=1920'); background-size: cover; background-position: center; position: relative; }
-.footer-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(5,12,26,0.9) 0%, rgba(5,12,26,0.95) 100%); }
+/* ==========================================================================
+   SECCIÓN COLLAGE CREATIVO (NUEVA - CON FONDO AJUSTABLE)
+   ========================================================================== */
+.collage-section {
+    position: relative;
+    padding: 7rem 0;
+    
+    /* ==========================================================================
+       ¡AGREGAR IMAGEN DE FONDO COLLAGE AQUÍ! Cambia la URL por tu foto de fondo
+       ========================================================================== */
+    background: url('ruta-de-tu-fondo-collage.jpg') center/cover no-repeat fixed;
+    background-color: var(--navy-medium); /* Respaldo */
+}
+.collage-overlay { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: linear-gradient(180deg, rgba(13, 27, 62, 0.85) 0%, rgba(5, 12, 26, 0.95) 100%); 
+    z-index: 1; 
+}
+
+/* Sistema de Grid Asimétrico */
+.collage-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 220px;
+    gap: 1.5rem;
+}
+.collage-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid var(--gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-smooth);
+}
+.collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+.collage-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    z-index: 10;
+    box-shadow: 0 15px 40px rgba(197, 168, 128, 0.4);
+}
+.collage-item:hover img {
+    transform: scale(1.08);
+}
+
+/* Modificadores para asimetría del Collage */
+.item-large {
+    grid-row: span 2;
+    grid-column: span 2;
+}
+.item-wide {
+    grid-column: span 2;
+}
+
+@media (max-width: 991px) {
+    .collage-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+    }
+}
+@media (max-width: 576px) {
+    .collage-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
+    }
+    .item-large, .item-wide {
+        grid-row: span 1;
+        grid-column: span 1;
+    }
+}
+
+/* ==========================================================================
+   FOOTER CORPORATIVO (Fondo Personalizable)
+   ========================================================================== */
+.footer-section { 
+    padding: 6rem 0 2rem; 
+    position: relative; 
+    
+    /* ==========================================================================
+       ¡AGREGAR IMAGEN DE FONDO FOOTER AQUÍ! Cambia la URL por tu foto de fondo
+       ========================================================================== */
+    background-image: url('ruta-de-tu-fondo-footer.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+.footer-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(5,12,26,0.95) 0%, rgba(5,12,26,1) 100%); }
 .footer-container { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
 .footer-cta-title { font-size: 2.2rem; color: var(--white); margin-bottom: 2.5rem; text-align: center; }
 .cta-buttons-group { margin-bottom: 5rem; }
@@ -179,7 +367,13 @@ header.scrolled { background-color: rgba(5, 12, 26, 0.96); backdrop-filter: blur
     .footer-glass-bar { flex-direction: row; align-items: center; gap: 2rem; }
     .footer-separator { display: block; }
 }
+@media (max-width: 768px) {
+    .footer-cta-title { font-size: 1.5rem; }
+    .cta-btn { width: 100%; padding: 1rem; font-size: 0.9rem; }
+    .footer-glass-bar { border-radius: 8px; padding: 1.5rem 1rem; }
+}
 
-/* ANIMACIONES */
+/* EFECTOS DE SCROLL (FADE IN) */
 .fade-in-element { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-.fade-in-element.visible { opacity: 1; transform: translateY(0); }
+.fade-in-element.visible { opacity: 1; transform: translateY(0) scale(1); }
+.fade-in-element.scrolled-past { opacity: 0.3; transform: translateY(-20px) scale(0.95); }

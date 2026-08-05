@@ -1,9 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // 1. Manejo del Navbar Sticky
+    // 1. Manejo del Navbar Sticky y Menú Móvil
     const navbar = document.getElementById("navbar");
+    const mobileMenuBtn = document.getElementById("mobile-menu");
+    const navLinks = document.getElementById("nav-links");
+
+    mobileMenuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        navbar.classList.toggle("menu-open");
+        
+        const icon = mobileMenuBtn.querySelector("i");
+        if(navLinks.classList.contains("active")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-xmark");
+        } else {
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+        }
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            navbar.classList.remove("menu-open");
+            mobileMenuBtn.querySelector("i").classList.replace("fa-xmark", "fa-bars");
+        });
+    });
+
     window.addEventListener("scroll", () => {
-        if (window.scrollY > 80) {
+        if (window.scrollY > 50) {
             navbar.classList.add("scrolled");
         } else {
             navbar.classList.remove("scrolled");
@@ -16,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currentYearSpan.textContent = new Date().getFullYear();
     }
 
-    // 3. Sistema de Revelación al Scroll (Fade-In)
+    // 3. Sistema de Revelación y Efecto "Scale-Down" al Scrollear (Se aplica automáticamente al nuevo Collage)
     const fadeElements = document.querySelectorAll(".fade-in-element");
     const observerOptions = {
         threshold: 0.1,
@@ -27,13 +52,26 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
+                observer.unobserve(entry.target); 
             }
         });
     }, observerOptions);
 
     fadeElements.forEach(element => {
         appearOnScroll.observe(element);
+    });
+
+    window.addEventListener("scroll", () => {
+        fadeElements.forEach(element => {
+            if (element.classList.contains("visible")) {
+                const rect = element.getBoundingClientRect();
+                if (rect.bottom < 150) {
+                    element.classList.add("scrolled-past");
+                } else {
+                    element.classList.remove("scrolled-past");
+                }
+            }
+        });
     });
 
     // 4. Lógica del Acordeón (FAQ)
