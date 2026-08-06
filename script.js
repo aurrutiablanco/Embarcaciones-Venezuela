@@ -301,3 +301,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Control de reproducción de video accesible (WCAG 2.2 - Criterio 2.2.2)
+document.addEventListener('DOMContentLoaded', () => {
+  const video = document.getElementById('hero-video');
+  const toggleBtn = document.getElementById('video-toggle-btn');
+
+  // Comprobamos que ambos elementos existan en la página antes de asignar los eventos
+  if (video && toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        toggleBtn.setAttribute('aria-label', 'Pausar video de fondo');
+        toggleBtn.innerHTML = '<span aria-hidden="true">⏸</span>';
+      } else {
+        video.pause();
+        toggleBtn.setAttribute('aria-label', 'Reproducir video de fondo');
+        toggleBtn.innerHTML = '<span aria-hidden="true">▶</span>';
+      }
+    });
+  }
+});
