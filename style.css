@@ -1447,3 +1447,124 @@ header.scrolled, header.menu-open { background-color: rgba(13, 17, 31, 0.98); ba
     transform: scale(1.05); /* Cambia el efecto en móvil por algo centrado */
   }
 }
+
+/* =========================================
+   VENTANA EMERGENTE (MODAL) DE CONTACTO
+   ========================================= */
+
+/* Fondo oscuro que cubre toda la pantalla */
+.modal-overlay {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(13, 17, 31, 0.85); /* Azul oscuro de la marca con transparencia */
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Clase para mostrar el modal */
+.modal-overlay.activo {
+  display: flex;
+  opacity: 1;
+}
+
+/* La caja roja central */
+.modal-content {
+  background-color: #C3191A; /* Rojo de la marca */
+  color: #FFFFFF; /* Letras blancas */
+  width: 90%;
+  max-width: 450px;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.activo .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* Botón de cerrar "X" */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.modal-close:hover {
+  transform: scale(1.1);
+  color: #D9D9D9;
+}
+
+/* Círculo blanco para resaltar el logo */
+.modal-logo-wrapper {
+  width: 80px;
+  height: 80px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tipografía de la ventana */
+.modal-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.modal-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  color: #F8F8F8;
+}
+
+/* Botón principal hacia WhatsApp */
+.modal-btn-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  color: #C3191A;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  width: 100%;
+}
+
+.modal-btn-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.25);
+  background-color: #F0F0F0;
+}
+

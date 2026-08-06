@@ -299,6 +299,40 @@ document.addEventListener('DOMContentLoaded', () => {
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => updateCarousel(index));
     });
+
+    
+        document.addEventListener('DOMContentLoaded', () => {
+  // Seleccionamos los elementos del DOM
+  const botonesAbrir = document.querySelectorAll('.abrir-modal-contacto');
+  const modal = document.getElementById('modalContacto');
+  const botonCerrar = document.getElementById('cerrarModal');
+
+  // Si no existe el modal en la página, detenemos la ejecución para evitar errores
+  if (!modal) return;
+
+  // Abrir el modal al hacer clic en los botones
+  botonesAbrir.forEach(boton => {
+    boton.addEventListener('click', (e) => {
+      e.preventDefault(); // Evita que la página salte hacia arriba
+      modal.classList.add('activo');
+    });
+  });
+
+  // Cerrar el modal al hacer clic en la "X"
+  botonCerrar.addEventListener('click', () => {
+    modal.classList.remove('activo');
+  });
+
+  // Cerrar el modal si el usuario hace clic fuera de la caja roja (en el fondo oscuro)
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('activo');
+    }
+  });
+});
+
+
+
 });
 
 // Control de reproducción de video accesible (WCAG 2.2 - Criterio 2.2.2)
