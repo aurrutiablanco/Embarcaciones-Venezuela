@@ -1174,11 +1174,188 @@ header.scrolled, header.menu-open { background-color: rgba(13, 17, 31, 0.98); ba
 .am-accent-text { color: var(--accent); }
 
 .am-card-vibe { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; font-weight: 600; }
+/* --- Variables de Marca --- */
+:root {
+  /* Manteniendo estrictamente los colores del manual de marca */
+  --bg-dark: #0D111F;
+  --accent-red: #C3191A;
+  --text-silver: #D9D9D9;
+  --text-white: #FFFFFF;
+}
 
+/* --- Contenedor Principal (Compacto) --- */
+.site-footer {
+  background-color: var(--bg-dark);
+  color: var(--text-silver);
+  font-family: 'Montserrat', sans-serif; /* Ajusta a la tipografía que estés usando */
+  padding: 40px 0 15px 0; /* Padding reducido para menor altura */
+}
 
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 30px;
+  padding: 0 20px;
+}
 
+/* --- Marca y Descripción --- */
+.footer-logo {
+  color: var(--text-white);
+  font-size: 1.1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
 
+.logo-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--accent-red);
+}
 
+.footer-description {
+  color: var(--text-silver);
+  line-height: 1.5;
+  font-size: 0.85rem;
+  margin: 0;
+}
 
+/* --- Títulos de Columnas --- */
+.col-title {
+  color: var(--text-white);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 16px 0;
+  position: relative;
+  display: inline-block;
+}
 
+/* Pequeña línea roja debajo del título para mantener la identidad visual */
+.col-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 20px;
+  height: 2px;
+  background-color: var(--accent-red);
+}
 
+/* --- Enlaces y Transiciones (Suaves y duraderas) --- */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px; /* Reducido para compactar */
+}
+
+.footer-links a {
+  color: var(--text-silver);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.3s ease, padding-left 0.3s ease; /* Transición cuidada */
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: var(--accent-red);
+  padding-left: 4px; /* Leve desplazamiento para interactividad */
+}
+
+.highlight-link {
+  color: var(--text-white) !important;
+  font-weight: 700;
+}
+
+/* --- Redes Sociales --- */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: rgba(217, 217, 217, 0.1); /* Fondo sutil plateado */
+  border-radius: 50%;
+  color: var(--text-silver);
+  transition: all 0.3s ease; /* Transición fluida para que el efecto dure */
+}
+
+.social-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.social-btn:hover {
+  background-color: var(--accent-red); /* Color de marca al hacer hover */
+  color: var(--text-white);
+  transform: translateY(-2px); /* Pequeño salto elegante */
+}
+
+/* --- Parte Inferior (Copyright) --- */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 30px auto 0;
+  padding: 15px 20px 0;
+  border-top: 1px solid rgba(217, 217, 217, 0.1);
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(217, 217, 217, 0.7);
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* --- Diseño Responsivo --- */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .footer-logo {
+    justify-content: center;
+  }
+  
+  .footer-col {
+    text-align: center;
+  }
+  
+  .col-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+  
+  .footer-links a:hover {
+    padding-left: 0;
+    transform: scale(1.05); /* Cambia el efecto en móvil por algo centrado */
+  }
+}
