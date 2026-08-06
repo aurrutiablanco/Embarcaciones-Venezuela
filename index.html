@@ -59,7 +59,7 @@
                     <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#flota">Flota</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contacto" class="nav-cta">CONTACTAR</a></li>
+                    <li><a target="_blank" href="https://wa.me/584244585512" class="nav-cta">CONTACTAR</a></li>
                 </ul>
             </nav>
         </div>
@@ -833,7 +833,7 @@
     <div class="footer-col">
       <h4 class="col-title">CONECTA</h4>
       <ul class="footer-links">
-        <li><a href="#contacto">Contactar al equipo</a></li>
+        <li><a href="#abrir-modal-contacto">Contactar al equipo</a></li>
         <li><a href="#aliados-comerciales" class="highlight-link">Hagamos negocio (Aliados)</a></li>
       </ul>
       
@@ -859,7 +859,39 @@
 
 
     <!-- Scripts -->
-    <script src="script.js"></script>
+    <script src="script.js">
+
+        document.addEventListener('DOMContentLoaded', () => {
+  // Seleccionamos los elementos del DOM
+  const botonesAbrir = document.querySelectorAll('.abrir-modal-contacto');
+  const modal = document.getElementById('modalContacto');
+  const botonCerrar = document.getElementById('cerrarModal');
+
+  // Si no existe el modal en la página, detenemos la ejecución para evitar errores
+  if (!modal) return;
+
+  // Abrir el modal al hacer clic en los botones
+  botonesAbrir.forEach(boton => {
+    boton.addEventListener('click', (e) => {
+      e.preventDefault(); // Evita que la página salte hacia arriba
+      modal.classList.add('activo');
+    });
+  });
+
+  // Cerrar el modal al hacer clic en la "X"
+  botonCerrar.addEventListener('click', () => {
+    modal.classList.remove('activo');
+  });
+
+  // Cerrar el modal si el usuario hace clic fuera de la caja roja (en el fondo oscuro)
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('activo');
+    }
+  });
+});
+
+    </script>
 
     <!-- BOTÓN FLOTANTE DE WHATSAPP -->
 <a href="https://wa.me/584244585512?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." 
@@ -869,6 +901,38 @@
    aria-label="Contactar por WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
+
+
+
+
+<!-- Fondo oscuro y Contenedor del Modal -->
+<div id="modalContacto" class="modal-overlay">
+  <div class="modal-content">
+    
+    <!-- Botón para cerrar (la "X" en la esquina) -->
+    <button class="modal-close" id="cerrarModal">&times;</button>
+    
+    <!-- Contenedor del logo central circular -->
+    <div class="modal-logo-wrapper">
+      <!-- Asegúrate de colocar la ruta correcta a la imagen de tu logo aquí -->
+      <img src="ruta-a-tu-logo.png" alt="Logo Embarcaciones Venezuela" class="modal-logo">
+    </div>
+    
+    <!-- Textos -->
+    <h2 class="modal-title">¡Hablemos de tu próxima aventura!</h2>
+    <p class="modal-text">Estamos listos para brindarte la mejor experiencia a bordo. Escríbenos para consultar disponibilidad, reservar tu embarcación o resolver cualquier duda.</p>
+    
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/584244585512" target="_blank" class="modal-btn-wa">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right: 8px;"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.006l-1.418 5.18 5.301-1.39a9.96 9.96 0 004.77 1.216h.004c5.505 0 9.988-4.478 9.989-9.985 0-2.668-1.038-5.176-2.925-7.063C17.18 3.039 14.675 2 12.012 2zm5.836 14.178c-.246.691-1.436 1.321-1.986 1.385-.515.06-1.185.086-3.411-.832-2.85-1.173-4.68-4.062-4.823-4.252-.142-.19-1.157-1.54-1.157-2.937 0-1.398.73-2.083.99-2.366.258-.284.562-.355.75-.355.188 0 .375.002.538.009.172.008.403-.065.63.48.228.545.776 1.897.844 2.036.069.139.115.302.023.485-.092.183-.139.297-.275.457-.137.16-.288.358-.412.481-.137.137-.28.287-.12.562.16.275.71 1.173 1.523 1.9 1.045.933 1.928 1.222 2.203 1.36.276.137.437.115.597-.068.16-.183.685-.798.868-1.072.183-.275.365-.229.616-.137.251.092 1.598.753 1.872.89.274.137.457.206.525.32.069.115.069.663-.177 1.354z"/></svg>
+      Contactar por WhatsApp
+    </a>
+    
+  </div>
+</div>
+
+
+
 
 </body>
 </html>
