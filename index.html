@@ -37,6 +37,9 @@
     
     <!-- CSS Link -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Inyeccion del html del hero -->
+    <link rel="stylesheet" href="components/style-hero.css">
 </head>
 <body>
 
@@ -48,9 +51,9 @@
                 EMBARCACIONES VENEZUELA
             </a>
             
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú de navegación" aria-expanded="false">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
 
             <nav>
                 <ul class="nav-links" id="nav-links">
@@ -59,29 +62,72 @@
                     <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#flota">Flota</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contacto" class="nav-cta">CONTACTAR</a></li>
+                    <li><a target="_blank" href="https://wa.me/584244585512" class="nav-cta">CONTACTAR</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
-    <!-- Hero Section con Video de Fondo de Google Drive -->
-    <!-- Hero Section con Video Local y Título Centrado -->
-    <section id="hero" class="hero-section">
-    <!-- Video de Fondo (Asegúrate de colocar la extensión correcta, ej. .mp4) -->
-        <video autoplay loop muted playsinline class="hero-video">
-            <source src="tu-video.mp4" type="video/mp4">
-        Tu navegador no soporta la reproducción de video.
-        </video>
-    
-    <!-- Capa oscura para garantizar legibilidad -->
-        <div class="hero-overlay"></div>
-    
-    <!-- Contenido en el centro con título grande -->
-        <div class="container hero-content fade-in-element">
-            <h1 class="hero-title-main">Diseñamos Experiencias Náuticas VIP</h1>
+    <section class="hero-carousel" aria-label="Experiencias Náuticas VIP en Morrocoy">
+        <!-- 1. Fondo de Video con Doble Búfer (Transición de 2s) -->
+        <div class="video-container">
+            <video id="hero-video-1" class="hero-video active" autoplay muted playsinline aria-hidden="true" tabindex="-1">
+            <source src="videos/DJI_0134.MP4" type="video/mp4">
+            </video>
+            <video id="hero-video-2" class="hero-video" muted playsinline aria-hidden="true" tabindex="-1">
+            <source src="videos/DJI_0139.MP4" type="video/mp4">
+            </video>
+            <div class="video-overlay" aria-hidden="true"></div>
         </div>
+
+        <!-- 2. Tarjeta Central Compacta Minimalista -->
+        <div class="hero-content">
+            <h1 class="hero-title">Diseñamos experiencias náuticas VIP</h1>
+            <p class="hero-subtitle">
+            Alquiler y gestión exclusiva de yates y embarcaciones de lujo en las mejores costas
+            </p>
+            <div class="cta-group">
+            <a href="#flota" class="btn btn-primary">Explorar flota</a>
+            <a href="https://wa.me/584120000000" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Reservar asesoría</a>
+            </div>
+        </div>
+
+        <!-- 3. Controles Accesibles del Carrusel (Alineados abajo al centro) -->
+        <div class="carousel-controls">
+            <button id="toggle-autoplay" class="btn-control btn-pause" aria-label="Pausar rotación automática" aria-pressed="false">
+            <svg class="icon-pause" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="6" y="4" width="4" height="16" rx="1"/>
+                <rect x="14" y="4" width="4" height="16" rx="1"/>
+            </svg>
+            <svg class="icon-play" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                <polygon points="5,3 19,12 5,21"/>
+            </svg>
+            </button>
+
+            <div class="tabs-wrapper" role="tablist" aria-label="Diapositivas de video náutico">
+            <button role="tab" id="tab-0" class="tab-indicator" aria-selected="true" aria-controls="hero-video-1" aria-label="Video 1 de 3: Yate VIP" data-index="0">
+                <span class="progress-bar"><span class="progress-fill"></span></span>
+            </button>
+            <button role="tab" id="tab-1" class="tab-indicator" aria-selected="false" aria-controls="hero-video-1" aria-label="Video 2 de 3: Lancha deportiva" data-index="1">
+                <span class="progress-bar"><span class="progress-fill"></span></span>
+            </button>
+            <button role="tab" id="tab-2" class="tab-indicator" aria-selected="false" aria-controls="hero-video-1" aria-label="Video 3 de 3: Peñero ejecutivo" data-index="2">
+                <span class="progress-bar"><span class="progress-fill"></span></span>
+            </button>
+            </div>
+        </div>
+
+        <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
     </section>
+
+    <!-- JS global y JS interactivo del carrusel -->
+    <script src="script.js" defer></script>
+    <script src="components/script-hero.js" defer></script>
+
+
+
+
+
+
 
     <!-- Historial de Ejecución Impecable (Fondo con Imagen) -->
     <section id="autoridad" class="stats-section bg-section-img" style="background-image: url('img/fondo-trayectoria.jpg');">
@@ -799,7 +845,7 @@
     <div class="footer-col brand-col">
       <div class="footer-logo">
         <!-- Ícono de referencia similar al del navbar -->
-        <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.18.1-.38.15-.57.15s-.39-.05-.57-.15l-7.9-4.44A.996.996 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.36-.2.78-.2 1.14 0l7.9 4.44c.32.17.53.5.53.88v9zM12 4.15L5.05 8 12 11.85 18.95 8 12 4.15zM5 15.91l6 3.38v-6.71L5 9.21v6.7zm14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
+        <img src="img/ruta-de-tu-logo.png" alt="Logo Embarcaciones Venezuela" class="footer-logo-img">
         EMBARCACIONES VENEZUELA
       </div>
       <p class="footer-description">
@@ -833,8 +879,9 @@
     <div class="footer-col">
       <h4 class="col-title">CONECTA</h4>
       <ul class="footer-links">
-        <li><a href="#contacto">Contactar al equipo</a></li>
+        <li><a href="#abrir-modal-contacto">Contactar al equipo</a></li>
         <li><a href="#aliados-comerciales" class="highlight-link">Hagamos negocio (Aliados)</a></li>
+        <li><a href="#" class="highlight-link">-</a></li>
       </ul>
       
       <!-- Redes Sociales con colores de marca -->
@@ -857,10 +904,6 @@
   </div>
 </footer>
 
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
-
     <!-- BOTÓN FLOTANTE DE WHATSAPP -->
 <a href="https://wa.me/584244585512?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." 
    class="whatsapp-float" 
@@ -869,6 +912,39 @@
    aria-label="Contactar por WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
+
+
+
+
+<!-- Fondo oscuro y Contenedor del Modal -->
+<div id="modalContacto" class="modal-overlay">
+  <div class="modal-content">
+    
+    <!-- Botón para cerrar (la "X" en la esquina) -->
+    <button class="modal-close" id="cerrarModal">&times;</button>
+    
+    <!-- Contenedor del logo central circular -->
+    <div class="modal-logo-wrapper">
+      <!-- Asegúrate de colocar la ruta correcta a la imagen de tu logo aquí -->
+      <img src="ruta-a-tu-logo.png" alt="Logo Embarcaciones Venezuela" class="modal-logo">
+    </div>
+    
+    <!-- Textos -->
+    <h2 class="modal-title">¡Hablemos de tu próxima aventura!</h2>
+    <p class="modal-text">Estamos listos para brindarte la mejor experiencia a bordo. Escríbenos para consultar disponibilidad, reservar tu embarcación o resolver cualquier duda.</p>
+    
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/584244585512" target="_blank" class="modal-btn-wa">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right: 8px;"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.006l-1.418 5.18 5.301-1.39a9.96 9.96 0 004.77 1.216h.004c5.505 0 9.988-4.478 9.989-9.985 0-2.668-1.038-5.176-2.925-7.063C17.18 3.039 14.675 2 12.012 2zm5.836 14.178c-.246.691-1.436 1.321-1.986 1.385-.515.06-1.185.086-3.411-.832-2.85-1.173-4.68-4.062-4.823-4.252-.142-.19-1.157-1.54-1.157-2.937 0-1.398.73-2.083.99-2.366.258-.284.562-.355.75-.355.188 0 .375.002.538.009.172.008.403-.065.63.48.228.545.776 1.897.844 2.036.069.139.115.302.023.485-.092.183-.139.297-.275.457-.137.16-.288.358-.412.481-.137.137-.28.287-.12.562.16.275.71 1.173 1.523 1.9 1.045.933 1.928 1.222 2.203 1.36.276.137.437.115.597-.068.16-.183.685-.798.868-1.072.183-.275.365-.229.616-.137.251.092 1.598.753 1.872.89.274.137.457.206.525.32.069.115.069.663-.177 1.354z"/></svg>
+      Contactar por WhatsApp
+    </a>
+    
+  </div>
+</div>
+
+<!-- Script Cargador Principal (Gestión de componentes) -->
+  <script src="script.js" defer></script>
+
 
 </body>
 </html>
