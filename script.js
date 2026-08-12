@@ -1,369 +1,352 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-    /* ==========================================================================
+document.addEventListener("DOMContentLoaded", () => {
+  /* ==========================================================================
        1. NAVBAR STICKY Y MENÚ MÓVIL
        ========================================================================== */
-    const navbar = document.getElementById("navbar");
-    const mobileMenuBtn = document.getElementById("mobile-menu");
-    const navLinks = document.getElementById("nav-links");
+  const navbar = document.getElementById("navbar");
+  const mobileMenuBtn = document.getElementById("mobile-menu");
+  const navLinks = document.getElementById("nav-links");
 
-    if (mobileMenuBtn && navLinks && navbar) {
-        mobileMenuBtn.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-            navbar.classList.toggle("menu-open");
-            const icon = mobileMenuBtn.querySelector("i");
-            if (icon) {
-                if (navLinks.classList.contains("active")) {
-                    icon.classList.remove("fa-bars");
-                    icon.classList.add("fa-xmark");
-                } else {
-                    icon.classList.remove("fa-xmark");
-                    icon.classList.add("fa-bars");
-                }
-            }
-        });
+  if (mobileMenuBtn && navLinks && navbar) {
+    mobileMenuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      navbar.classList.toggle("menu-open");
+      const icon = mobileMenuBtn.querySelector("i");
+      if (icon) {
+        if (navLinks.classList.contains("active")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-xmark");
+        } else {
+          icon.classList.remove("fa-xmark");
+          icon.classList.add("fa-bars");
+        }
+      }
+    });
 
-        navLinks.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-                navLinks.classList.remove("active");
-                navbar.classList.remove("menu-open");
-                const icon = mobileMenuBtn.querySelector("i");
-                if (icon) icon.classList.replace("fa-xmark", "fa-bars");
-            });
-        });
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        navbar.classList.remove("menu-open");
+        const icon = mobileMenuBtn.querySelector("i");
+        if (icon) icon.classList.replace("fa-xmark", "fa-bars");
+      });
+    });
 
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
-        });
-    }
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+  }
 
-    /* ==========================================================================
+  /* ==========================================================================
        2. AÑO DINÁMICO EN FOOTER
        ========================================================================== */
-    const currentYearSpan = document.getElementById("current-year");
-    if (currentYearSpan) {
-        currentYearSpan.textContent = new Date().getFullYear();
-    }
+  const currentYearSpan = document.getElementById("current-year");
+  if (currentYearSpan) {
+    currentYearSpan.textContent = new Date().getFullYear();
+  }
 
-    /* ==========================================================================
+  /* ==========================================================================
        3. SISTEMA DE REVELACIÓN AL SCROLL
        ========================================================================== */
-    const fadeElements = document.querySelectorAll(".fade-in-element");
-    if (fadeElements.length > 0) {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const appearOnScroll = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        fadeElements.forEach(element => appearOnScroll.observe(element));
-
-        window.addEventListener("scroll", () => {
-            fadeElements.forEach(element => {
-                if (element.classList.contains("visible")) {
-                    const rect = element.getBoundingClientRect();
-                    if (rect.bottom < 150) {
-                        element.classList.add("scrolled-past");
-                    } else {
-                        element.classList.remove("scrolled-past");
-                    }
-                }
-            });
-        });
-    }
-
-    /* ==========================================================================
-       4. ACORDEÓN (FAQ)
-       ========================================================================== */
-    const accordionItems = document.querySelectorAll('.accordion-item');
-    accordionItems.forEach(item => {
-        const header = item.querySelector('.accordion-header');
-        if (header) {
-            header.addEventListener('click', () => {
-                const currentlyActive = document.querySelector('.accordion-item.active');
-                if (currentlyActive && currentlyActive !== item) {
-                    currentlyActive.classList.remove('active');
-                    const activeIcon = currentlyActive.querySelector('i');
-                    if (activeIcon) {
-                        activeIcon.classList.remove('fa-chevron-up');
-                        activeIcon.classList.add('fa-chevron-down');
-                    }
-                }
-                item.classList.toggle('active');
-                const icon = header.querySelector('i');
-                if (icon) {
-                    if (item.classList.contains('active')) {
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                    } else {
-                        icon.classList.remove('fa-chevron-up');
-                        icon.classList.add('fa-chevron-down');
-                    }
-                }
-            });
-        }
-    });
-
-    /* ==========================================================================
-       5. DETALLES DE FLOTA (ACCESIBILIDAD)
-       ========================================================================== */
-    const toggleButtons = document.querySelectorAll('.details-toggle');
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const isExpanded = button.getAttribute('aria-expanded') === 'true';
-            const panelId = button.getAttribute('aria-controls');
-            const panel = document.getElementById(panelId);
-
-            button.setAttribute('aria-expanded', !isExpanded);
-            if (panel) {
-                if (!isExpanded) {
-                    panel.removeAttribute('hidden');
-                } else {
-                    panel.setAttribute('hidden', '');
-                }
-            }
-        });
-    });
-
-    /* ==========================================================================
-       6. CARRUSEL DE TESTIMONIOS
-       ========================================================================== */
-    const track = document.querySelector('.slider-track');
-    const cards = document.querySelectorAll('.testimonial-card');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const dotsContainer = document.querySelector('.slider-dots-container');
-
-    if (track && cards.length > 0 && dotsContainer && prevBtn && nextBtn) {
-        let currentIndex = 0;
-
-        const getVisibleCards = () => {
-            if (window.innerWidth >= 992) return 3;
-            if (window.innerWidth >= 600) return 2;
-            return 1;
-        };
-
-        const getMaxIndex = () => Math.max(0, cards.length - getVisibleCards());
-
-        const createDots = () => {
-            dotsContainer.innerHTML = '';
-            const totalDots = getMaxIndex() + 1;
-
-            for (let i = 0; i < totalDots; i++) {
-                const dot = document.createElement('button');
-                dot.classList.add('dot');
-                dot.setAttribute('aria-label', `Ir a la página ${i + 1}`);
-                if (i === currentIndex) dot.classList.add('active');
-                dot.addEventListener('click', () => goToIndex(i));
-                dotsContainer.appendChild(dot);
-            }
-        };
-
-        const goToIndex = (index) => {
-            const maxIndex = getMaxIndex();
-            currentIndex = Math.min(Math.max(index, 0), maxIndex);
-
-            const cardWidth = cards[0].getBoundingClientRect().width;
-            const gap = 24;
-            const offset = (cardWidth + gap) * currentIndex;
-
-            track.style.transform = `translateX(-${offset}px)`;
-            updateControls();
-        };
-
-        const updateControls = () => {
-            const maxIndex = getMaxIndex();
-            prevBtn.disabled = currentIndex === 0;
-            nextBtn.disabled = currentIndex >= maxIndex;
-
-            const dots = dotsContainer.querySelectorAll('.dot');
-            dots.forEach((dot, idx) => {
-                dot.classList.toggle('active', idx === currentIndex);
-            });
-        };
-
-        prevBtn.addEventListener('click', () => goToIndex(currentIndex - 1));
-        nextBtn.addEventListener('click', () => goToIndex(currentIndex + 1));
-
-        window.addEventListener('resize', () => {
-            createDots();
-            goToIndex(currentIndex);
-        });
-
-        createDots();
-        updateControls();
-    }
-
-    /* ==========================================================================
-       7. SECCIÓN NUESTROS DESTINOS
-       ========================================================================== */
-    const destinationsData = {
-        sombrero: {
-            title: "Cayo Sombrero",
-            desc: "El ícono caribeño de Morrocoy. Famoso por sus dos extensas playas de arena blanca y aguas cristalinas turquesa.",
-            image: "img/cayo sombrero.jpg"
-        },
-        juanes: {
-            title: "Los Juanes",
-            desc: "La piscina natural más exclusiva. Un bajo transparente en mar abierto sin orilla, perfecto para festejar desde la embarcación.",
-            image: "img/Juanes1.jpg"
-        },
-        pescadores: {
-            title: "Cayo Pescadores",
-            desc: "Un santuario de calma absoluta. Conocido por sus aguas llanas, temperatura cálida y oleaje casi nulo.",
-            image: "img/pescadores.jpg"
-        },
-        bajo360: {
-            title: "Bajo 360",
-            desc: "Impresionante panorámica en el mar. Un banco de arena cristalino rodeado de tonos azules infinitos.",
-            image: "img/BAJO 360.webp"
-        }
+  const fadeElements = document.querySelectorAll(".fade-in-element");
+  if (fadeElements.length > 0) {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
     };
 
-    const radioInputs = document.querySelectorAll('input[name="destination_select"]');
-    const displayImg = document.getElementById('dest-display-img');
-    const cardTitle = document.getElementById('card-title');
-    const cardDesc = document.getElementById('card-desc'); // Opcional
-
-    if (radioInputs.length && displayImg && cardTitle) {
-
-        // Función para actualizar los datos en el DOM
-        const setDestinationData = (key) => {
-            const data = destinationsData[key];
-            if (!data) return;
-
-            displayImg.src = data.image;
-            displayImg.alt = data.title;
-            cardTitle.textContent = data.title;
-            if (cardDesc && data.desc) {
-                cardDesc.textContent = data.desc;
-            }
-        };
-
-        // 1. Forzar la carga inicial de la imagen/texto según el botón marcado por defecto
-        const initialChecked = document.querySelector('input[name="destination_select"]:checked');
-        if (initialChecked) {
-            setDestinationData(initialChecked.value);
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
         }
+      });
+    }, observerOptions);
 
-        // 2. Escuchar cambios al hacer clic en los otros botones
-        radioInputs.forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                const selectedKey = e.target.value;
+    fadeElements.forEach((element) => appearOnScroll.observe(element));
 
-                displayImg.style.opacity = '0.3';
-                cardTitle.style.opacity = '0';
-                if (cardDesc) cardDesc.style.opacity = '0';
+    window.addEventListener("scroll", () => {
+      fadeElements.forEach((element) => {
+        if (element.classList.contains("visible")) {
+          const rect = element.getBoundingClientRect();
+          if (rect.bottom < 150) {
+            element.classList.add("scrolled-past");
+          } else {
+            element.classList.remove("scrolled-past");
+          }
+        }
+      });
+    });
+  }
 
-                setTimeout(() => {
-                    setDestinationData(selectedKey);
+  /* ==========================================================================
+       4. ACORDEÓN (FAQ)
+       ========================================================================== */
+  const accordionItems = document.querySelectorAll(".accordion-item");
+  accordionItems.forEach((item) => {
+    const header = item.querySelector(".accordion-header");
+    if (header) {
+      header.addEventListener("click", () => {
+        const currentlyActive = document.querySelector(
+          ".accordion-item.active",
+        );
+        if (currentlyActive && currentlyActive !== item) {
+          currentlyActive.classList.remove("active");
+          const activeIcon = currentlyActive.querySelector("i");
+          if (activeIcon) {
+            activeIcon.classList.remove("fa-chevron-up");
+            activeIcon.classList.add("fa-chevron-down");
+          }
+        }
+        item.classList.toggle("active");
+        const icon = header.querySelector("i");
+        if (icon) {
+          if (item.classList.contains("active")) {
+            icon.classList.remove("fa-chevron-down");
+            icon.classList.add("fa-chevron-up");
+          } else {
+            icon.classList.remove("fa-chevron-up");
+            icon.classList.add("fa-chevron-down");
+          }
+        }
+      });
+    }
+  });
 
-                    displayImg.style.opacity = '1';
-                    cardTitle.style.opacity = '1';
-                    if (cardDesc) cardDesc.style.opacity = '1';
-                }, 200);
-            });
-        });
+  /* ==========================================================================
+       5. DETALLES DE FLOTA (ACCESIBILIDAD)
+       ========================================================================== */
+  const toggleButtons = document.querySelectorAll(".details-toggle");
+  toggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+      const panelId = button.getAttribute("aria-controls");
+      const panel = document.getElementById(panelId);
+
+      button.setAttribute("aria-expanded", !isExpanded);
+      if (panel) {
+        if (!isExpanded) {
+          panel.removeAttribute("hidden");
+        } else {
+          panel.setAttribute("hidden", "");
+        }
+      }
+    });
+  });
+
+  /* ==========================================================================
+       6. CARRUSEL DE TESTIMONIOS
+       ========================================================================== */
+  const track = document.querySelector(".slider-track");
+  const cards = document.querySelectorAll(".testimonial-card");
+  const prevBtn = document.querySelector(".prev-btn");
+  const nextBtn = document.querySelector(".next-btn");
+  const dotsContainer = document.querySelector(".slider-dots-container");
+
+  if (track && cards.length > 0 && dotsContainer && prevBtn && nextBtn) {
+    let currentIndex = 0;
+
+    const getVisibleCards = () => {
+      if (window.innerWidth >= 992) return 3;
+      if (window.innerWidth >= 600) return 2;
+      return 1;
+    };
+
+    const getMaxIndex = () => Math.max(0, cards.length - getVisibleCards());
+
+    const createDots = () => {
+      dotsContainer.innerHTML = "";
+      const totalDots = getMaxIndex() + 1;
+
+      for (let i = 0; i < totalDots; i++) {
+        const dot = document.createElement("button");
+        dot.classList.add("dot");
+        dot.setAttribute("aria-label", `Ir a la página ${i + 1}`);
+        if (i === currentIndex) dot.classList.add("active");
+        dot.addEventListener("click", () => goToIndex(i));
+        dotsContainer.appendChild(dot);
+      }
+    };
+
+    const goToIndex = (index) => {
+      const maxIndex = getMaxIndex();
+      currentIndex = Math.min(Math.max(index, 0), maxIndex);
+
+      const cardWidth = cards[0].getBoundingClientRect().width;
+      const gap = 24;
+      const offset = (cardWidth + gap) * currentIndex;
+
+      track.style.transform = `translateX(-${offset}px)`;
+      updateControls();
+    };
+
+    const updateControls = () => {
+      const maxIndex = getMaxIndex();
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= maxIndex;
+
+      const dots = dotsContainer.querySelectorAll(".dot");
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle("active", idx === currentIndex);
+      });
+    };
+
+    prevBtn.addEventListener("click", () => goToIndex(currentIndex - 1));
+    nextBtn.addEventListener("click", () => goToIndex(currentIndex + 1));
+
+    window.addEventListener("resize", () => {
+      createDots();
+      goToIndex(currentIndex);
+    });
+
+    createDots();
+    updateControls();
+  }
+
+  /* ==========================================================================
+       7. SECCIÓN NUESTROS DESTINOS
+       ========================================================================== */
+  const destinationsData = {
+    sombrero: {
+      title: "Cayo Sombrero",
+      desc: "El ícono caribeño de Morrocoy. Famoso por sus dos extensas playas de arena blanca y aguas cristalinas turquesa.",
+      image: "img/cayo sombrero.jpg",
+    },
+    juanes: {
+      title: "Los Juanes",
+      desc: "La piscina natural más exclusiva. Un bajo transparente en mar abierto sin orilla, perfecto para festejar desde la embarcación.",
+      image: "img/Juanes1.jpg",
+    },
+    pescadores: {
+      title: "Cayo Pescadores",
+      desc: "Un santuario de calma absoluta. Conocido por sus aguas llanas, temperatura cálida y oleaje casi nulo.",
+      image: "img/pescadores.jpg",
+    },
+    bajo360: {
+      title: "Bajo 360",
+      desc: "Impresionante panorámica en el mar. Un banco de arena cristalino rodeado de tonos azules infinitos.",
+      image: "img/BAJO 360.webp",
+    },
+  };
+
+  const radioInputs = document.querySelectorAll(
+    'input[name="destination_select"]',
+  );
+  const displayImg = document.getElementById("dest-display-img");
+  const cardTitle = document.getElementById("card-title");
+  const cardDesc = document.getElementById("card-desc"); // Opcional
+
+  if (radioInputs.length && displayImg && cardTitle) {
+    // Función para actualizar los datos en el DOM
+    const setDestinationData = (key) => {
+      const data = destinationsData[key];
+      if (!data) return;
+
+      displayImg.src = data.image;
+      displayImg.alt = data.title;
+      cardTitle.textContent = data.title;
+      if (cardDesc && data.desc) {
+        cardDesc.textContent = data.desc;
+      }
+    };
+
+    // 1. Forzar la carga inicial de la imagen/texto según el botón marcado por defecto
+    const initialChecked = document.querySelector(
+      'input[name="destination_select"]:checked',
+    );
+    if (initialChecked) {
+      setDestinationData(initialChecked.value);
     }
 
-    /* ==========================================================================
+    // 2. Escuchar cambios al hacer clic en los otros botones
+    radioInputs.forEach((radio) => {
+      radio.addEventListener("change", (e) => {
+        const selectedKey = e.target.value;
+
+        displayImg.style.opacity = "0.3";
+        cardTitle.style.opacity = "0";
+        if (cardDesc) cardDesc.style.opacity = "0";
+
+        setTimeout(() => {
+          setDestinationData(selectedKey);
+
+          displayImg.style.opacity = "1";
+          cardTitle.style.opacity = "1";
+          if (cardDesc) cardDesc.style.opacity = "1";
+        }, 200);
+      });
+    });
+  }
+
+  /* ==========================================================================
        8. CARRUSEL DE BENEFICIOS
        ========================================================================== */
-    const slides = document.querySelectorAll('.benefits-slide');
-    const dots = document.querySelectorAll('.benefits-dots .dot');
-    const prevBtnBenefits = document.querySelector('.benefits-arrow.prev-slide');
-    const nextBtnBenefits = document.querySelector('.benefits-arrow.next-slide');
+  const slides = document.querySelectorAll(".benefits-slide");
+  const dots = document.querySelectorAll(".benefits-dots .dot");
+  const prevBtnBenefits = document.querySelector(".benefits-arrow.prev-slide");
+  const nextBtnBenefits = document.querySelector(".benefits-arrow.next-slide");
 
-    if (slides.length > 0) {
-        let currentSlide = 0;
+  if (slides.length > 0) {
+    let currentSlide = 0;
 
-        const updateCarousel = (index) => {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-            currentSlide = index;
-        };
+    const updateCarousel = (index) => {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+      currentSlide = index;
+    };
 
-        if (nextBtnBenefits) {
-            nextBtnBenefits.addEventListener('click', () => {
-                const nextIndex = (currentSlide + 1) % slides.length;
-                updateCarousel(nextIndex);
-            });
-        }
-
-        if (prevBtnBenefits) {
-            prevBtnBenefits.addEventListener('click', () => {
-                const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
-                updateCarousel(prevIndex);
-            });
-        }
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => updateCarousel(index));
-        });
+    if (nextBtnBenefits) {
+      nextBtnBenefits.addEventListener("click", () => {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        updateCarousel(nextIndex);
+      });
     }
 
-    /* ==========================================================================
+    if (prevBtnBenefits) {
+      prevBtnBenefits.addEventListener("click", () => {
+        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        updateCarousel(prevIndex);
+      });
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => updateCarousel(index));
+    });
+  }
+
+  /* ==========================================================================
        9. MODAL DE CONTACTO
        ========================================================================== */
-    const botonesAbrir = document.querySelectorAll('.abrir-modal-contacto');
-    const modal = document.getElementById('modalContacto');
-    const botonCerrar = document.getElementById('cerrarModal');
+  const botonesAbrir = document.querySelectorAll(".abrir-modal-contacto");
+  const modal = document.getElementById("modalContacto");
+  const botonCerrar = document.getElementById("cerrarModal");
 
-    if (modal) {
-        botonesAbrir.forEach(boton => {
-            boton.addEventListener('click', (e) => {
-                e.preventDefault();
-                modal.classList.add('activo');
-            });
-        });
+  if (modal) {
+    botonesAbrir.forEach((boton) => {
+      boton.addEventListener("click", (e) => {
+        e.preventDefault();
+        modal.classList.add("activo");
+      });
+    });
 
-        if (botonCerrar) {
-            botonCerrar.addEventListener('click', () => {
-                modal.classList.remove('activo');
-            });
-        }
-
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('activo');
-            }
-        });
+    if (botonCerrar) {
+      botonCerrar.addEventListener("click", () => {
+        modal.classList.remove("activo");
+      });
     }
 
-    /* ==========================================================================
-       10. CONTROL DE VIDEO
-       ========================================================================== */
-    const video = document.getElementById('hero-video');
-    const toggleBtnVideo = document.getElementById('video-toggle-btn');
-
-    if (video && toggleBtnVideo) {
-        toggleBtnVideo.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-                toggleBtnVideo.setAttribute('aria-label', 'Pausar video de fondo');
-                toggleBtnVideo.innerHTML = '<span aria-hidden="true">⏸</span>';
-            } else {
-                video.pause();
-                toggleBtnVideo.setAttribute('aria-label', 'Reproducir video de fondo');
-                toggleBtnVideo.innerHTML = '<span aria-hidden="true">▶</span>';
-            }
-        });
-    }
-
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("activo");
+      }
+    });
+  }
 });

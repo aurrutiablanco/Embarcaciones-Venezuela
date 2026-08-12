@@ -37,6 +37,9 @@
     
     <!-- CSS Link -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Inyeccion del html del hero -->
+    <link rel="stylesheet" href="components/style-hero.css">
 </head>
 <body>
 
@@ -48,9 +51,9 @@
                 EMBARCACIONES VENEZUELA
             </a>
             
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú de navegación" aria-expanded="false">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
 
             <nav>
                 <ul class="nav-links" id="nav-links">
@@ -64,37 +67,62 @@
             </nav>
         </div>
     </header>
-
-    <section id="hero" class="hero-section" aria-label="Introducción a Embarcaciones Venezuela">
-    <!-- Video de Fondo -->
-    <div class="hero-video-wrapper">
-        <video id="hero-video" autoplay loop muted playsinline class="hero-video">
-        <source src="assets/videos/hero-nautico.mp4" type="video/mp4">
-        Tu navegador no soporta la reproducción de video.
-        </video>
-        <!-- Overlay con contraste controlado (ratio mínimo 4.5:1) -->
-        <div class="hero-overlay" aria-hidden="true"></div>
-    </div>
-
-    <!-- Contenido Principal -->
-    <div class="container hero-content">
-        <h1 class="hero-title">Diseñamos Experiencias Náuticas VIP</h1>
-        <p class="hero-subtitle">
-        Alquiler y gestión exclusiva de yates y embarcaciones de lujo en las mejores costas.
-        </p>
-
-        <!-- Acciones de Conversión -->
-        <div class="hero-actions">
-        <a href="#flota" class="btn btn-primary">Explorar Flota</a>
-        <a href="#contacto" class="btn btn-secondary">Reservar Asesoría</a>
+    <section class="hero-carousel" aria-label="Experiencias Náuticas VIP en Morrocoy">
+        <!-- 1. Fondo de Video con Doble Búfer (Transición de 2s) -->
+        <div class="video-container">
+            <video id="hero-video-1" class="hero-video active" autoplay muted playsinline aria-hidden="true" tabindex="-1">
+            <source src="videos/DJI_0134.MP4" type="video/mp4">
+            </video>
+            <video id="hero-video-2" class="hero-video" muted playsinline aria-hidden="true" tabindex="-1">
+            <source src="videos/DJI_0139.MP4" type="video/mp4">
+            </video>
+            <div class="video-overlay" aria-hidden="true"></div>
         </div>
-    </div>
 
-    <!-- Control Accesible de Medio (WCAG 2.2.2) -->
-    <button type="button" id="video-toggle-btn" class="video-control-btn" aria-label="Pausar video de fondo">
-        <span class="icon-pause" aria-hidden="true">⏸</span>
-    </button>
-    </section> 
+        <!-- 2. Tarjeta Central Compacta Minimalista -->
+        <div class="hero-content">
+            <h1 class="hero-title">Diseñamos experiencias náuticas VIP</h1>
+            <p class="hero-subtitle">
+            Alquiler y gestión exclusiva de yates y embarcaciones de lujo en las mejores costas
+            </p>
+            <div class="cta-group">
+            <a href="#flota" class="btn btn-primary">Explorar flota</a>
+            <a href="https://wa.me/584120000000" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Reservar asesoría</a>
+            </div>
+        </div>
+
+        <!-- 3. Controles Accesibles del Carrusel (Alineados abajo al centro) -->
+        <div class="carousel-controls">
+            <button id="toggle-autoplay" class="btn-control btn-pause" aria-label="Pausar rotación automática" aria-pressed="false">
+            <svg class="icon-pause" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="6" y="4" width="4" height="16" rx="1"/>
+                <rect x="14" y="4" width="4" height="16" rx="1"/>
+            </svg>
+            <svg class="icon-play" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                <polygon points="5,3 19,12 5,21"/>
+            </svg>
+            </button>
+
+            <div class="tabs-wrapper" role="tablist" aria-label="Diapositivas de video náutico">
+            <button role="tab" id="tab-0" class="tab-indicator" aria-selected="true" aria-controls="hero-video-1" aria-label="Video 1 de 3: Yate VIP" data-index="0">
+                <span class="progress-bar"><span class="progress-fill"></span></span>
+            </button>
+            <button role="tab" id="tab-1" class="tab-indicator" aria-selected="false" aria-controls="hero-video-1" aria-label="Video 2 de 3: Lancha deportiva" data-index="1">
+                <span class="progress-bar"><span class="progress-fill"></span></span>
+            </button>
+            <button role="tab" id="tab-2" class="tab-indicator" aria-selected="false" aria-controls="hero-video-1" aria-label="Video 3 de 3: Peñero ejecutivo" data-index="2">
+                <span class="progress-bar"><span class="progress-fill"></span></span>
+            </button>
+            </div>
+        </div>
+
+        <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    </section>
+
+    <!-- JS global y JS interactivo del carrusel -->
+    <script src="script.js" defer></script>
+    <script src="components/script-hero.js" defer></script>
+
 
 
 
@@ -876,42 +904,6 @@
   </div>
 </footer>
 
-
-    <!-- Scripts -->
-    <script src="script.js">
-
-        document.addEventListener('DOMContentLoaded', () => {
-  // Seleccionamos los elementos del DOM
-  const botonesAbrir = document.querySelectorAll('.abrir-modal-contacto');
-  const modal = document.getElementById('modalContacto');
-  const botonCerrar = document.getElementById('cerrarModal');
-
-  // Si no existe el modal en la página, detenemos la ejecución para evitar errores
-  if (!modal) return;
-
-  // Abrir el modal al hacer clic en los botones
-  botonesAbrir.forEach(boton => {
-    boton.addEventListener('click', (e) => {
-      e.preventDefault(); // Evita que la página salte hacia arriba
-      modal.classList.add('activo');
-    });
-  });
-
-  // Cerrar el modal al hacer clic en la "X"
-  botonCerrar.addEventListener('click', () => {
-    modal.classList.remove('activo');
-  });
-
-  // Cerrar el modal si el usuario hace clic fuera de la caja roja (en el fondo oscuro)
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('activo');
-    }
-  });
-});
-
-    </script>
-
     <!-- BOTÓN FLOTANTE DE WHATSAPP -->
 <a href="https://wa.me/584244585512?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." 
    class="whatsapp-float" 
@@ -950,7 +942,8 @@
   </div>
 </div>
 
-
+<!-- Script Cargador Principal (Gestión de componentes) -->
+  <script src="script.js" defer></script>
 
 
 </body>

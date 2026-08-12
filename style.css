@@ -2161,9 +2161,9 @@ header.menu-open {
 }
 
 .footer-logo-img {
-    width: 36px;          /* Ancho deseado */
-    height: 36px;         /* Debe ser igual al ancho para mantener proporción 1:1 */
-    border-radius: 50%;   /* Convierte la imagen en un círculo perfecto */
-    object-fit: cover;    /* Evita que la imagen se estire o distorsione */
-    display: block;
+  width: 36px; /* Ancho deseado */
+  height: 36px; /* Debe ser igual al ancho para mantener proporción 1:1 */
+  border-radius: 50%; /* Convierte la imagen en un círculo perfecto */
+  object-fit: cover; /* Evita que la imagen se estire o distorsione */
+  display: block;
 }

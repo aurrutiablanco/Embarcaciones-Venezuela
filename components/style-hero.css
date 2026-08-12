@@ -1,0 +1,355 @@
+/* ==========================================================================
+   RESET & ESTILOS BASE DE ACCESIBILIDAD
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    sans-serif;
+  color: #ffffff;
+  background-color: #0b1325;
+  line-height: 1.5;
+}
+
+/* Superposición y Transición de Videos */
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 2s ease-in-out;
+  will-change: opacity;
+}
+
+.hero-video.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* La capa de oscurecimiento permanece siempre por encima de ambos videos */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background: radial-gradient(
+    circle,
+    rgba(5, 11, 20, 0.4) 0%,
+    rgba(5, 11, 20, 0.8) 100%
+  );
+}
+
+/* Accesibilidad: Anulación de animaciones de fundido para movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    transition: none !important;
+  }
+}
+
+/* Ocultar dinámicamente elementos solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   HERO CAROUSEL CONTAINER (Centrado Principal)
+   ========================================================================== */
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra la tarjeta horizontalmente */
+  padding: 5rem 1.5rem 6rem;
+  overflow: hidden;
+  background-color: #050b14;
+}
+
+/* Video y Overlay (WCAG 1.4.3 Contraste mínimo de 4.5:1) */
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(5, 11, 20, 0.4) 0%,
+    rgba(5, 11, 20, 0.8) 100%
+  );
+}
+
+/* ==========================================================================
+   HERO CONTENT (Versión Minimalista y Compacta)
+   ========================================================================== */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 450px; /* Reducido de 580px a 450px para estilizar el ancho */
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.85rem; /* Separación vertical reducida entre elementos */
+  padding: 1.5rem 1.25rem; /* Reducido de 2.5rem 2rem a 1.5rem 1.25rem */
+  background: rgba(11, 19, 37, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem); /* Escala de título compacta */
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hero-subtitle {
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem); /* Texto secundario más discreto */
+  color: #e2e8f0;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Botones CTA Compactos */
+.cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.1rem; /* Botones más bajos y estilizados */
+  min-height: 40px; /* Garantiza área táctil accesible */
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  transition:
+    background-color 0.25s ease,
+    transform 0.2s ease,
+    border-color 0.25s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background-color: #0088cc;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #006699;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Indicador de Enfoque Teclado (WCAG 2.4.7 / 2.4.13) */
+.btn:focus-visible,
+.btn-control:focus-visible,
+.tab-indicator:focus-visible {
+  outline: 3px solid #00f0ff !important;
+  outline-offset: 4px !important;
+}
+
+/* ==========================================================================
+   CAROUSEL CONTROLS (Abajo centrado con animación de progreso)
+   ========================================================================== */
+.carousel-controls {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: rgba(11, 19, 37, 0.65);
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-control {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.btn-control:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tabs-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tab-indicator {
+  background: transparent;
+  border: none;
+  padding: 8px 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.progress-bar {
+  display: block;
+  width: 45px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  transition: width 0.3s ease;
+}
+
+.progress-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background-color: #00f0ff;
+  border-radius: 2px;
+}
+
+/* Animación de llenado continuo cuando el tab está activo y el autoplay encendido */
+.tab-indicator.active .progress-bar {
+  width: 65px;
+}
+
+.tab-indicator.active.animating .progress-fill {
+  animation: fillProgress 5s linear forwards;
+}
+
+.tab-indicator.active.paused .progress-fill {
+  animation-play-state: paused;
+}
+
+.tab-indicator.completed .progress-fill {
+  width: 100%;
+}
+
+@keyframes fillProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   MOVIMIENTO RESTRINGIDO (WCAG 2.2.2 / PREFERS-REDUCED-MOTION)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .tab-indicator.active.animating .progress-fill {
+    animation: none;
+    width: 100%;
+  }
+  .btn,
+  .btn-control {
+    transition: none;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-carousel {
+    padding: 4rem 1rem 5rem;
+  }
+  .hero-content {
+    padding: 1.75rem 1.25rem;
+  }
+  .cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btn {
+    width: 100%;
+  }
+  .carousel-controls {
+    bottom: 1.5rem;
+    width: 90%;
+    justify-content: center;
+  }
+}
