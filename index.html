@@ -1,46 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
     <style>
-  @font-face {
-    font-family: 'Neusharp';
-    src: url('fonts/Neusharp-Bold.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-  }
+        @font-face {
+            font-family: 'Neusharp';
+            src: url('fonts/Neusharp-Bold.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-  /* Aplica a los contenedores principales y controles de texto */
-  body, input, button, select, textarea {
-    font-family: 'Neusharp', sans-serif;
-  }
+        /* Aplica a los contenedores principales y controles de texto */
+        body,
+        input,
+        button,
+        select,
+        textarea {
+            font-family: 'Neusharp', sans-serif;
+        }
 
-  /* Asegura los elementos con texto común sin tocar pseudoelementos de íconos */
-  h1, h2, h3, h4, h5, h6, p, span, a, li, label, td, th {
-    font-family: 'Neusharp', sans-serif;
-  }
-</style>
+        /* Asegura los elementos con texto común sin tocar pseudoelementos de íconos */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        span,
+        a,
+        li,
+        label,
+        td,
+        th {
+            font-family: 'Neusharp', sans-serif;
+        }
+    </style>
 
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Embarcaciones Venezuela - La principal autoridad náutica en el Parque Nacional Morrocoy. Diseñamos experiencias de alto nivel.">
+    <meta name="description"
+        content="Embarcaciones Venezuela - La principal autoridad náutica en el Parque Nacional Morrocoy. Diseñamos experiencias de alto nivel.">
     <title>Embarcaciones Venezuela | Autoridad Náutica en Morrocoy</title>
-    
+
     <!-- Google Fonts: Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- FontAwesome 6 para Iconografía de Lujo -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- CSS Link -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Inyeccion del html del hero -->
     <link rel="stylesheet" href="components/style-hero.css">
 </head>
+
 <body>
 
     <!-- Header & Navegación -->
@@ -50,7 +70,7 @@
                 <img src="img/ruta-de-tu-logo.png" alt="Logo Embarcaciones Venezuela" class="logo-img">
                 EMBARCACIONES VENEZUELA
             </a>
-            
+
             <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú de navegación" aria-expanded="false">
                 <i class="fa-solid fa-bars" aria-hidden="true"></i>
             </button>
@@ -67,14 +87,27 @@
             </nav>
         </div>
     </header>
+
+    <div id="terms-banner" class="terms-banner" role="region" aria-label="Aviso de condiciones">
+        <div class="terms-content">
+            <h3>Condiciones del sitio</h3>
+            <p>Al utilizar <strong>Embarcaciones Venezuela</strong>, confirmas que aceptas nuestros términos de servicio
+                y políticas de uso de la plataforma.</p>
+            <button id="accept-terms" class="btn-primary">Aceptar</button>
+        </div>
+    </div>
+
+
+
     <section class="hero-carousel" aria-label="Experiencias Náuticas VIP en Morrocoy">
         <!-- 1. Fondo de Video con Doble Búfer (Transición de 2s) -->
         <div class="video-container">
-            <video id="hero-video-1" class="hero-video active" autoplay muted playsinline aria-hidden="true" tabindex="-1">
-            <source src="videos/DJI_0134.MP4" type="video/mp4">
+            <video id="hero-video-1" class="hero-video active" autoplay muted playsinline aria-hidden="true"
+                tabindex="-1">
+                <source src="videos/DJI_0134.MP4" type="video/mp4">
             </video>
             <video id="hero-video-2" class="hero-video" muted playsinline aria-hidden="true" tabindex="-1">
-            <source src="videos/DJI_0139.MP4" type="video/mp4">
+                <source src="videos/DJI_0139.MP4" type="video/mp4">
             </video>
             <div class="video-overlay" aria-hidden="true"></div>
         </div>
@@ -83,36 +116,43 @@
         <div class="hero-content">
             <h1 class="hero-title">Diseñamos experiencias náuticas VIP</h1>
             <p class="hero-subtitle">
-            Alquiler y gestión exclusiva de yates y embarcaciones de lujo en las mejores costas
+                Alquiler y gestión exclusiva de yates y embarcaciones de lujo en las mejores costas
             </p>
             <div class="cta-group">
-            <a href="#flota" class="btn btn-primary">Explorar flota</a>
-            <a href="https://wa.me/584120000000" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Reservar asesoría</a>
+                <a href="#flota" class="btn btn-primary">Explorar flota</a>
+                <a href="https://wa.me/584120000000" class="btn btn-secondary" target="_blank"
+                    rel="noopener noreferrer">Reservar asesoría</a>
             </div>
         </div>
 
         <!-- 3. Controles Accesibles del Carrusel (Alineados abajo al centro) -->
         <div class="carousel-controls">
-            <button id="toggle-autoplay" class="btn-control btn-pause" aria-label="Pausar rotación automática" aria-pressed="false">
-            <svg class="icon-pause" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <rect x="6" y="4" width="4" height="16" rx="1"/>
-                <rect x="14" y="4" width="4" height="16" rx="1"/>
-            </svg>
-            <svg class="icon-play" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
-                <polygon points="5,3 19,12 5,21"/>
-            </svg>
+            <button id="toggle-autoplay" class="btn-control btn-pause" aria-label="Pausar rotación automática"
+                aria-pressed="false">
+                <svg class="icon-pause" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16" rx="1" />
+                    <rect x="14" y="4" width="4" height="16" rx="1" />
+                </svg>
+                <svg class="icon-play" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                    style="display:none;">
+                    <polygon points="5,3 19,12 5,21" />
+                </svg>
             </button>
 
             <div class="tabs-wrapper" role="tablist" aria-label="Diapositivas de video náutico">
-            <button role="tab" id="tab-0" class="tab-indicator" aria-selected="true" aria-controls="hero-video-1" aria-label="Video 1 de 3: Yate VIP" data-index="0">
-                <span class="progress-bar"><span class="progress-fill"></span></span>
-            </button>
-            <button role="tab" id="tab-1" class="tab-indicator" aria-selected="false" aria-controls="hero-video-1" aria-label="Video 2 de 3: Lancha deportiva" data-index="1">
-                <span class="progress-bar"><span class="progress-fill"></span></span>
-            </button>
-            <button role="tab" id="tab-2" class="tab-indicator" aria-selected="false" aria-controls="hero-video-1" aria-label="Video 3 de 3: Peñero ejecutivo" data-index="2">
-                <span class="progress-bar"><span class="progress-fill"></span></span>
-            </button>
+                <button role="tab" id="tab-0" class="tab-indicator" aria-selected="true" aria-controls="hero-video-1"
+                    aria-label="Video 1 de 3: Yate VIP" data-index="0">
+                    <span class="progress-bar"><span class="progress-fill"></span></span>
+                </button>
+                <button role="tab" id="tab-1" class="tab-indicator" aria-selected="false" aria-controls="hero-video-1"
+                    aria-label="Video 2 de 3: Lancha deportiva" data-index="1">
+                    <span class="progress-bar"><span class="progress-fill"></span></span>
+                </button>
+                <button role="tab" id="tab-2" class="tab-indicator" aria-selected="false" aria-controls="hero-video-1"
+                    aria-label="Video 3 de 3: Peñero ejecutivo" data-index="2">
+                    <span class="progress-bar"><span class="progress-fill"></span></span>
+                </button>
             </div>
         </div>
 
@@ -130,22 +170,24 @@
 
 
     <!-- Historial de Ejecución Impecable (Fondo con Imagen) -->
-    <section id="autoridad" class="stats-section bg-section-img" style="background-image: url('img/fondo-trayectoria.jpg');">
+    <section id="autoridad" class="stats-section bg-section-img"
+        style="background-image: url('img/fondo-trayectoria.jpg');">
         <div class="section-overlay"></div>
         <div class="container relative-z">
             <h2 class="section-title white-text fade-in-element">Por esto nuestros clientes confían en nosotros</h2>
             <div class="stats-grid">
-                
+
                 <div class="stat-card glass-panel fade-in-element">
-    <span class="stat-number gold-text icon-stat">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="stat-check-svg">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            <path d="m9 12 2 2 4-4"></path>
-        </svg>
-    </span>
-    <p class="stat-desc">Brindamos garantía. Tu inversión está segura con nuestro equipo</p>
-</div>
-                
+                    <span class="stat-number gold-text icon-stat">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" class="stat-check-svg">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="m9 12 2 2 4-4"></path>
+                        </svg>
+                    </span>
+                    <p class="stat-desc">Brindamos garantía. Tu inversión está segura con nuestro equipo</p>
+                </div>
+
 
                 <div class="stat-card glass-panel fade-in-element">
                     <span class="stat-number white-text">100%</span>
@@ -163,177 +205,184 @@
         </div>
     </section>
 
-   
+
     <!-- ==========================================================================
    SECCIÓN BENEFICIOS (DISEÑO ULTRA COMPACTO & TARJETAS MEJORADAS)
    ========================================================================== -->
-<section id="beneficios" class="benefits-section bg-light">
-    <div class="container">
-        <h2 class="section-title navy-text fade-in-element" style="margin-bottom: 1.5rem;">¿Por qué eligen a Embarcaciones Venezuela?</h2>
-        
-        <div class="compact-benefits-layout">
-            
-            <!-- Carrusel de Imágenes (Izquierda) -->
-            <div class="split-image-slider fade-in-element">
-                <div class="benefits-carousel">
-                    <div class="benefits-track">
-                        <div class="benefits-slide active">
-                            <img src="img/jeva.jpg" alt="Experiencia VIP 1">
-                        </div>
-                        <div class="benefits-slide">
-                            <img src="img/ruta-de-foto-beneficios-2.jpg" alt="Experiencia VIP 2">
-                        </div>
-                        <div class="benefits-slide">
-                            <img src="img/ruta-de-foto-beneficios-3.jpg" alt="Experiencia VIP 3">
-                        </div>
-                    </div>
+    <section id="beneficios" class="benefits-section bg-light">
+        <div class="container">
+            <h2 class="section-title navy-text fade-in-element" style="margin-bottom: 1.5rem;">¿Por qué eligen a
+                Embarcaciones Venezuela?</h2>
 
-                    <!-- Botones de Navegación -->
-                    <button class="benefits-arrow prev-slide" aria-label="Anterior">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <button class="benefits-arrow next-slide" aria-label="Siguiente">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
+            <div class="compact-benefits-layout">
 
-                    <!-- Puntos Indicadores -->
-                    <div class="benefits-dots">
-                        <span class="dot active" data-index="0"></span>
-                        <span class="dot" data-index="1"></span>
-                        <span class="dot" data-index="2"></span>
+                <!-- Carrusel de Imágenes (Izquierda) -->
+                <div class="split-image-slider fade-in-element">
+                    <div class="benefits-carousel">
+                        <div class="benefits-track">
+                            <div class="benefits-slide active">
+                                <img src="img/jeva.jpg" alt="Experiencia VIP 1">
+                            </div>
+                            <div class="benefits-slide">
+                                <img src="img/ruta-de-foto-beneficios-2.jpg" alt="Experiencia VIP 2">
+                            </div>
+                            <div class="benefits-slide">
+                                <img src="img/ruta-de-foto-beneficios-3.jpg" alt="Experiencia VIP 3">
+                            </div>
+                        </div>
+
+                        <!-- Botones de Navegación -->
+                        <button class="benefits-arrow prev-slide" aria-label="Anterior">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button class="benefits-arrow next-slide" aria-label="Siguiente">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <!-- Puntos Indicadores -->
+                        <div class="benefits-dots">
+                            <span class="dot active" data-index="0"></span>
+                            <span class="dot" data-index="1"></span>
+                            <span class="dot" data-index="2"></span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Grilla de Tarjetas de Beneficios (Derecha) -->
+                <div class="benefits-grid">
+
+                    <!-- Beneficio A: Organización Integral -->
+                    <div class="benefit-card content-card-light fade-in-element">
+                        <div class="card-header-flex">
+                            <div class="benefit-icons-badge">
+                                <i class="fa-solid fa-concierge-bell gold-text" title="Atención"></i>
+                                <!--<i class="fa-solid fa-van-shuttle gold-text" title="Transporte"></i>-->
+                                <!--<i class="fa-solid fa-snowflake gold-text" title="Hielo"></i>-->
+                            </div>
+                            <h3 class="navy-text">Organizamos TODO</h3>
+                        </div>
+                        <p class="dark-text">Nos encargamos de organizar todo para ti. No necesitas perder tiempo en
+                            coordinaciones o compras. Nos adaptamos a ti: desde el transporte hasta tu consumo a bordo.
+                        </p>
+                    </div>
+
+                    <!-- Beneficio B: Sin Costos Ocultos -->
+                    <div class="benefit-card content-card-light fade-in-element">
+                        <div class="card-header-flex">
+                            <div class="benefit-icon-badge">
+                                <i class="fa-solid fa-file-invoice-dollar gold-text"></i>
+                            </div>
+                            <h3 class="navy-text">Sin Costos Ocultos</h3>
+                        </div>
+                        <p class="dark-text">Transparencia absoluta. Nuestra cotización es todo incluido, brindándote
+                            tranquilidad financiera desde el primer contacto.</p>
+                    </div>
+
+                    <!-- Beneficio C: Reserva con 50% -->
+                    <div class="benefit-card content-card-light fade-in-element">
+                        <div class="card-header-flex">
+                            <div class="benefit-icon-badge">
+                                <i class="fa-solid fa-hand-holding-dollar gold-text"></i>
+                            </div>
+                            <h3 class="navy-text">Reserva con el 50%</h3>
+                        </div>
+                        <p class="dark-text">Puedes reservar con el 50% del servicio. No necesitas pagarlo todo para
+                            garantizar tu salida.</p>
+                    </div>
+
+                </div>
+
             </div>
-
-            <!-- Grilla de Tarjetas de Beneficios (Derecha) -->
-            <div class="benefits-grid">
-                
-                <!-- Beneficio A: Organización Integral -->
-                <div class="benefit-card content-card-light fade-in-element">
-                    <div class="card-header-flex">
-                        <div class="benefit-icons-badge">
-                            <i class="fa-solid fa-concierge-bell gold-text" title="Atención"></i>
-                            <!--<i class="fa-solid fa-van-shuttle gold-text" title="Transporte"></i>-->
-                            <!--<i class="fa-solid fa-snowflake gold-text" title="Hielo"></i>-->
-                        </div>
-                        <h3 class="navy-text">Organizamos TODO</h3>
-                    </div>
-                    <p class="dark-text">Nos encargamos de organizar todo para ti. No necesitas perder tiempo en coordinaciones o compras. Nos adaptamos a ti: desde el transporte hasta tu consumo a bordo.</p>
-                </div>
-
-                <!-- Beneficio B: Sin Costos Ocultos -->
-                <div class="benefit-card content-card-light fade-in-element">
-                    <div class="card-header-flex">
-                        <div class="benefit-icon-badge">
-                            <i class="fa-solid fa-file-invoice-dollar gold-text"></i>
-                        </div>
-                        <h3 class="navy-text">Sin Costos Ocultos</h3>
-                    </div>
-                    <p class="dark-text">Transparencia absoluta. Nuestra cotización es todo incluido, brindándote tranquilidad financiera desde el primer contacto.</p>
-                </div>
-
-                <!-- Beneficio C: Reserva con 50% -->
-                <div class="benefit-card content-card-light fade-in-element">
-                    <div class="card-header-flex">
-                        <div class="benefit-icon-badge">
-                            <i class="fa-solid fa-hand-holding-dollar gold-text"></i>
-                        </div>
-                        <h3 class="navy-text">Reserva con el 50%</h3>
-                    </div>
-                    <p class="dark-text">Puedes reservar con el 50% del servicio. No necesitas pagarlo todo para garantizar tu salida.</p>
-                </div>
-
-            </div>
-
         </div>
-    </div>
-</section>
-    
+    </section>
 
 
 
 
 
-<!-- ==========================================================================
+
+    <!-- ==========================================================================
    SEPARADOR DE SECCIONES (LINEA CORTA Y CENTRADA)
    ========================================================================== -->
-<div role="separator" aria-hidden="true" style="display: flex; justify-content: center; align-items: center; padding: 2.5rem 0; width: 100%;">
-    <span style="width: 90px; height: 2px; background-color: var(--carnellan, #C3191A); border-radius: 2px; opacity: 0.85; display: block;"></span>
-</div>
+    <div role="separator" aria-hidden="true"
+        style="display: flex; justify-content: center; align-items: center; padding: 2.5rem 0; width: 100%;">
+        <span
+            style="width: 90px; height: 2px; background-color: var(--carnellan, #C3191A); border-radius: 2px; opacity: 0.85; display: block;"></span>
+    </div>
 
 
-<!-- ==========================================================================
+    <!-- ==========================================================================
    SECCIÓN NUESTROS DESTINOS (DISEÑO COMPACTO 2 COLUMNAS)
    ========================================================================== -->
-<section class="destinations-section fade-in-element" id="destinos">
-    <div class="container">
-        
-        <!-- Contenedor Principal (Grid Lado a Lado) -->
-        <div class="dest-compact-layout">
-            
-            <!-- Columna Izquierda: Controles e Imagen -->
-            <div class="dest-visual-column">
-                <div class="dest-header">
-                    <h2 class="section-title dark-text" style="text-align: left; margin-bottom: 1rem;">NUESTROS DESTINOS</h2>
-                </div>
-                
-                <!-- Botones de selección -->
-                <fieldset class="dest-radio-group">
-                    <legend class="sr-only">Selecciona un destino</legend>
-                    <label class="dest-radio-item">
-                        <input type="radio" name="destination_select" value="sombrero" checked>
-                        <span class="radio-pill">Cayo Sombrero</span>
-                    </label>
-                    <label class="dest-radio-item">
-                        <input type="radio" name="destination_select" value="juanes">
-                        <span class="radio-pill">Los Juanes</span>
-                    </label>
-                    <label class="dest-radio-item">
-                        <input type="radio" name="destination_select" value="pescadores">
-                        <span class="radio-pill">Cayo Pescadores</span>
-                    </label>
-                    <label class="dest-radio-item">
-                        <input type="radio" name="destination_select" value="bajo360">
-                        <span class="radio-pill">Bajo 360</span>
-                    </label>
-                </fieldset>
+    <section class="destinations-section fade-in-element" id="destinos">
+        <div class="container">
 
-                <!-- Visor de imagen compacto -->
-                <div class="dest-image-viewer">
-                    <img id="dest-display-img" 
-                         src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80" 
-                         alt="Cayo Sombrero" 
-                         class="dest-img">
-                </div>
-            </div>
+            <!-- Contenedor Principal (Grid Lado a Lado) -->
+            <div class="dest-compact-layout">
 
-            <!-- Columna Derecha: Tarjeta de Información y Botón -->
-            <div class="dest-info-column">
-                <div class="dest-side-card">
-                    <span class="dest-badge">Experiencia Morrocoy</span>
-                    
-                    <!-- Textos Dinámicos -->
-                    <h3 class="dest-card-title" id="card-title">Cayo Sombrero</h3>
-                     <!--<p class="dest-card-desc" id="card-desc">
+                <!-- Columna Izquierda: Controles e Imagen -->
+                <div class="dest-visual-column">
+                    <div class="dest-header">
+                        <h2 class="section-title dark-text" style="text-align: left; margin-bottom: 1rem;">NUESTROS
+                            DESTINOS</h2>
+                    </div>
+
+                    <!-- Botones de selección -->
+                    <fieldset class="dest-radio-group">
+                        <legend class="sr-only">Selecciona un destino</legend>
+                        <label class="dest-radio-item">
+                            <input type="radio" name="destination_select" value="sombrero" checked>
+                            <span class="radio-pill">Cayo Sombrero</span>
+                        </label>
+                        <label class="dest-radio-item">
+                            <input type="radio" name="destination_select" value="juanes">
+                            <span class="radio-pill">Los Juanes</span>
+                        </label>
+                        <label class="dest-radio-item">
+                            <input type="radio" name="destination_select" value="pescadores">
+                            <span class="radio-pill">Cayo Pescadores</span>
+                        </label>
+                        <label class="dest-radio-item">
+                            <input type="radio" name="destination_select" value="bajo360">
+                            <span class="radio-pill">Bajo 360</span>
+                        </label>
+                    </fieldset>
+
+                    <!-- Visor de imagen compacto -->
+                    <div class="dest-image-viewer">
+                        <img id="dest-display-img"
+                            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80"
+                            alt="Cayo Sombrero" class="dest-img">
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Tarjeta de Información y Botón -->
+                <div class="dest-info-column">
+                    <div class="dest-side-card">
+                        <span class="dest-badge">Experiencia Morrocoy</span>
+
+                        <!-- Textos Dinámicos -->
+                        <h3 class="dest-card-title" id="card-title">Cayo Sombrero</h3>
+                        <!--<p class="dest-card-desc" id="card-desc">
                         El ícono caribeño de Morrocoy. Famoso por sus dos extensas playas de arena blanca y aguas cristalinas turquesa.
                     </p>-->
-                    
-                    <!-- Línea separadora sutil -->
-                    <hr class="dest-card-divider">
 
-                    <!-- Botón CTA Elegante -->
-                    <a href="#flota" class="dest-elegant-btn">
-                        <span>Ver opciones para ir aquí</span>
-                        <div class="btn-icon">
-                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </div>
-                    </a>
+                        <!-- Línea separadora sutil -->
+                        <hr class="dest-card-divider">
+
+                        <!-- Botón CTA Elegante -->
+                        <a href="#flota" class="dest-elegant-btn">
+                            <span>Ver opciones para ir aquí</span>
+                            <div class="btn-icon">
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </div>
+                        </a>
+                    </div>
                 </div>
+
             </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
 
 
@@ -345,606 +394,684 @@
 
 
 
-   
-<!-- ==========================================================================
+
+    <!-- ==========================================================================
    SEPARADOR DE SECCIONES (LINEA CORTA Y CENTRADA)
    ========================================================================== -->
 
 
-<div role="separator" aria-hidden="true" style="display: flex; justify-content: center; align-items: center; padding: 2.5rem 0; width: 100%;">
-    <span style="width: 90px; height: 2px; background-color: var(--carnellan, #C3191A); border-radius: 2px; opacity: 0.85; display: block;"></span>
-</div>
+    <div role="separator" aria-hidden="true"
+        style="display: flex; justify-content: center; align-items: center; padding: 2.5rem 0; width: 100%;">
+        <span
+            style="width: 90px; height: 2px; background-color: var(--carnellan, #C3191A); border-radius: 2px; opacity: 0.85; display: block;"></span>
+    </div>
 
 
 
 
-  <!-- ==========================================================================
+    <!-- ==========================================================================
    SECCIÓN SERVICIOS EXCLUSIVOS (DISEÑO ULTRA COMPACTO)
    ========================================================================== -->
-<section id="servicios" class="services-section bg-white">
-    <div class="container">
-        <h2 class="section-title navy-text fade-in-element" style="margin-bottom: 1.5rem;">Servicios exclusivos</h2>
-        
-        <div class="compact-services-layout reverse-layout">
-            
-            <!-- Imagen de la Sección -->
-            <div class="services-image-container fade-in-element">
-                <img src="img/ruta-de-foto-servicios1.jpg" alt="Servicios exclusivos" class="services-img">
+    <section id="servicios" class="services-section bg-white">
+        <div class="container">
+            <h2 class="section-title navy-text fade-in-element" style="margin-bottom: 1.5rem;">Servicios exclusivos</h2>
+
+            <div class="compact-services-layout reverse-layout">
+
+                <!-- Imagen de la Sección -->
+                <div class="services-image-container fade-in-element">
+                    <img src="img/ruta-de-foto-servicios1.jpg" alt="Servicios exclusivos" class="services-img">
+                </div>
+
+                <!-- Lista de Servicios Actualizados -->
+                <div class="services-content fade-in-element">
+                    <ul class="compact-services-list">
+                        <!-- Servicio 1 -->
+                        <li class="service-item-card content-card-light dark-text">
+                            <div class="service-icon-badge">
+                                <i class="fa-solid fa-anchor gold-text"></i>
+                            </div>
+                            <span class="service-title">Alquiler de lanchas</span>
+                        </li>
+
+                        <!-- Servicio 2 -->
+                        <li class="service-item-card content-card-light dark-text">
+                            <div class="service-icon-badge">
+                                <i class="fa-solid fa-camera gold-text"></i>
+                            </div>
+                            <span class="service-title">Grabaciones y fotografías profesionales</span>
+                        </li>
+
+                        <!-- Servicio 3 (Nuevo) -->
+                        <li class="service-item-card content-card-light dark-text">
+                            <div class="service-icon-badge">
+                                <i class="fa-solid fa-language gold-text"></i>
+                            </div>
+                            <span class="service-title">Acompañamiento bilingüe para clientes de habla inglesa /
+                                francesa</span>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
-
-            <!-- Lista de Servicios Actualizados -->
-            <div class="services-content fade-in-element">
-                <ul class="compact-services-list">
-                    <!-- Servicio 1 -->
-                    <li class="service-item-card content-card-light dark-text">
-                        <div class="service-icon-badge">
-                            <i class="fa-solid fa-anchor gold-text"></i>
-                        </div>
-                        <span class="service-title">Alquiler de lanchas</span>
-                    </li>
-
-                    <!-- Servicio 2 -->
-                    <li class="service-item-card content-card-light dark-text">
-                        <div class="service-icon-badge">
-                            <i class="fa-solid fa-camera gold-text"></i>
-                        </div>
-                        <span class="service-title">Grabaciones y fotografías profesionales</span>
-                    </li>
-
-                    <!-- Servicio 3 (Nuevo) -->
-                    <li class="service-item-card content-card-light dark-text">
-                        <div class="service-icon-badge">
-                            <i class="fa-solid fa-language gold-text"></i>
-                        </div>
-                        <span class="service-title">Acompañamiento bilingüe para clientes de habla inglesa / francesa</span>
-                    </li>
-                </ul>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-<div role="separator" aria-hidden="true" style="display: flex; justify-content: center; align-items: center; padding: 2.5rem 0; width: 100%;">
-    <span style="width: 90px; height: 2px; background-color: var(--carnellan, #C3191A); border-radius: 2px; opacity: 0.85; display: block;"></span>
-</div>
+    <div role="separator" aria-hidden="true"
+        style="display: flex; justify-content: center; align-items: center; padding: 2.5rem 0; width: 100%;">
+        <span
+            style="width: 90px; height: 2px; background-color: var(--carnellan, #C3191A); border-radius: 2px; opacity: 0.85; display: block;"></span>
+    </div>
 
 
     <!-- ==========================================================================
    SECCIÓN TESTIMONIOS (CARRUSEL INTERACTIVO)
    ========================================================================== -->
-<section class="testimonials-section bg-light fade-in-element" id="testimonios">
-    <div class="container">
-        <h2 class="section-title dark-text">Experiencias de <span class="carnellan-text">Nuestros Clientes</span></h2>
-        <p class="section-subtitle">Lo que dicen en Instagram quienes navegan con nosotros</p>
+    <section class="testimonials-section bg-light fade-in-element" id="testimonios">
+        <div class="container">
+            <h2 class="section-title dark-text">Experiencias de <span class="carnellan-text">Nuestros Clientes</span>
+            </h2>
+            <p class="section-subtitle">Lo que dicen en Instagram quienes navegan con nosotros</p>
 
-        <div class="testimonial-slider">
-            <!-- Botón Anterior -->
-            <button class="slider-arrow prev-btn" aria-label="Testimonio anterior">
-                <i class="fas fa-chevron-left"></i>
-            </button>
+            <div class="testimonial-slider">
+                <!-- Botón Anterior -->
+                <button class="slider-arrow prev-btn" aria-label="Testimonio anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
 
-            <!-- Ventana visible del carrusel -->
-            <div class="slider-viewport">
-                <div class="slider-track">
+                <!-- Ventana visible del carrusel -->
+                <div class="slider-viewport">
+                    <div class="slider-track">
 
-                    <!-- Tarjeta 1 -->
-                    <article class="testimonial-card">
-                        <div class="card-header">
-                            <img src="https://ui-avatars.com/api/?name=Betzabeth+Rentroia&background=0D111F&color=FFFFFF" alt="Betzabeth Rentroia" class="avatar" width="48" height="48">
-                            <div class="user-info">
-                                <h3 class="user-name">Betzabeth Rentroia</h3>
-                                <span class="user-tag">@betzabethrentroia</span>
+                        <!-- Tarjeta 1 -->
+                        <article class="testimonial-card">
+                            <div class="card-header">
+                                <img src="https://ui-avatars.com/api/?name=Betzabeth+Rentroia&background=0D111F&color=FFFFFF"
+                                    alt="Betzabeth Rentroia" class="avatar" width="48" height="48">
+                                <div class="user-info">
+                                    <h3 class="user-name">Betzabeth Rentroia</h3>
+                                    <span class="user-tag">@betzabethrentroia</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
-                        <p class="comment">"Una atención impecable desde la reserva hasta el retorno. La embarcación súper limpia y cómoda."</p>
-                    </article>
+                            <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
+                            <p class="comment">"Una atención impecable desde la reserva hasta el retorno. La embarcación
+                                súper limpia y cómoda."</p>
+                        </article>
 
-                    <!-- Tarjeta 2 -->
-                    <article class="testimonial-card">
-                        <div class="card-header">
-                            <img src="https://ui-avatars.com/api/?name=Juan+Rivas&background=C3191A&color=FFFFFF" alt="Juan Rivas" class="avatar" width="48" height="48">
-                            <div class="user-info">
-                                <h3 class="user-name">Juan Rivas</h3>
-                                <span class="user-tag">@juanrivas</span>
+                        <!-- Tarjeta 2 -->
+                        <article class="testimonial-card">
+                            <div class="card-header">
+                                <img src="https://ui-avatars.com/api/?name=Juan+Rivas&background=C3191A&color=FFFFFF"
+                                    alt="Juan Rivas" class="avatar" width="48" height="48">
+                                <div class="user-info">
+                                    <h3 class="user-name">Juan Rivas</h3>
+                                    <span class="user-tag">@juanrivas</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
-                        <p class="comment">"Puntualidad total y la tripulación muy servicial. Recomendados con los ojos cerrados para eventos VIP."</p>
-                    </article>
+                            <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
+                            <p class="comment">"Puntualidad total y la tripulación muy servicial. Recomendados con los
+                                ojos cerrados para eventos VIP."</p>
+                        </article>
 
-                    <!-- Tarjeta 3 -->
-                    <article class="testimonial-card">
-                        <div class="card-header">
-                            <img src="https://ui-avatars.com/api/?name=Luis+Scioscia&background=0D111F&color=FFFFFF" alt="Luis Scioscia" class="avatar" width="48" height="48">
-                            <div class="user-info">
-                                <h3 class="user-name">Luis Scioscia</h3>
-                                <span class="user-tag">@luisscioscia</span>
+                        <!-- Tarjeta 3 -->
+                        <article class="testimonial-card">
+                            <div class="card-header">
+                                <img src="https://ui-avatars.com/api/?name=Luis+Scioscia&background=0D111F&color=FFFFFF"
+                                    alt="Luis Scioscia" class="avatar" width="48" height="48">
+                                <div class="user-info">
+                                    <h3 class="user-name">Luis Scioscia</h3>
+                                    <span class="user-tag">@luisscioscia</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
-                        <p class="comment">"Increíble día en los cayos. La logística perfecta y la embarcación en excelentes condiciones."</p>
-                    </article>
+                            <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
+                            <p class="comment">"Increíble día en los cayos. La logística perfecta y la embarcación en
+                                excelentes condiciones."</p>
+                        </article>
 
-                    <!-- Tarjeta 4 -->
-                    <article class="testimonial-card">
-                        <div class="card-header">
-                            <img src="https://ui-avatars.com/api/?name=Jose+Sabatino&background=C3191A&color=FFFFFF" alt="José Sabatino Pizzolante" class="avatar" width="48" height="48">
-                            <div class="user-info">
-                                <h3 class="user-name">José Sabatino P.</h3>
-                                <span class="user-tag">@josesabatinopizzolante</span>
+                        <!-- Tarjeta 4 -->
+                        <article class="testimonial-card">
+                            <div class="card-header">
+                                <img src="https://ui-avatars.com/api/?name=Jose+Sabatino&background=C3191A&color=FFFFFF"
+                                    alt="José Sabatino Pizzolante" class="avatar" width="48" height="48">
+                                <div class="user-info">
+                                    <h3 class="user-name">José Sabatino P.</h3>
+                                    <span class="user-tag">@josesabatinopizzolante</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
-                        <p class="comment">"Excelente servicio corporativo. Superaron las expectativas de todo nuestro grupo."</p>
-                    </article>
+                            <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
+                            <p class="comment">"Excelente servicio corporativo. Superaron las expectativas de todo
+                                nuestro grupo."</p>
+                        </article>
 
-                    <!-- Tarjeta 5 -->
-                    <article class="testimonial-card">
-                        <div class="card-header">
-                            <img src="https://ui-avatars.com/api/?name=Pamela+Martins&background=0D111F&color=FFFFFF" alt="Pamela Martins" class="avatar" width="48" height="48">
-                            <div class="user-info">
-                                <h3 class="user-name">Pamela Martins</h3>
-                                <span class="user-tag">@pamelamartins</span>
+                        <!-- Tarjeta 5 -->
+                        <article class="testimonial-card">
+                            <div class="card-header">
+                                <img src="https://ui-avatars.com/api/?name=Pamela+Martins&background=0D111F&color=FFFFFF"
+                                    alt="Pamela Martins" class="avatar" width="48" height="48">
+                                <div class="user-info">
+                                    <h3 class="user-name">Pamela Martins</h3>
+                                    <span class="user-tag">@pamelamartins</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
-                        <p class="comment">"La mejor experiencia en el mar. Todo cuidado al mínimo detalle. ¡Repetiremos pronto!"</p>
-                    </article>
+                            <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
+                            <p class="comment">"La mejor experiencia en el mar. Todo cuidado al mínimo detalle.
+                                ¡Repetiremos pronto!"</p>
+                        </article>
 
-                    <!-- Tarjeta 6 -->
-                    <article class="testimonial-card">
-                        <div class="card-header">
-                            <img src="https://ui-avatars.com/api/?name=Andres+Lopez&background=C3191A&color=FFFFFF" alt="Andrés López" class="avatar" width="48" height="48">
-                            <div class="user-info">
-                                <h3 class="user-name">Andrés López</h3>
-                                <span class="user-tag">@andreslopez</span>
+                        <!-- Tarjeta 6 -->
+                        <article class="testimonial-card">
+                            <div class="card-header">
+                                <img src="https://ui-avatars.com/api/?name=Andres+Lopez&background=C3191A&color=FFFFFF"
+                                    alt="Andrés López" class="avatar" width="48" height="48">
+                                <div class="user-info">
+                                    <h3 class="user-name">Andrés López</h3>
+                                    <span class="user-tag">@andreslopez</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
-                        <p class="comment">"Gran profesionalismo y seguridad durante todo el recorrido. Servicio de primera clase."</p>
-                    </article>
+                            <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
+                            <p class="comment">"Gran profesionalismo y seguridad durante todo el recorrido. Servicio de
+                                primera clase."</p>
+                        </article>
 
-                    <!-- Tarjeta 7 -->
-                    <article class="testimonial-card">
-                        <div class="card-header">
-                            <img src="https://ui-avatars.com/api/?name=Jesus+Clark&background=0D111F&color=FFFFFF" alt="Jesús Clark" class="avatar" width="48" height="48">
-                            <div class="user-info">
-                                <h3 class="user-name">Jesús Clark</h3>
-                                <span class="user-tag">@jesusclark</span>
+                        <!-- Tarjeta 7 -->
+                        <article class="testimonial-card">
+                            <div class="card-header">
+                                <img src="https://ui-avatars.com/api/?name=Jesus+Clark&background=0D111F&color=FFFFFF"
+                                    alt="Jesús Clark" class="avatar" width="48" height="48">
+                                <div class="user-info">
+                                    <h3 class="user-name">Jesús Clark</h3>
+                                    <span class="user-tag">@jesusclark</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
-                        <p class="comment">"Paseo familiar inolvidable. Atención amigable y ambiente 100% confortable."</p>
-                    </article>
+                            <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
+                            <p class="comment">"Paseo familiar inolvidable. Atención amigable y ambiente 100%
+                                confortable."</p>
+                        </article>
 
-                    <!-- Tarjeta 8 -->
-                    <article class="testimonial-card">
-                        <div class="card-header">
-                            <img src="https://ui-avatars.com/api/?name=Gastro+Encuentro&background=C3191A&color=FFFFFF" alt="Gastroencuentro" class="avatar" width="48" height="48">
-                            <div class="user-info">
-                                <h3 class="user-name">Gastroencuentro</h3>
-                                <span class="user-tag">@gastroencuentro</span>
+                        <!-- Tarjeta 8 -->
+                        <article class="testimonial-card">
+                            <div class="card-header">
+                                <img src="https://ui-avatars.com/api/?name=Gastro+Encuentro&background=C3191A&color=FFFFFF"
+                                    alt="Gastroencuentro" class="avatar" width="48" height="48">
+                                <div class="user-info">
+                                    <h3 class="user-name">Gastroencuentro</h3>
+                                    <span class="user-tag">@gastroencuentro</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
-                        <p class="comment">"Excelente opción para experiencias gastronómicas en alta mar. Totalmente recomendados."</p>
-                    </article>
+                            <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
+                            <p class="comment">"Excelente opción para experiencias gastronómicas en alta mar. Totalmente
+                                recomendados."</p>
+                        </article>
 
-                    <!-- Tarjeta 9 -->
-                    <article class="testimonial-card">
-                        <div class="card-header">
-                            <img src="https://ui-avatars.com/api/?name=Jorge+Aroca&background=0D111F&color=FFFFFF" alt="Jorge Aroca" class="avatar" width="48" height="48">
-                            <div class="user-info">
-                                <h3 class="user-name">Jorge Aroca</h3>
-                                <span class="user-tag">@jorgearoca</span>
+                        <!-- Tarjeta 9 -->
+                        <article class="testimonial-card">
+                            <div class="card-header">
+                                <img src="https://ui-avatars.com/api/?name=Jorge+Aroca&background=0D111F&color=FFFFFF"
+                                    alt="Jorge Aroca" class="avatar" width="48" height="48">
+                                <div class="user-info">
+                                    <h3 class="user-name">Jorge Aroca</h3>
+                                    <span class="user-tag">@jorgearoca</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
-                        <p class="comment">"Lujo, confort y el mejor trato. La embarcación impecable en cada aspecto."</p>
-                    </article>
+                            <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
+                            <p class="comment">"Lujo, confort y el mejor trato. La embarcación impecable en cada
+                                aspecto."</p>
+                        </article>
 
-                    <!-- Tarjeta 10 -->
-                    <article class="testimonial-card">
-                        <div class="card-header">
-                            <img src="https://ui-avatars.com/api/?name=Daniela+Fachin&background=C3191A&color=FFFFFF" alt="Daniela Fachín" class="avatar" width="48" height="48">
-                            <div class="user-info">
-                                <h3 class="user-name">Daniela Fachín</h3>
-                                <span class="user-tag">@danielafachin</span>
+                        <!-- Tarjeta 10 -->
+                        <article class="testimonial-card">
+                            <div class="card-header">
+                                <img src="https://ui-avatars.com/api/?name=Daniela+Fachin&background=C3191A&color=FFFFFF"
+                                    alt="Daniela Fachín" class="avatar" width="48" height="48">
+                                <div class="user-info">
+                                    <h3 class="user-name">Daniela Fachín</h3>
+                                    <span class="user-tag">@danielafachin</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
-                        <p class="comment">"Una de las mejores experiencias del año. Todo fue fluido, rápido y de máximo nivel."</p>
-                    </article>
+                            <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
+                            <p class="comment">"Una de las mejores experiencias del año. Todo fue fluido, rápido y de
+                                máximo nivel."</p>
+                        </article>
 
-                    <!-- Tarjeta 11 -->
-                    <article class="testimonial-card">
-                        <div class="card-header">
-                            <img src="https://ui-avatars.com/api/?name=Angel+Negrin&background=0D111F&color=FFFFFF" alt="Ángel Negrín" class="avatar" width="48" height="48">
-                            <div class="user-info">
-                                <h3 class="user-name">Ángel Negrín</h3>
-                                <span class="user-tag">@angelnegrin</span>
+                        <!-- Tarjeta 11 -->
+                        <article class="testimonial-card">
+                            <div class="card-header">
+                                <img src="https://ui-avatars.com/api/?name=Angel+Negrin&background=0D111F&color=FFFFFF"
+                                    alt="Ángel Negrín" class="avatar" width="48" height="48">
+                                <div class="user-info">
+                                    <h3 class="user-name">Ángel Negrín</h3>
+                                    <span class="user-tag">@angelnegrin</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
-                        <p class="comment">"Atención 5 estrellas de principio a fin. Sin duda alguna mi opción fija para navegar."</p>
-                    </article>
+                            <div class="stars" aria-label="Valoración: 5 estrellas">★★★★★</div>
+                            <p class="comment">"Atención 5 estrellas de principio a fin. Sin duda alguna mi opción fija
+                                para navegar."</p>
+                        </article>
 
+                    </div>
                 </div>
+
+                <!-- Botón Siguiente -->
+                <button class="slider-arrow next-btn" aria-label="Siguiente testimonio">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
 
-            <!-- Botón Siguiente -->
-            <button class="slider-arrow next-btn" aria-label="Siguiente testimonio">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            <!-- Indicadores de Puntos -->
+            <div class="slider-dots-container"></div>
         </div>
-
-        <!-- Indicadores de Puntos -->
-        <div class="slider-dots-container"></div>
-    </div>
-</section>
+    </section>
 
 
 
 
     <!-- Flota (Fondo con Imagen) -->
     <section id="flota" class="fleet-section bg-section-img" style="background-image: url('img/fondo-flota.jpg');">
-    <div class="section-overlay"></div>
-    <div class="container relative-z">
-        <h2 class="section-title white-text fade-in-element">Nuestra Flota</h2>
-        <div class="fleet-grid">
-            
-            <!-- Peñero -->
-            <div class="fleet-card glass-panel fade-in-element">
-                <div class="card-image-wrapper">
-                    <img src="img/foto-penero.jpg" alt="Peñero Auténtico" class="card-img">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title white-text">Peñero</h3>
-                    <p class="card-vibe"><span class="gold-text"></span> <p style="color: aliceblue;">Tradicional & Auténtica.</p></p>
-                    <!--<p class="card-text white-text">Navegación tradicional y rústica. La opción ideal para conectar con la esencia local y traslados directos hacia tus cayos favoritos.</p>-->
-                    
-                    <button type="button" class="details-toggle" aria-expanded="false" aria-controls="panel-penero">
-                        Ver detalles <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-                    </button>
-                    
-                    <div id="panel-penero" class="fleet-details" hidden>
-                        <div id="am-detalles-lancha" class="am-fleet-details" aria-hidden="true">
-                                        <div class="am-fleet-details-inner">
-                                            <div class="am-services-included am-white-text">
-                                                <h4>Servicio Estándar Incluye:</h4>
-                                                <ul class="am-fleet-amenities">
-                                                    <li><i class="fa-solid fa-umbrella am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Toldo o sombrilla</li>
-                                                    <li><i class="fa-solid fa-box-open am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Cava</li>
-                                                    <li><i class="fa-solid fa-user-tie am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Marinero</li>
-                                                    <li><i class="fa-solid fa-life-ring am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Equipos de seguridad</li>
-                                                    <li><i class="fa-solid fa-music am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Sonido</li>
-                                                    <li class="am-optional"><i class="fa-solid fa-satellite-dish am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Opcional: WiFi Starlink</li>
-                                                </ul>
-                                            </div>
-                                        </div>
+        <div class="section-overlay"></div>
+        <div class="container relative-z">
+            <h2 class="section-title white-text fade-in-element">Nuestra Flota</h2>
+            <div class="fleet-grid">
+
+                <!-- Peñero -->
+                <div class="fleet-card glass-panel fade-in-element">
+                    <div class="card-image-wrapper">
+                        <img src="img/foto-penero.jpg" alt="Peñero Auténtico" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title white-text">Peñero</h3>
+                        <div class="card-vibe">
+                            <span class="gold-text"></span>
+                            <p style="color: aliceblue;">Tradicional & Auténtica.</p>
+                        </div>
+                        <!--<p class="card-text white-text">Navegación tradicional y rústica. La opción ideal para conectar con la esencia local y traslados directos hacia tus cayos favoritos.</p>-->
+
+                        <button type="button" class="details-toggle" aria-expanded="false" aria-controls="panel-penero">
+                            Ver detalles <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+
+                        <div id="panel-penero" class="fleet-details" hidden>
+                            <div id="am-detalles-lancha" class="am-fleet-details" aria-hidden="true">
+                                <div class="am-fleet-details-inner">
+                                    <div class="am-services-included am-white-text">
+                                        <h4>Servicio Estándar Incluye:</h4>
+                                        <ul class="am-fleet-amenities">
+                                            <li><i class="fa-solid fa-umbrella am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Toldo o sombrilla</li>
+                                            <li><i class="fa-solid fa-box-open am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Cava</li>
+                                            <li><i class="fa-solid fa-user-tie am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Marinero</li>
+                                            <li><i class="fa-solid fa-life-ring am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Equipos de seguridad</li>
+                                            <li><i class="fa-solid fa-music am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Sonido</li>
+                                            <li class="am-optional"><i class="fa-solid fa-satellite-dish am-accent-text"
+                                                    aria-hidden="true" style="color: #C3191A;"></i> Opcional: WiFi
+                                                Starlink</li>
+                                        </ul>
                                     </div>
-                        
-                        <form class="booking-form" data-vessel="Peñero">
-                            <fieldset>
-                                <legend class="white-text">¿Cuál es la capacidad?</legend>
-                                <div class="radio-group">
-                                    <label><input type="radio" name="cap_penero" value="6" checked> 6</label>
-                                    <label><input type="radio" name="cap_penero" value="8"> 8</label>
-                                    <label><input type="radio" name="cap_penero" value="10"> 10</label>
-                                    <label><input type="radio" name="cap_penero" value="12"> 12</label>
                                 </div>
-                            </fieldset>
-                            <button type="button" class="cta-btn primary-cta reserve-btn">Quiero reservar</button>
-                        </form>
+                            </div>
+
+                            <form class="booking-form" data-vessel="Peñero">
+                                <fieldset>
+                                    <legend class="white-text">¿Cuál es la capacidad?</legend>
+                                    <div class="radio-group">
+                                        <label><input type="radio" name="cap_penero" value="6" checked> 6</label>
+                                        <label><input type="radio" name="cap_penero" value="8"> 8</label>
+                                        <label><input type="radio" name="cap_penero" value="10"> 10</label>
+                                        <label><input type="radio" name="cap_penero" value="12"> 12</label>
+                                    </div>
+                                </fieldset>
+                                <button type="button" class="cta-btn primary-cta reserve-btn">Quiero reservar</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Lancha -->
-            <div class="fleet-card glass-panel fade-in-element">
-                <div class="card-image-wrapper">
-                    <img src="img/foto-lancha.jpg" alt="Lancha Premium" class="card-img">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title white-text">Lancha</h3>
-                    <p class="card-vibe"><span class="gold-text"></span> <p style="color: aliceblue;">Ágil & Exploradora.</p></p>
-                    <!-- <p class="card-text white-text">Cómoda y dinámica. Perfecta para planes chill, recorrer múltiples cayos rápidamente y disfrutar del parque al máximo.</p> -->
-                    
-                    
-                    <button type="button" class="details-toggle" aria-expanded="false" aria-controls="panel-lancha">
-                        Ver detalles <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-                    </button>
-                    
-                    <div id="panel-lancha" class="fleet-details" hidden>
-                        <div id="am-detalles-lancha" class="am-fleet-details" aria-hidden="true">
-                                        <div class="am-fleet-details-inner">
-                                            <div class="am-services-included am-white-text">
-                                                <h4>Servicio Estándar Incluye:</h4>
-                                                <ul class="am-fleet-amenities">
-                                                    <li><i class="fa-solid fa-umbrella am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Toldo o sombrilla</li>
-                                                    <li><i class="fa-solid fa-box-open am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Cava</li>
-                                                    <li><i class="fa-solid fa-user-tie am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Marinero</li>
-                                                    <li><i class="fa-solid fa-life-ring am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Equipos de seguridad</li>
-                                                    <li><i class="fa-solid fa-music am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Sonido</li>
-                                                    <li class="am-optional"><i class="fa-solid fa-satellite-dish am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Opcional: WiFi Starlink</li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                <!-- Lancha -->
+                <div class="fleet-card glass-panel fade-in-element">
+                    <div class="card-image-wrapper">
+                        <img src="img/foto-lancha.jpg" alt="Lancha Premium" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title white-text">Lancha</h3>
+                        <p class="card-vibe"><span class="gold-text"></span>
+                        <p style="color: aliceblue;">Ágil & Exploradora.</p>
+                        </p>
+                        <!-- <p class="card-text white-text">Cómoda y dinámica. Perfecta para planes chill, recorrer múltiples cayos rápidamente y disfrutar del parque al máximo.</p> -->
+
+
+                        <button type="button" class="details-toggle" aria-expanded="false" aria-controls="panel-lancha">
+                            Ver detalles <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+
+                        <div id="panel-lancha" class="fleet-details" hidden>
+                            <div id="am-detalles-lancha" class="am-fleet-details" aria-hidden="true">
+                                <div class="am-fleet-details-inner">
+                                    <div class="am-services-included am-white-text">
+                                        <h4>Servicio Estándar Incluye:</h4>
+                                        <ul class="am-fleet-amenities">
+                                            <li><i class="fa-solid fa-umbrella am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Toldo o sombrilla</li>
+                                            <li><i class="fa-solid fa-box-open am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Cava</li>
+                                            <li><i class="fa-solid fa-user-tie am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Marinero</li>
+                                            <li><i class="fa-solid fa-life-ring am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Equipos de seguridad</li>
+                                            <li><i class="fa-solid fa-music am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Sonido</li>
+                                            <li class="am-optional"><i class="fa-solid fa-satellite-dish am-accent-text"
+                                                    aria-hidden="true" style="color: #C3191A;"></i> Opcional: WiFi
+                                                Starlink</li>
+                                        </ul>
                                     </div>
-                        
-                        <form class="booking-form" data-vessel="Lancha">
-                            <fieldset>
-                                <legend class="white-text">¿Cuál es la capacidad?</legend>
-                                <div class="radio-group">
-                                    <label><input type="radio" name="cap_lancha" value="6" checked> 6</label>
-                                    <label><input type="radio" name="cap_lancha" value="8"> 8</label>
-                                    <label><input type="radio" name="cap_lancha" value="10"> 10</label>
-                                    <label><input type="radio" name="cap_lancha" value="12"> 12</label>
                                 </div>
-                            </fieldset>
-                            <button type="button" class="cta-btn primary-cta reserve-btn">Quiero reservar</button>
-                        </form>
+                            </div>
+
+                            <form class="booking-form" data-vessel="Lancha">
+                                <fieldset>
+                                    <legend class="white-text">¿Cuál es la capacidad?</legend>
+                                    <div class="radio-group">
+                                        <label><input type="radio" name="cap_lancha" value="6" checked> 6</label>
+                                        <label><input type="radio" name="cap_lancha" value="8"> 8</label>
+                                        <label><input type="radio" name="cap_lancha" value="10"> 10</label>
+                                        <label><input type="radio" name="cap_lancha" value="12"> 12</label>
+                                    </div>
+                                </fieldset>
+                                <button type="button" class="cta-btn primary-cta reserve-btn">Quiero reservar</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Yate -->
+                <!-- Yate -->
 
-            <div class="fleet-card glass-panel fade-in-element">
-                <div class="card-image-wrapper">
-                    <img src="img/foto-yate.jpg" alt="Yate de Lujo" class="card-img">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title white-text">Yate</h3>
-                    <p class="card-vibe"><span class="gold-text"></span> <p style="color: aliceblue;">Exclusividad & Lujo.</p></p>
-                    <!-- <p class="card-text white-text">Espacio superior y comodidades premium. Diseñado para ocasiones de alto nivel donde el estatus y el confort son innegociables.</p> -->
-                    
-                    
-                    <button type="button" class="details-toggle" aria-expanded="false" aria-controls="panel-yate">
-                        Ver detalles <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-                    </button>
-                    
-                    <div id="panel-yate" class="fleet-details" hidden>
-                        <div id="am-detalles-lancha" class="am-fleet-details" aria-hidden="true">
-                                        <div class="am-fleet-details-inner">
-                                            <div class="am-services-included am-white-text">
-                                                <h4>Servicio Estándar Incluye:</h4>
-                                                <ul class="am-fleet-amenities">
-                                                    <li><i class="fa-solid fa-umbrella am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Toldo o sombrilla</li>
-                                                    <li><i class="fa-solid fa-box-open am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Cava</li>
-                                                    <li><i class="fa-solid fa-user-tie am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Marinero</li>
-                                                    <li><i class="fa-solid fa-life-ring am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Equipos de seguridad</li>
-                                                    <li><i class="fa-solid fa-music am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Sonido</li>
-                                                    <li class="am-optional"><i class="fa-solid fa-satellite-dish am-accent-text" aria-hidden="true" style="color: #C3191A;"></i> Opcional: WiFi Starlink</li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                <div class="fleet-card glass-panel fade-in-element">
+                    <div class="card-image-wrapper">
+                        <img src="img/foto-yate.jpg" alt="Yate de Lujo" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title white-text">Yate</h3>
+                        <p class="card-vibe"><span class="gold-text"></span>
+                        <p style="color: aliceblue;">Exclusividad & Lujo.</p>
+                        </p>
+                        <!-- <p class="card-text white-text">Espacio superior y comodidades premium. Diseñado para ocasiones de alto nivel donde el estatus y el confort son innegociables.</p> -->
+
+
+                        <button type="button" class="details-toggle" aria-expanded="false" aria-controls="panel-yate">
+                            Ver detalles <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+
+                        <div id="panel-yate" class="fleet-details" hidden>
+                            <div id="am-detalles-lancha" class="am-fleet-details" aria-hidden="true">
+                                <div class="am-fleet-details-inner">
+                                    <div class="am-services-included am-white-text">
+                                        <h4>Servicio Estándar Incluye:</h4>
+                                        <ul class="am-fleet-amenities">
+                                            <li><i class="fa-solid fa-umbrella am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Toldo o sombrilla</li>
+                                            <li><i class="fa-solid fa-box-open am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Cava</li>
+                                            <li><i class="fa-solid fa-user-tie am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Marinero</li>
+                                            <li><i class="fa-solid fa-life-ring am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Equipos de seguridad</li>
+                                            <li><i class="fa-solid fa-music am-accent-text" aria-hidden="true"
+                                                    style="color: #C3191A;"></i> Sonido</li>
+                                            <li class="am-optional"><i class="fa-solid fa-satellite-dish am-accent-text"
+                                                    aria-hidden="true" style="color: #C3191A;"></i> Opcional: WiFi
+                                                Starlink</li>
+                                        </ul>
                                     </div>
-                        
-                        <form class="booking-form" data-vessel="Yate">
-                            <fieldset>
-                                <legend class="white-text">¿Cuál es la capacidad?</legend>
-                                <div class="radio-group">
-                                    <label><input type="radio" name="cap_yate" value="6" checked> 6</label>
-                                    <label><input type="radio" name="cap_yate" value="8"> 8</label>
-                                    <label><input type="radio" name="cap_yate" value="10"> 10</label>
-                                    <label><input type="radio" name="cap_yate" value="12"> 12</label>
                                 </div>
-                            </fieldset>
-                            <button type="button" class="cta-btn primary-cta reserve-btn">Quiero reservar</button>
-                        </form>
+                            </div>
+
+                            <form class="booking-form" data-vessel="Yate">
+                                <fieldset>
+                                    <legend class="white-text">¿Cuál es la capacidad?</legend>
+                                    <div class="radio-group">
+                                        <label><input type="radio" name="cap_yate" value="6" checked> 6</label>
+                                        <label><input type="radio" name="cap_yate" value="8"> 8</label>
+                                        <label><input type="radio" name="cap_yate" value="10"> 10</label>
+                                        <label><input type="radio" name="cap_yate" value="12"> 12</label>
+                                    </div>
+                                </fieldset>
+                                <button type="button" class="cta-btn primary-cta reserve-btn">Quiero reservar</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- FAQ (Sección Clara) -->
     <!-- ==========================================================================
    SECCIÓN PREGUNTAS FRECUENTES (ACTUALIZADA)
    ========================================================================== -->
-<section id="faq" class="faq-section bg-light">
-    <div class="container fade-in-element">
-        <h2 class="section-title navy-text">Preguntas Frecuentes</h2>
-        
-        <div class="accordion">
-            <!-- Pregunta 1 -->
-            <div class="accordion-item content-card-light">
-                <button class="accordion-header dark-text">¿Cómo puedo hacer una reserva? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="accordion-content">
-                    <p class="dark-text">¡Facilísimo! Escríbenos por Instagram o por WhatsApp Business y nuestro equipo te ayuda a armar el plan perfecto. Para asegurar tu cupo solo necesitas un anticipo del 30% del total. El resto lo cancelas el día de la salida.</p>
-                </div>
-            </div>
+    <section id="faq" class="faq-section bg-light">
+        <div class="container fade-in-element">
+            <h2 class="section-title navy-text">Preguntas Frecuentes</h2>
 
-            <!-- Pregunta 2 -->
-            <div class="accordion-item content-card-light">
-                <button class="accordion-header dark-text">¿Cuáles son los destinos que puedo visitar? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="accordion-content">
-                    <p class="dark-text">Operamos en el Parque Nacional Morrocoy. Algunos destinos son: Cayo Sombrero, Playuela, Pescadores, Los Juanes, 360, Tucupido y Cueva de la Virgen.</p>
+            <div class="accordion">
+                <!-- Pregunta 1 -->
+                <div class="accordion-item content-card-light">
+                    <button class="accordion-header dark-text">¿Cómo puedo hacer una reserva? <i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="accordion-content">
+                        <p class="dark-text">¡Facilísimo! Escríbenos por Instagram o por WhatsApp Business y nuestro
+                            equipo te ayuda a armar el plan perfecto. Para asegurar tu cupo solo necesitas un anticipo
+                            del 30% del total. El resto lo cancelas el día de la salida.</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Pregunta 3 -->
-            <div class="accordion-item content-card-light">
-                <button class="accordion-header dark-text">¿Cuántos cayos puedo visitar en un día? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="accordion-content">
-                    <p class="dark-text">En un recorrido estándar puedes visitar hasta 3 cayos durante el día. El itinerario lo defines tú junto al capitán.</p>
+                <!-- Pregunta 2 -->
+                <div class="accordion-item content-card-light">
+                    <button class="accordion-header dark-text">¿Cuáles son los destinos que puedo visitar? <i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="accordion-content">
+                        <p class="dark-text">Operamos en el Parque Nacional Morrocoy. Algunos destinos son: Cayo
+                            Sombrero, Playuela, Pescadores, Los Juanes, 360, Tucupido y Cueva de la Virgen.</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Pregunta 4 -->
-            <div class="accordion-item content-card-light">
-                <button class="accordion-header dark-text">¿Cuál es el horario de navegación? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="accordion-content">
-                    <p class="dark-text">Salimos a las 9:30 a.m. y regresamos a las 5:00 p.m. — el horario ideal para aprovechar el día completo bajo el sol de Morrocoy.</p>
+                <!-- Pregunta 3 -->
+                <div class="accordion-item content-card-light">
+                    <button class="accordion-header dark-text">¿Cuántos cayos puedo visitar en un día? <i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="accordion-content">
+                        <p class="dark-text">En un recorrido estándar puedes visitar hasta 3 cayos durante el día. El
+                            itinerario lo defines tú junto al capitán.</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Pregunta 5 (Nueva) -->
-            <div class="accordion-item content-card-light">
-                <button class="accordion-header dark-text">¿Puedo llevar mascotas? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="accordion-content">
-                    <p class="dark-text">Lamentablemente no se permite embarcar mascotas a bordo de las embarcaciones que zarpan dentro del Parque Nacional Morrocoy.</p>
+                <!-- Pregunta 4 -->
+                <div class="accordion-item content-card-light">
+                    <button class="accordion-header dark-text">¿Cuál es el horario de navegación? <i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="accordion-content">
+                        <p class="dark-text">Salimos a las 9:30 a.m. y regresamos a las 5:00 p.m. — el horario ideal
+                            para aprovechar el día completo bajo el sol de Morrocoy.</p>
+                    </div>
+                </div>
+
+                <!-- Pregunta 5 (Nueva) -->
+                <div class="accordion-item content-card-light">
+                    <button class="accordion-header dark-text">¿Puedo llevar mascotas? <i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="accordion-content">
+                        <p class="dark-text">Lamentablemente no se permite embarcar mascotas a bordo de las
+                            embarcaciones que zarpan dentro del Parque Nacional Morrocoy.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<div role="separator" aria-hidden="true" style="display: flex; justify-content: center; align-items: center; padding: 2.5rem 0; width: 100%;">
-    <span style="width: 90px; height: 2px; background-color: var(--carnellan, #C3191A); border-radius: 2px; opacity: 0.85; display: block;"></span>
-</div>
-
-         <!-- ==========================================================================
-   SECCIÓN LLAMADO A LA ACCIÓN (ALIADOS COMERCIALES - COMPACTO)
-   ========================================================================== -->
-<section class="business-cta-section fade-in-element" id="aliados-comerciales">
-    <!-- Capa Oscura de Superposición -->
-    <div class="business-cta-overlay"></div>
-
-    <!-- Contenido Principal -->
-    <div class="business-cta-container">
-        <h2 class="business-cta-title">Hagamos negocio</h2>
-        <p class="business-cta-text">
-            Si eres propietario de una embarcación y te interesa ser nuestro aliado comercial, ¡escríbenos!
-        </p>
-        <a href="https://wa.me/584244585512?text=Hola%2C%20soy%20propietario%20de%20una%20embarcaci%C3%B3n.%20Me%20gustar%C3%ADa%20trabajar%20con%20Embarcaciones%20Venezuela." 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           class="business-cta-button">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-            <span>Contactar por WhatsApp</span>
-        </a>
-    </div>
     </section>
 
-    <div role="separator" aria-hidden="true" style="display: flex; justify-content: center; align-items: center; padding: 2.5rem 0; width: 100%;">
-    <span style="width: 90px; height: 2px; background-color: var(--carnellan, #C3191A); border-radius: 2px; opacity: 0.85; display: block;"></span>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<footer class="site-footer">
-  <div class="footer-container">
-    
-    <!-- Columna 1: Marca y Descripción -->
-    <div class="footer-col brand-col">
-      <div class="footer-logo">
-        <!-- Ícono de referencia similar al del navbar -->
-        <img src="img/ruta-de-tu-logo.png" alt="Logo Embarcaciones Venezuela" class="footer-logo-img">
-        EMBARCACIONES VENEZUELA
-      </div>
-      <p class="footer-description">
-        Disfruta de la mejor experiencia a bordo en nuestros destinos.
-      </p>
+    <div role="separator" aria-hidden="true"
+        style="display: flex; justify-content: center; align-items: center; padding: 2.5rem 0; width: 100%;">
+        <span
+            style="width: 90px; height: 2px; background-color: var(--carnellan, #C3191A); border-radius: 2px; opacity: 0.85; display: block;"></span>
     </div>
 
-    <!-- Columna 2: Navegación Principal -->
-    <div class="footer-col">
-      <h4 class="col-title">EXPLORAR</h4>
-      <ul class="footer-links">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#autoridad">Trayectoria y Confianza</a></li>
-        <li><a href="#destinos">Nuestros Destinos</a></li>
-        <li><a href="#flota">Nuestra Flota</a></li>
-      </ul>
+    <!-- ==========================================================================
+   SECCIÓN LLAMADO A LA ACCIÓN (ALIADOS COMERCIALES - COMPACTO)
+   ========================================================================== -->
+    <section class="business-cta-section fade-in-element" id="aliados-comerciales">
+        <!-- Capa Oscura de Superposición -->
+        <div class="business-cta-overlay"></div>
+
+        <!-- Contenido Principal -->
+        <div class="business-cta-container">
+            <h2 class="business-cta-title">Hagamos negocio</h2>
+            <p class="business-cta-text">
+                Si eres propietario de una embarcación y te interesa ser nuestro aliado comercial, ¡escríbenos!
+            </p>
+            <a href="https://wa.me/584244585512?text=Hola%2C%20soy%20propietario%20de%20una%20embarcaci%C3%B3n.%20Me%20gustar%C3%ADa%20trabajar%20con%20Embarcaciones%20Venezuela."
+                target="_blank" rel="noopener noreferrer" class="business-cta-button">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <span>Contactar por WhatsApp</span>
+            </a>
+        </div>
+    </section>
+
+    <div role="separator" aria-hidden="true"
+        style="display: flex; justify-content: center; align-items: center; padding: 2.5rem 0; width: 100%;">
+        <span
+            style="width: 90px; height: 2px; background-color: var(--carnellan, #C3191A); border-radius: 2px; opacity: 0.85; display: block;"></span>
     </div>
 
-    <!-- Columna 3: Servicios y Ayuda -->
-    <div class="footer-col">
-      <h4 class="col-title">INFORMACIÓN</h4>
-      <ul class="footer-links">
-        <li><a href="#servicios">Servicios Exclusivos</a></li>
-        <li><a href="#beneficios">¿Por qué elegirnos?</a></li>
-        <li><a href="#testimonios">Experiencias de Clientes</a></li>
-        <li><a href="#faq">Preguntas Frecuentes (FAQ)</a></li>
-      </ul>
-    </div>
 
-    <!-- Columna 4: Contacto y Redes -->
-    <div class="footer-col">
-      <h4 class="col-title">CONECTA</h4>
-      <ul class="footer-links">
-        <li><a href="#abrir-modal-contacto">Contactar al equipo</a></li>
-        <li><a href="#aliados-comerciales" class="highlight-link">Hagamos negocio (Aliados)</a></li>
-        <li><a href="#" class="highlight-link">-</a></li>
-      </ul>
-      
-      <!-- Redes Sociales con colores de marca -->
-      <div class="social-icons">
-        <a href="https://www.instagram.com/embarcacionesvenezuela/" target="_blank" aria-label="Instagram" class="social-btn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="https://wa.me/584244585512" target="_blank" aria-label="WhatsApp" class="social-btn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.006l-1.418 5.18 5.301-1.39a9.96 9.96 0 004.77 1.216h.004c5.505 0 9.988-4.478 9.989-9.985 0-2.668-1.038-5.176-2.925-7.063C17.18 3.039 14.675 2 12.012 2zm5.836 14.178c-.246.691-1.436 1.321-1.986 1.385-.515.06-1.185.086-3.411-.832-2.85-1.173-4.68-4.062-4.823-4.252-.142-.19-1.157-1.54-1.157-2.937 0-1.398.73-2.083.99-2.366.258-.284.562-.355.75-.355.188 0 .375.002.538.009.172.008.403-.065.63.48.228.545.776 1.897.844 2.036.069.139.115.302.023.485-.092.183-.139.297-.275.457-.137.16-.288.358-.412.481-.137.137-.28.287-.12.562.16.275.71 1.173 1.523 1.9 1.045.933 1.928 1.222 2.203 1.36.276.137.437.115.597-.068.16-.183.685-.798.868-1.072.183-.275.365-.229.616-.137.251.092 1.598.753 1.872.89.274.137.457.206.525.32.069.115.069.663-.177 1.354z"/></svg>
-        </a>
 
-      </div>
-    </div>
 
-  </div>
 
-  <!-- Copyright -->
-  <div class="footer-bottom">
-    <p>© 2026 Embarcaciones Venezuela. Todos los derechos reservados.</p>
-  </div>
-</footer>
+
+
+
+
+
+
+
+
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <!-- Columna 1: Marca y Descripción -->
+            <div class="footer-col brand-col">
+                <div class="footer-logo">
+                    <!-- Ícono de referencia similar al del navbar -->
+                    <img src="img/ruta-de-tu-logo.png" alt="Logo Embarcaciones Venezuela" class="footer-logo-img">
+                    EMBARCACIONES VENEZUELA
+                </div>
+                <p class="footer-description">
+                    Disfruta de la mejor experiencia a bordo en nuestros destinos.
+                </p>
+            </div>
+
+            <!-- Columna 2: Navegación Principal -->
+            <div class="footer-col">
+                <h4 class="col-title">EXPLORAR</h4>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#autoridad">Trayectoria y Confianza</a></li>
+                    <li><a href="#destinos">Nuestros Destinos</a></li>
+                    <li><a href="#flota">Nuestra Flota</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Servicios y Ayuda -->
+            <div class="footer-col">
+                <h4 class="col-title">INFORMACIÓN</h4>
+                <ul class="footer-links">
+                    <li><a href="#servicios">Servicios Exclusivos</a></li>
+                    <li><a href="#beneficios">¿Por qué elegirnos?</a></li>
+                    <li><a href="#testimonios">Experiencias de Clientes</a></li>
+                    <li><a href="#faq">Preguntas Frecuentes (FAQ)</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 4: Contacto y Redes -->
+            <div class="footer-col">
+                <h4 class="col-title">CONECTA</h4>
+                <ul class="footer-links">
+                    <li><a href="#abrir-modal-contacto">Contactar al equipo</a></li>
+                    <li><a href="#aliados-comerciales" class="highlight-link">Hagamos negocio (Aliados)</a></li>
+                    <li><a href="#" class="highlight-link">-</a></li>
+                </ul>
+
+                <!-- Redes Sociales con colores de marca -->
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/embarcacionesvenezuela/" target="_blank" aria-label="Instagram"
+                        class="social-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/584244585512" target="_blank" aria-label="WhatsApp" class="social-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.006l-1.418 5.18 5.301-1.39a9.96 9.96 0 004.77 1.216h.004c5.505 0 9.988-4.478 9.989-9.985 0-2.668-1.038-5.176-2.925-7.063C17.18 3.039 14.675 2 12.012 2zm5.836 14.178c-.246.691-1.436 1.321-1.986 1.385-.515.06-1.185.086-3.411-.832-2.85-1.173-4.68-4.062-4.823-4.252-.142-.19-1.157-1.54-1.157-2.937 0-1.398.73-2.083.99-2.366.258-.284.562-.355.75-.355.188 0 .375.002.538.009.172.008.403-.065.63.48.228.545.776 1.897.844 2.036.069.139.115.302.023.485-.092.183-.139.297-.275.457-.137.16-.288.358-.412.481-.137.137-.28.287-.12.562.16.275.71 1.173 1.523 1.9 1.045.933 1.928 1.222 2.203 1.36.276.137.437.115.597-.068.16-.183.685-.798.868-1.072.183-.275.365-.229.616-.137.251.092 1.598.753 1.872.89.274.137.457.206.525.32.069.115.069.663-.177 1.354z" />
+                        </svg>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p>© 2026 Embarcaciones Venezuela. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
     <!-- BOTÓN FLOTANTE DE WHATSAPP -->
-<a href="https://wa.me/584244585512?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." 
-   class="whatsapp-float" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   aria-label="Contactar por WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
-
-
-
-
-<!-- Fondo oscuro y Contenedor del Modal -->
-<div id="modalContacto" class="modal-overlay">
-  <div class="modal-content">
-    
-    <!-- Botón para cerrar (la "X" en la esquina) -->
-    <button class="modal-close" id="cerrarModal">&times;</button>
-    
-    <!-- Contenedor del logo central circular -->
-    <div class="modal-logo-wrapper">
-      <!-- Asegúrate de colocar la ruta correcta a la imagen de tu logo aquí -->
-      <img src="ruta-a-tu-logo.png" alt="Logo Embarcaciones Venezuela" class="modal-logo">
-    </div>
-    
-    <!-- Textos -->
-    <h2 class="modal-title">¡Hablemos de tu próxima aventura!</h2>
-    <p class="modal-text">Estamos listos para brindarte la mejor experiencia a bordo. Escríbenos para consultar disponibilidad, reservar tu embarcación o resolver cualquier duda.</p>
-    
-    <!-- Botón de WhatsApp -->
-    <a href="https://wa.me/584244585512" target="_blank" class="modal-btn-wa">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right: 8px;"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.006l-1.418 5.18 5.301-1.39a9.96 9.96 0 004.77 1.216h.004c5.505 0 9.988-4.478 9.989-9.985 0-2.668-1.038-5.176-2.925-7.063C17.18 3.039 14.675 2 12.012 2zm5.836 14.178c-.246.691-1.436 1.321-1.986 1.385-.515.06-1.185.086-3.411-.832-2.85-1.173-4.68-4.062-4.823-4.252-.142-.19-1.157-1.54-1.157-2.937 0-1.398.73-2.083.99-2.366.258-.284.562-.355.75-.355.188 0 .375.002.538.009.172.008.403-.065.63.48.228.545.776 1.897.844 2.036.069.139.115.302.023.485-.092.183-.139.297-.275.457-.137.16-.288.358-.412.481-.137.137-.28.287-.12.562.16.275.71 1.173 1.523 1.9 1.045.933 1.928 1.222 2.203 1.36.276.137.437.115.597-.068.16-.183.685-.798.868-1.072.183-.275.365-.229.616-.137.251.092 1.598.753 1.872.89.274.137.457.206.525.32.069.115.069.663-.177 1.354z"/></svg>
-      Contactar por WhatsApp
+    <a href="https://wa.me/584244585512?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n."
+        class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
-    
-  </div>
-</div>
 
-<!-- Script Cargador Principal (Gestión de componentes) -->
-  <script src="script.js" defer></script>
+
+
+
+    <!-- Fondo oscuro y Contenedor del Modal -->
+    <div id="modalContacto" class="modal-overlay">
+        <div class="modal-content">
+
+            <!-- Botón para cerrar (la "X" en la esquina) -->
+            <button class="modal-close" id="cerrarModal">&times;</button>
+
+            <!-- Contenedor del logo central circular -->
+            <div class="modal-logo-wrapper">
+                <!-- Asegúrate de colocar la ruta correcta a la imagen de tu logo aquí -->
+                <img src="ruta-a-tu-logo.png" alt="Logo Embarcaciones Venezuela" class="modal-logo">
+            </div>
+
+            <!-- Textos -->
+            <h2 class="modal-title">¡Hablemos de tu próxima aventura!</h2>
+            <p class="modal-text">Estamos listos para brindarte la mejor experiencia a bordo. Escríbenos para consultar
+                disponibilidad, reservar tu embarcación o resolver cualquier duda.</p>
+
+            <!-- Botón de WhatsApp -->
+            <a href="https://wa.me/584244585512" target="_blank" class="modal-btn-wa">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right: 8px;">
+                    <path
+                        d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.006l-1.418 5.18 5.301-1.39a9.96 9.96 0 004.77 1.216h.004c5.505 0 9.988-4.478 9.989-9.985 0-2.668-1.038-5.176-2.925-7.063C17.18 3.039 14.675 2 12.012 2zm5.836 14.178c-.246.691-1.436 1.321-1.986 1.385-.515.06-1.185.086-3.411-.832-2.85-1.173-4.68-4.062-4.823-4.252-.142-.19-1.157-1.54-1.157-2.937 0-1.398.73-2.083.99-2.366.258-.284.562-.355.75-.355.188 0 .375.002.538.009.172.008.403-.065.63.48.228.545.776 1.897.844 2.036.069.139.115.302.023.485-.092.183-.139.297-.275.457-.137.16-.288.358-.412.481-.137.137-.28.287-.12.562.16.275.71 1.173 1.523 1.9 1.045.933 1.928 1.222 2.203 1.36.276.137.437.115.597-.068.16-.183.685-.798.868-1.072.183-.275.365-.229.616-.137.251.092 1.598.753 1.872.89.274.137.457.206.525.32.069.115.069.663-.177 1.354z" />
+                </svg>
+                Contactar por WhatsApp
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Script Cargador Principal (Gestión de componentes) -->
+    <script src="script.js" defer></script>
 
 
 </body>
+
 </html>
