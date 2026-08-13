@@ -32,6 +32,46 @@ body {
   overflow-x: hidden;
 }
 
+/*Cookies Pop-up*/
+.terms-banner {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 380px;
+  background: #ffffff;
+  color: #111;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+}
+.terms-banner h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+.terms-banner p {
+  margin: 0 0 16px;
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.4;
+}
+.btn-primary {
+  width: 100%;
+  background: #0056b3;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: #004085;
+}
+.terms-banner.hidden {
+  display: none;
+}
+
 .hero-section {
   position: relative;
   min-height: 85vh;

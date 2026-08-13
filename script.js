@@ -350,3 +350,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+/*Cookies Pop-up*/
+
+document.addEventListener("DOMContentLoaded", () => {
+  const banner = document.getElementById("terms-banner");
+  const button = document.getElementById("accept-terms");
+
+  if (localStorage.getItem("termsAccepted") === "true") {
+    banner.classList.add("hidden");
+  }
+
+  button.addEventListener("click", () => {
+    localStorage.setItem("termsAccepted", "true");
+    banner.classList.add("hidden");
+  });
+});
