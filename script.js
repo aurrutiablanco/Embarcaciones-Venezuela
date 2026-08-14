@@ -357,10 +357,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const banner = document.getElementById("terms-banner");
   const button = document.getElementById("accept-terms");
 
+  // Comprueba si el usuario ya aceptó anteriormente
   if (localStorage.getItem("termsAccepted") === "true") {
     banner.classList.add("hidden");
   }
 
+  // Al hacer clic, oculta el banner y guarda la preferencia
   button.addEventListener("click", () => {
     localStorage.setItem("termsAccepted", "true");
     banner.classList.add("hidden");
