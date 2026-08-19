@@ -96,7 +96,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         if (currentlyActive && currentlyActive !== item) {
           currentlyActive.classList.remove("active");
-          const activeIcon = currentlyActive.querySelector("i");
+          const activeIcon = currentlyActive.querySelector(
+            ".accordion-header i",
+          );
           if (activeIcon) {
             activeIcon.classList.remove("fa-chevron-up");
             activeIcon.classList.add("fa-chevron-down");
@@ -328,13 +330,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const botonesAbrir = document.querySelectorAll(".abrir-modal-contacto");
   const modal = document.getElementById("modalContacto");
   const botonCerrar = document.getElementById("cerrarModal");
+  const reserveButtons = document.querySelectorAll(".reserve-btn");
 
   if (modal) {
+    const openModal = (e) => {
+      e.preventDefault();
+      modal.classList.add("activo");
+    };
+
     botonesAbrir.forEach((boton) => {
-      boton.addEventListener("click", (e) => {
-        e.preventDefault();
-        modal.classList.add("activo");
-      });
+      boton.addEventListener("click", openModal);
+    });
+
+    // Añadimos los botones de reserva de la flota para que también abran el modal
+    reserveButtons.forEach((button) => {
+      button.addEventListener("click", openModal);
     });
 
     if (botonCerrar) {

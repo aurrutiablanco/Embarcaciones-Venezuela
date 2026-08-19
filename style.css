@@ -29,7 +29,11 @@ html {
 body {
   background-color: var(--white);
   line-height: 1.7;
-  overflow-x: hidden;
+}
+
+/*Separadores de secciones*/
+.separador-AM {
+  background-color: #f4f5f8 !important;
 }
 
 /*Cookies Pop-up*/
@@ -89,107 +93,18 @@ body {
   align-items: center;
   text-align: center;
   border: none;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 12px 30px rgba(0, 0, 0, 0.175), 0 0 18px rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.35),
+    0 12px 30px rgba(0, 0, 0, 0.175),
+    0 0 18px rgba(255, 255, 255, 0.08);
 }
 .hero-title-new {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: #fff;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-.hero-subtitle-new {
-  color: #e2e8f0;
-  margin-bottom: 2rem;
-}
-.cta-group-new {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-.btn-primary-new {
-  background: #0056b3;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-}
-.btn-secondary-new {
-  background: rgba(13, 17, 31, 0.6);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-}
-
-/* ==========================================================================
-   HERO SECTION CON VIDEO DE FONDO
-   ========================================================================== */
-.hero-section {
-  position: relative;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  overflow: hidden;
-  background-color: #0b111e; /* Fallback si el video no carga */
-}
-
-.hero-video-wrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
-}
-
-.hero-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Oscurecimiento para asegurar contraste del texto */
-  background: rgba(11, 17, 30, 0.65);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 800px;
-  padding: 2rem 1rem;
-}
-
-.hero-title {
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-}
-
-.hero-subtitle {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: #e2e8f0;
-  margin-bottom: 2rem;
-  line-height: 1.5;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 /* Visibilidad de Foco para Teclado (WCAG 2.4.7) */
