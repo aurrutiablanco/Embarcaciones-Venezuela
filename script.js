@@ -41,15 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ==========================================================================
-       2. AÑO DINÁMICO EN FOOTER
-       ========================================================================== */
-  const currentYearSpan = document.getElementById("current-year");
-  if (currentYearSpan) {
-    currentYearSpan.textContent = new Date().getFullYear();
-  }
-
-  /* ==========================================================================
-       3. SISTEMA DE REVELACIÓN AL SCROLL
+       2. SISTEMA DE REVELACIÓN AL SCROLL
        ========================================================================== */
   const fadeElements = document.querySelectorAll(".fade-in-element");
   if (fadeElements.length > 0) {
@@ -216,22 +208,22 @@ document.addEventListener("DOMContentLoaded", () => {
     sombrero: {
       title: "Cayo Sombrero",
       desc: "El ícono caribeño de Morrocoy. Famoso por sus dos extensas playas de arena blanca y aguas cristalinas turquesa.",
-      image: "img/cayo sombrero.jpg",
+      image: "assets/img/cayo sombrero.jpg",
     },
     juanes: {
       title: "Los Juanes",
       desc: "La piscina natural más exclusiva. Un bajo transparente en mar abierto sin orilla, perfecto para festejar desde la embarcación.",
-      image: "img/Juanes1.jpg",
+      image: "assets/img/Juanes1.jpg",
     },
     pescadores: {
       title: "Cayo Pescadores",
       desc: "Un santuario de calma absoluta. Conocido por sus aguas llanas, temperatura cálida y oleaje casi nulo.",
-      image: "img/pescadores.jpg",
+      image: "assets/img/pescadores.jpg",
     },
     bajo360: {
       title: "Bajo 360",
       desc: "Impresionante panorámica en el mar. Un banco de arena cristalino rodeado de tonos azules infinitos.",
-      image: "img/BAJO 360.webp",
+      image: "assets/img/BAJO 360.webp",
     },
   };
 
@@ -385,15 +377,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function initHeroCarousel() {
     const slidesData = [
       {
-        src: "videos/DJI_0134.MP4",
+        src: "assets/videos/DJI_0134.MP4",
         alt: "Video 1 de 3: Navegación exclusiva en yate de lujo por Morrocoy",
       },
       {
-        src: "videos/DJI_0139.MP4",
+        src: "assets/videos/DJI_0139.MP4",
         alt: "Video 2 de 3: Lanchas deportivas de alta velocidad en aguas cristalinas",
       },
       {
-        src: "videos/DJI_0141.MP4",
+        src: "assets/videos/DJI_0141.MP4",
         alt: "Video 3 de 3: Recorrido VIP en peñeros ejecutivos en Cayo Sombrero",
       },
     ];
