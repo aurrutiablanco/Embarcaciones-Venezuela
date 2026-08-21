@@ -41,15 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ==========================================================================
-       2. AÑO DINÁMICO EN FOOTER
-       ========================================================================== */
-  const currentYearSpan = document.getElementById("current-year");
-  if (currentYearSpan) {
-    currentYearSpan.textContent = new Date().getFullYear();
-  }
-
-  /* ==========================================================================
-       3. SISTEMA DE REVELACIÓN AL SCROLL
+       2. SISTEMA DE REVELACIÓN AL SCROLL
        ========================================================================== */
   const fadeElements = document.querySelectorAll(".fade-in-element");
   if (fadeElements.length > 0) {
@@ -96,7 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         if (currentlyActive && currentlyActive !== item) {
           currentlyActive.classList.remove("active");
-          const activeIcon = currentlyActive.querySelector("i");
+          const activeIcon = currentlyActive.querySelector(
+            ".accordion-header i",
+          );
           if (activeIcon) {
             activeIcon.classList.remove("fa-chevron-up");
             activeIcon.classList.add("fa-chevron-down");
@@ -214,22 +208,22 @@ document.addEventListener("DOMContentLoaded", () => {
     sombrero: {
       title: "Cayo Sombrero",
       desc: "El ícono caribeño de Morrocoy. Famoso por sus dos extensas playas de arena blanca y aguas cristalinas turquesa.",
-      image: "img/cayo sombrero.jpg",
+      image: "assets/img/cayo sombrero.jpg",
     },
     juanes: {
       title: "Los Juanes",
       desc: "La piscina natural más exclusiva. Un bajo transparente en mar abierto sin orilla, perfecto para festejar desde la embarcación.",
-      image: "img/Juanes1.jpg",
+      image: "assets/img/Juanes1.jpg",
     },
     pescadores: {
       title: "Cayo Pescadores",
       desc: "Un santuario de calma absoluta. Conocido por sus aguas llanas, temperatura cálida y oleaje casi nulo.",
-      image: "img/pescadores.jpg",
+      image: "assets/img/pescadores.jpg",
     },
     bajo360: {
       title: "Bajo 360",
       desc: "Impresionante panorámica en el mar. Un banco de arena cristalino rodeado de tonos azules infinitos.",
-      image: "img/BAJO 360.webp",
+      image: "assets/img/BAJO 360.webp",
     },
   };
 
@@ -328,13 +322,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const botonesAbrir = document.querySelectorAll(".abrir-modal-contacto");
   const modal = document.getElementById("modalContacto");
   const botonCerrar = document.getElementById("cerrarModal");
+  const reserveButtons = document.querySelectorAll(".reserve-btn");
 
   if (modal) {
+    const openModal = (e) => {
+      e.preventDefault();
+      modal.classList.add("activo");
+    };
+
     botonesAbrir.forEach((boton) => {
-      boton.addEventListener("click", (e) => {
-        e.preventDefault();
-        modal.classList.add("activo");
-      });
+      boton.addEventListener("click", openModal);
+    });
+
+    // Añadimos los botones de reserva de la flota para que también abran el modal
+    reserveButtons.forEach((button) => {
+      button.addEventListener("click", openModal);
     });
 
     if (botonCerrar) {
@@ -349,20 +351,233 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-});
 
-/*Cookies Pop-up*/
-
-document.addEventListener("DOMContentLoaded", () => {
+  /* ==========================================================================
+       10. COOKIES POP-UP / TERMS BANNER
+       ========================================================================== */
   const banner = document.getElementById("terms-banner");
   const button = document.getElementById("accept-terms");
 
-  if (localStorage.getItem("termsAccepted") === "true") {
-    banner.classList.add("hidden");
+  if (banner && button) {
+    // Comprueba si el usuario ya aceptó anteriormente
+    if (localStorage.getItem("termsAccepted") === "true") {
+      banner.classList.add("hidden");
+    }
+
+    // Al hacer clic, oculta el banner y guarda la preferencia
+    button.addEventListener("click", () => {
+      localStorage.setItem("termsAccepted", "true");
+      banner.classList.add("hidden");
+    });
   }
 
-  button.addEventListener("click", () => {
-    localStorage.setItem("termsAccepted", "true");
-    banner.classList.add("hidden");
-  });
+  /* ==========================================================================
+       11. HERO CAROUSEL INTERACTIVO
+       ========================================================================== */
+  function initHeroCarousel() {
+    const slidesData = [
+      {
+        src: "assets/videos/DJI_0134.MP4",
+        alt: "Video 1 de 3: Navegación exclusiva en yate de lujo por Morrocoy",
+      },
+      {
+        src: "assets/videos/DJI_0139.MP4",
+        alt: "Video 2 de 3: Lanchas deportivas de alta velocidad en aguas cristalinas",
+      },
+      {
+        src: "assets/videos/DJI_0141.MP4",
+        alt: "Video 3 de 3: Recorrido VIP en peñeros ejecutivos en Cayo Sombrero",
+      },
+    ];
+
+    const SLIDE_DURATION = 5000;
+    const FADE_DURATION = 2000;
+    let currentIndex = 0;
+    let isPlaying = true;
+    let slideTimer = null;
+    let activeBufferIndex = 0;
+
+    const videoBuffers = [
+      document.getElementById("hero-video-1"),
+      document.getElementById("hero-video-2"),
+    ];
+    const toggleBtn = document.getElementById("toggle-autoplay");
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    const srAnnouncer = document.getElementById("sr-announcer");
+
+    if (!videoBuffers[0] || !videoBuffers[1] || !toggleBtn) return;
+
+    const iconPause = toggleBtn.querySelector(".icon-pause");
+    const iconPlay = toggleBtn.querySelector(".icon-play");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    function goToSlide(newIndex, force = false) {
+      if (
+        !force &&
+        newIndex === currentIndex &&
+        tabs[newIndex].classList.contains("animating")
+      )
+        return;
+
+      currentIndex = newIndex;
+
+      const currentVideo = videoBuffers[activeBufferIndex];
+      const nextBufferIndex = 1 - activeBufferIndex;
+      const nextVideo = videoBuffers[nextBufferIndex];
+
+      const source = nextVideo.querySelector("source");
+      if (source) {
+        source.src = slidesData[currentIndex].src;
+        nextVideo.load();
+
+        if (isPlaying && !prefersReducedMotion) {
+          nextVideo.play().catch(() => {});
+        }
+      }
+
+      nextVideo.classList.add("active");
+      currentVideo.classList.remove("active");
+
+      setTimeout(
+        () => {
+          if (currentVideo !== nextVideo) {
+            currentVideo.pause();
+          }
+        },
+        prefersReducedMotion ? 0 : FADE_DURATION,
+      );
+
+      activeBufferIndex = nextBufferIndex;
+
+      tabs.forEach((tab, index) => {
+        const isSelected = index === currentIndex;
+        tab.setAttribute("aria-selected", isSelected ? "true" : "false");
+        tab.classList.remove("active", "animating", "paused", "completed");
+
+        const fill = tab.querySelector(".progress-fill");
+        if (fill) {
+          fill.style.width = isSelected
+            ? "0%"
+            : index < currentIndex
+              ? "100%"
+              : "0%";
+        }
+
+        if (index < currentIndex) {
+          tab.classList.add("completed");
+        }
+      });
+
+      const activeTab = tabs[currentIndex];
+      if (activeTab) {
+        activeTab.classList.add("active");
+        void activeTab.offsetWidth;
+
+        if (isPlaying && !prefersReducedMotion) {
+          activeTab.classList.add("animating");
+        } else {
+          activeTab.classList.add("paused");
+        }
+      }
+
+      announceToScreenReader(slidesData[currentIndex].alt);
+      resetTimer();
+    }
+
+    function nextSlide() {
+      const nextIndex = (currentIndex + 1) % slidesData.length;
+      goToSlide(nextIndex);
+    }
+
+    function resetTimer() {
+      clearTimeout(slideTimer);
+      if (isPlaying && !prefersReducedMotion) {
+        slideTimer = setTimeout(nextSlide, SLIDE_DURATION);
+      }
+    }
+
+    function togglePlayPause() {
+      isPlaying = !isPlaying;
+      toggleBtn.setAttribute("aria-pressed", (!isPlaying).toString());
+
+      const activeVideo = videoBuffers[activeBufferIndex];
+
+      if (isPlaying) {
+        toggleBtn.setAttribute("aria-label", "Pausar rotación automática");
+        if (iconPause) iconPause.style.display = "block";
+        if (iconPlay) iconPlay.style.display = "none";
+        if (activeVideo) activeVideo.play().catch(() => {});
+
+        const activeTab = tabs[currentIndex];
+        if (activeTab) {
+          activeTab.classList.remove("paused");
+          activeTab.classList.add("animating");
+        }
+        resetTimer();
+        announceToScreenReader("Rotación automática reanudada");
+      } else {
+        toggleBtn.setAttribute("aria-label", "Reanudar rotación automática");
+        if (iconPause) iconPause.style.display = "none";
+        if (iconPlay) iconPlay.style.display = "block";
+        if (activeVideo) activeVideo.pause();
+
+        clearTimeout(slideTimer);
+        const activeTab = tabs[currentIndex];
+        if (activeTab) {
+          activeTab.classList.remove("animating");
+          activeTab.classList.add("paused");
+        }
+        announceToScreenReader("Rotación automática pausada");
+      }
+    }
+
+    function announceToScreenReader(message) {
+      if (srAnnouncer) {
+        srAnnouncer.textContent = message;
+      }
+    }
+
+    toggleBtn.addEventListener("click", togglePlayPause);
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const index = parseInt(tab.getAttribute("data-index"), 10);
+        goToSlide(index);
+      });
+    });
+
+    const tablist = document.querySelector('[role="tablist"]');
+    if (tablist) {
+      tablist.addEventListener("keydown", (e) => {
+        let targetIndex = currentIndex;
+
+        if (e.key === "ArrowRight") {
+          targetIndex = (currentIndex + 1) % tabs.length;
+        } else if (e.key === "ArrowLeft") {
+          targetIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        } else if (e.key === "Home") {
+          targetIndex = 0;
+        } else if (e.key === "End") {
+          targetIndex = tabs.length - 1;
+        } else {
+          return;
+        }
+
+        e.preventDefault();
+        tabs[targetIndex].focus();
+        goToSlide(targetIndex);
+      });
+    }
+
+    if (prefersReducedMotion) {
+      isPlaying = false;
+      togglePlayPause();
+    } else {
+      goToSlide(0, true);
+    }
+  }
+
+  initHeroCarousel();
 });
