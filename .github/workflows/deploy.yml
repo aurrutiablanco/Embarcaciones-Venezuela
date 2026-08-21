@@ -23,6 +23,7 @@ jobs:
           script: |
             cd /var/www/ev4.antoniomarcoweb.com/public_html
             git checkout main
+            git reset --hard HEAD
             git pull origin main
             git lfs pull
             sudo systemctl reload apache2
