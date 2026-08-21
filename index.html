@@ -197,8 +197,8 @@
 
 
     <!-- ==========================================================================
-   SECCIÓN BENEFICIOS (DISEÑO ULTRA COMPACTO & TARJETAS MEJORADAS)
-   ========================================================================== -->
+SECCIÓN BENEFICIOS (DISEÑO ULTRA COMPACTO & TARJETAS MEJORADAS)
+========================================================================== -->
     <section id="beneficios" class="benefits-section bg-light">
         <div class="container">
             <h2 class="section-title navy-text fade-in-element" style="margin-bottom: 1.5rem;">¿Por qué eligen a
@@ -208,32 +208,36 @@
 
                 <!-- Carrusel de Imágenes (Izquierda) -->
                 <div class="split-image-slider fade-in-element">
-                    <div class="benefits-carousel">
+                    <div class="benefits-carousel" role="region" aria-label="Galeria de experiencias VIP">
                         <div class="benefits-track">
                             <div class="benefits-slide active">
-                                <img src="assets/img/jeva.jpg" alt="Experiencia VIP 1">
+                                <img src="assets/img/_DSC1951.jpg"
+                                    alt="Cliente disfrutando a bordo de una embarcación en mar abierto">
                             </div>
                             <div class="benefits-slide">
-                                <img src="assets/img/ruta-de-foto-beneficios.jpg" alt="Experiencia VIP 2">
+                                <img src="assets/img/_DSC1978.jpg"
+                                    alt="Vista desde la cubierta del yate navegando en aguas turquesas">
                             </div>
                             <div class="benefits-slide">
-                                <img src="assets/img/ruta-de-foto-servicios1.jpg" alt="Experiencia VIP 3">
+                                <img src="assets/img/_DSC2013.jpg"
+                                    alt="Pasajeros relajándose en la proa durante un servicio exclusivo">
                             </div>
                         </div>
 
                         <!-- Botones de Navegación -->
-                        <button class="benefits-arrow prev-slide" aria-label="Anterior">
-                            <i class="fa-solid fa-chevron-left"></i>
+                        <button type="button" class="benefits-arrow prev-slide" aria-label="Imagen anterior">
+                            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
                         </button>
-                        <button class="benefits-arrow next-slide" aria-label="Siguiente">
-                            <i class="fa-solid fa-chevron-right"></i>
+                        <button type="button" class="benefits-arrow next-slide" aria-label="Siguiente imagen">
+                            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
                         </button>
 
                         <!-- Puntos Indicadores -->
-                        <div class="benefits-dots">
-                            <span class="dot active" data-index="0"></span>
-                            <span class="dot" data-index="1"></span>
-                            <span class="dot" data-index="2"></span>
+                        <div class="benefits-dots" role="tablist" aria-label="Seleccionar imagen">
+                            <button type="button" class="dot active" data-index="0"
+                                aria-label="Ir a la imagen 1"></button>
+                            <button type="button" class="dot" data-index="1" aria-label="Ir a la imagen 2"></button>
+                            <button type="button" class="dot" data-index="2" aria-label="Ir a la imagen 3"></button>
                         </div>
                     </div>
                 </div>
@@ -245,9 +249,7 @@
                     <div class="benefit-card content-card-light fade-in-element">
                         <div class="card-header-flex">
                             <div class="benefit-icons-badge">
-                                <i class="fa-solid fa-concierge-bell gold-text" title="Atención"></i>
-                                <!--<i class="fa-solid fa-van-shuttle gold-text" title="Transporte"></i>-->
-                                <!--<i class="fa-solid fa-snowflake gold-text" title="Hielo"></i>-->
+                                <i class="fa-solid fa-concierge-bell gold-text" aria-hidden="true"></i>
                             </div>
                             <h3 class="navy-text">Organizamos TODO</h3>
                         </div>
@@ -260,7 +262,7 @@
                     <div class="benefit-card content-card-light fade-in-element">
                         <div class="card-header-flex">
                             <div class="benefit-icon-badge">
-                                <i class="fa-solid fa-file-invoice-dollar gold-text"></i>
+                                <i class="fa-solid fa-file-invoice-dollar gold-text" aria-hidden="true"></i>
                             </div>
                             <h3 class="navy-text">Sin Costos Ocultos</h3>
                         </div>
@@ -272,7 +274,7 @@
                     <div class="benefit-card content-card-light fade-in-element">
                         <div class="card-header-flex">
                             <div class="benefit-icon-badge">
-                                <i class="fa-solid fa-hand-holding-dollar gold-text"></i>
+                                <i class="fa-solid fa-hand-holding-dollar gold-text" aria-hidden="true"></i>
                             </div>
                             <h3 class="navy-text">Reserva con el 50%</h3>
                         </div>
@@ -285,7 +287,6 @@
             </div>
         </div>
     </section>
-
 
 
 
@@ -654,7 +655,8 @@
 
 
     <!-- Flota (Fondo con Imagen) -->
-    <section id="flota" class="fleet-section bg-section-img" style="background-image: url('assets/img/fondo-flota.jpg');">
+    <section id="flota" class="fleet-section bg-section-img"
+        style="background-image: url('assets/img/fondo-flota.jpg');">
         <div class="section-overlay"></div>
         <div class="container relative-z">
             <h2 class="section-title white-text fade-in-element">Nuestra Flota</h2>
@@ -933,7 +935,8 @@
             <div class="footer-col">
                 <div class="footer-logo">
                     <!-- Ícono de referencia similar al del navbar -->
-                    <img src="assets/img/ruta-de-tu-logo.png" alt="Logo Embarcaciones Venezuela" class="footer-logo-img">
+                    <img src="assets/img/ruta-de-tu-logo.png" alt="Logo Embarcaciones Venezuela"
+                        class="footer-logo-img">
                     EMBARCACIONES VENEZUELA
                 </div>
                 <p class="footer-description">
