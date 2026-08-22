@@ -29,10 +29,10 @@ jobs:
             sudo git config --global --add safe.directory /var/www/ev4.antoniomarcoweb.com/public_html
 
             # 2. Forzar sincronización exacta con main purgiando binarios antiguos
-            sudo git fetch origin main
-            sudo git reset --hard origin/main
-            sudo git clean -fd
-            sudo git lfs pull
+            git fetch origin main
+            git reset --hard origin/main
+            git clean -fd
+            git lfs pull
 
             # 3. Restaurar permisos estrictos de seguridad para Apache
             sudo chown -R www-data:www-data .
