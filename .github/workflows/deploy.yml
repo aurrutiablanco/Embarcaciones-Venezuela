@@ -21,9 +21,22 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
+            set -e
             cd /var/www/ev4.antoniomarcoweb.com/public_html
-            git checkout main
-            git reset --hard HEAD
-            git pull origin main
-            git lfs pull
+
+            # 1. Tomar propiedad temporal como superusuario para evitar bloqueos
+            sudo chown -R $USER:$USER .
+            sudo git config --global --add safe.directory /var/www/ev4.antoniomarcoweb.com/public_html
+
+            # 2. Forzar sincronización exacta con main purgiando binarios antiguos
+            sudo git fetch origin main
+            sudo git reset --hard origin/main
+            sudo git clean -fd
+            sudo git lfs pull
+
+            # 3. Restaurar permisos estrictos de seguridad para Apache
+            sudo chown -R www-data:www-data .
+            sudo chmod -R 775 .
+
+            # 4. Recargar servidor
             sudo systemctl reload apache2
