@@ -1515,10 +1515,10 @@ header.menu-open {
   }
 }
 /* ==========================================================================
-   SECCIÓN BENEFICIOS (ESTILOS COMPACTOS Y ELEGANTES)
+   SECCIÓN BENEFICIOS (ESTILOS COMPACTOS Y ELEGANTES - ALTURA SINCRONIZADA)
    ========================================================================== */
 .benefits-section {
-  padding: 2.5rem 0; /* Espaciado vertical reducido para evitar scroll */
+  padding: 2.5rem 0; /* Espaciado vertical reducido */
   background-color: var(--bg-light, #f8f9fa);
 }
 
@@ -1528,10 +1528,10 @@ header.menu-open {
   gap: 1.5rem;
   max-width: 1100px;
   margin: 0 auto;
-  align-items: center;
+  align-items: stretch; /* Permite estirar ambas columnas a la misma altura */
 }
 
-/* CARRUSEL RESTRUCTURADO */
+/* CARRUSEL RESTRUCTURADO (SINCRONIZADO EN ALTURA) */
 .split-image-slider {
   position: relative;
   border-radius: 12px;
@@ -1539,11 +1539,17 @@ header.menu-open {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   width: 100%;
   height: 100%;
-  min-height: 320px;
-  max-height: 360px;
+  display: flex;
+  flex-direction: column;
 }
 
-.benefits-carousel,
+.benefits-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+}
+
 .benefits-track {
   position: relative;
   width: 100%;
@@ -1573,73 +1579,96 @@ header.menu-open {
   display: block;
 }
 
+/* Navegación y Accesibilidad (WCAG 2.2) */
 .benefits-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  background: rgba(13, 17, 31, 0.6);
+  background: rgba(13, 17, 31, 0.65);
   color: #ffffff;
   border: none;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.25s ease;
+  padding: 0;
 }
 
 .benefits-arrow:hover {
   background: var(--carnellan, #c3191a);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.benefits-arrow:focus-visible,
+.benefits-dots .dot:focus-visible {
+  outline: 3px solid var(--carnellan, #c3191a);
+  outline-offset: 3px;
 }
 
 .benefits-arrow.prev-slide {
-  left: 10px;
+  left: 12px;
 }
 .benefits-arrow.next-slide {
-  right: 10px;
+  right: 12px;
 }
 
 .benefits-dots {
   position: absolute;
-  bottom: 12px;
+  bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
   display: flex;
-  gap: 6px;
+  align-items: center;
+  gap: 8px;
 }
 
 .benefits-dots .dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  padding: 0;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
+.benefits-dots .dot:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
 .benefits-dots .dot.active {
   background: #ffffff;
-  width: 18px;
+  width: 22px;
   border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* GRILLA Y TARJETAS DE BENEFICIOS */
 .benefits-grid {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 0.85rem;
+  height: 100%;
 }
 
 .benefit-card {
   background-color: #ffffff;
   border-radius: 10px;
-  padding: 1rem 1.25rem;
+  padding: 1.1rem 1.25rem;
   border: 1px solid rgba(13, 17, 31, 0.06);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
@@ -1701,7 +1730,12 @@ header.menu-open {
 /* Ajustes Responsivos */
 @media (min-width: 992px) {
   .compact-benefits-layout {
-    grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas grandes */
+    grid-template-columns: 1fr 1fr; /* Dos columnas perfectamente alineadas */
+    align-items: stretch;
+  }
+  .split-image-slider {
+    height: 100%;
+    min-height: 100%;
   }
 }
 
@@ -1709,12 +1743,15 @@ header.menu-open {
   .benefits-section {
     padding: 2rem 0;
   }
+  .compact-benefits-layout {
+    grid-template-columns: 1fr;
+  }
   .split-image-slider {
-    min-height: 220px;
-    max-height: 250px;
+    min-height: 260px;
+    height: 280px;
   }
   .benefit-card {
-    padding: 0.85rem 1rem;
+    padding: 0.9rem 1rem;
   }
   .card-header-flex h3 {
     font-size: 0.98rem;

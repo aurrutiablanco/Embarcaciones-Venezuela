@@ -99,10 +99,11 @@
         <!-- 1. Fondo de Video con Doble Búfer (Transición de 2s) -->
         <div class="video-container">
             <video id="hero-video-1" class="hero-video active" autoplay muted playsinline aria-hidden="true"
-                tabindex="-1">
+                tabindex="-1" preload="metadata">
                 <source src="assets/videos/DJI_0134.MP4" type="video/mp4">
             </video>
-            <video id="hero-video-2" class="hero-video" muted playsinline aria-hidden="true" tabindex="-1">
+            <video id="hero-video-2" class="hero-video" muted playsinline aria-hidden="true" tabindex="-1"
+                preload="metadata">
                 <source src="assets/videos/DJI_0139.MP4" type="video/mp4">
             </video>
             <div class="video-overlay" aria-hidden="true"></div>
@@ -114,7 +115,8 @@
             <p class="hero-subtitle">Alquiler y gestión exclusiva de yates</p>
             <div class="cta-group">
                 <a href="#flota" class="btn btn-primary">Explorar flota</a>
-                <a href="https://wa.me/584120000000" class="btn btn-secondary">Reservar asesoría</a>
+                <a href="https://wa.me/584244585512?text=Hola,%20necesito%20asesoria."
+                    class="btn btn-secondary">Reservar asesoría</a>
             </div>
         </div>
 
@@ -197,8 +199,8 @@
 
 
     <!-- ==========================================================================
-   SECCIÓN BENEFICIOS (DISEÑO ULTRA COMPACTO & TARJETAS MEJORADAS)
-   ========================================================================== -->
+SECCIÓN BENEFICIOS (DISEÑO ULTRA COMPACTO & TARJETAS MEJORADAS)
+========================================================================== -->
     <section id="beneficios" class="benefits-section bg-light">
         <div class="container">
             <h2 class="section-title navy-text fade-in-element" style="margin-bottom: 1.5rem;">¿Por qué eligen a
@@ -208,32 +210,36 @@
 
                 <!-- Carrusel de Imágenes (Izquierda) -->
                 <div class="split-image-slider fade-in-element">
-                    <div class="benefits-carousel">
+                    <div class="benefits-carousel" role="region" aria-label="Galeria de experiencias VIP">
                         <div class="benefits-track">
                             <div class="benefits-slide active">
-                                <img src="assets/img/jeva.jpg" alt="Experiencia VIP 1">
+                                <img src="assets/img/_DSC1951.jpg"
+                                    alt="Cliente disfrutando a bordo de una embarcación en mar abierto">
                             </div>
                             <div class="benefits-slide">
-                                <img src="assets/img/ruta-de-foto-beneficios.jpg" alt="Experiencia VIP 2">
+                                <img src="assets/img/_DSC1978.jpg"
+                                    alt="Vista desde la cubierta del yate navegando en aguas turquesas">
                             </div>
                             <div class="benefits-slide">
-                                <img src="assets/img/ruta-de-foto-servicios1.jpg" alt="Experiencia VIP 3">
+                                <img src="assets/img/_DSC2013.jpg"
+                                    alt="Pasajeros relajándose en la proa durante un servicio exclusivo">
                             </div>
                         </div>
 
                         <!-- Botones de Navegación -->
-                        <button class="benefits-arrow prev-slide" aria-label="Anterior">
-                            <i class="fa-solid fa-chevron-left"></i>
+                        <button type="button" class="benefits-arrow prev-slide" aria-label="Imagen anterior">
+                            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
                         </button>
-                        <button class="benefits-arrow next-slide" aria-label="Siguiente">
-                            <i class="fa-solid fa-chevron-right"></i>
+                        <button type="button" class="benefits-arrow next-slide" aria-label="Siguiente imagen">
+                            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
                         </button>
 
                         <!-- Puntos Indicadores -->
-                        <div class="benefits-dots">
-                            <span class="dot active" data-index="0"></span>
-                            <span class="dot" data-index="1"></span>
-                            <span class="dot" data-index="2"></span>
+                        <div class="benefits-dots" role="tablist" aria-label="Seleccionar imagen">
+                            <button type="button" class="dot active" data-index="0"
+                                aria-label="Ir a la imagen 1"></button>
+                            <button type="button" class="dot" data-index="1" aria-label="Ir a la imagen 2"></button>
+                            <button type="button" class="dot" data-index="2" aria-label="Ir a la imagen 3"></button>
                         </div>
                     </div>
                 </div>
@@ -245,9 +251,7 @@
                     <div class="benefit-card content-card-light fade-in-element">
                         <div class="card-header-flex">
                             <div class="benefit-icons-badge">
-                                <i class="fa-solid fa-concierge-bell gold-text" title="Atención"></i>
-                                <!--<i class="fa-solid fa-van-shuttle gold-text" title="Transporte"></i>-->
-                                <!--<i class="fa-solid fa-snowflake gold-text" title="Hielo"></i>-->
+                                <i class="fa-solid fa-concierge-bell gold-text" aria-hidden="true"></i>
                             </div>
                             <h3 class="navy-text">Organizamos TODO</h3>
                         </div>
@@ -260,7 +264,7 @@
                     <div class="benefit-card content-card-light fade-in-element">
                         <div class="card-header-flex">
                             <div class="benefit-icon-badge">
-                                <i class="fa-solid fa-file-invoice-dollar gold-text"></i>
+                                <i class="fa-solid fa-file-invoice-dollar gold-text" aria-hidden="true"></i>
                             </div>
                             <h3 class="navy-text">Sin Costos Ocultos</h3>
                         </div>
@@ -272,7 +276,7 @@
                     <div class="benefit-card content-card-light fade-in-element">
                         <div class="card-header-flex">
                             <div class="benefit-icon-badge">
-                                <i class="fa-solid fa-hand-holding-dollar gold-text"></i>
+                                <i class="fa-solid fa-hand-holding-dollar gold-text" aria-hidden="true"></i>
                             </div>
                             <h3 class="navy-text">Reserva con el 50%</h3>
                         </div>
@@ -285,7 +289,6 @@
             </div>
         </div>
     </section>
-
 
 
 
@@ -652,9 +655,9 @@
 
 
 
-
     <!-- Flota (Fondo con Imagen) -->
-    <section id="flota" class="fleet-section bg-section-img" style="background-image: url('assets/img/fondo-flota.jpg');">
+    <section id="flota" class="fleet-section bg-section-img"
+        style="background-image: url('assets/img/fondo-flota.jpg');">
         <div class="section-overlay"></div>
         <div class="container relative-z">
             <h2 class="section-title white-text fade-in-element">Nuestra Flota</h2>
@@ -668,17 +671,15 @@
                     <div class="card-body">
                         <h3 class="card-title white-text">Peñero</h3>
                         <div class="card-vibe">
-                            <span class="gold-text"></span>
                             <p style="color: aliceblue;">Tradicional & Auténtica.</p>
                         </div>
-                        <!--<p class="card-text white-text">Navegación tradicional y rústica. La opción ideal para conectar con la esencia local y traslados directos hacia tus cayos favoritos.</p>-->
 
                         <button type="button" class="details-toggle" aria-expanded="false" aria-controls="panel-penero">
                             Ver detalles <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                         </button>
 
                         <div id="panel-penero" class="fleet-details" hidden>
-                            <div id="am-detalles-lancha" class="am-fleet-details" aria-hidden="true">
+                            <div id="am-detalles-penero" class="am-fleet-details">
                                 <div class="am-fleet-details-inner">
                                     <div class="am-services-included am-white-text">
                                         <h4>Servicio Estándar Incluye:</h4>
@@ -711,7 +712,7 @@
                                         <label><input type="radio" name="cap_penero" value="12"> 12</label>
                                     </div>
                                 </fieldset>
-                                <button type="button" class="cta-btn primary-cta reserve-btn">Quiero reservar</button>
+                                <button type="submit" class="cta-btn primary-cta reserve-btn">Quiero reservar</button>
                             </form>
                         </div>
                     </div>
@@ -724,18 +725,16 @@
                     </div>
                     <div class="card-body">
                         <h3 class="card-title white-text">Lancha</h3>
-                        <p class="card-vibe"><span class="gold-text"></span>
-                        <p style="color: aliceblue;">Ágil & Exploradora.</p>
-                        </p>
-                        <!-- <p class="card-text white-text">Cómoda y dinámica. Perfecta para planes chill, recorrer múltiples cayos rápidamente y disfrutar del parque al máximo.</p> -->
-
+                        <div class="card-vibe">
+                            <p style="color: aliceblue;">Ágil & Exploradora.</p>
+                        </div>
 
                         <button type="button" class="details-toggle" aria-expanded="false" aria-controls="panel-lancha">
                             Ver detalles <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                         </button>
 
                         <div id="panel-lancha" class="fleet-details" hidden>
-                            <div id="am-detalles-lancha" class="am-fleet-details" aria-hidden="true">
+                            <div id="am-detalles-lancha" class="am-fleet-details">
                                 <div class="am-fleet-details-inner">
                                     <div class="am-services-included am-white-text">
                                         <h4>Servicio Estándar Incluye:</h4>
@@ -768,32 +767,29 @@
                                         <label><input type="radio" name="cap_lancha" value="12"> 12</label>
                                     </div>
                                 </fieldset>
-                                <button type="button" class="cta-btn primary-cta reserve-btn">Quiero reservar</button>
+                                <button type="submit" class="cta-btn primary-cta reserve-btn">Quiero reservar</button>
                             </form>
                         </div>
                     </div>
                 </div>
 
                 <!-- Yate -->
-
                 <div class="fleet-card glass-panel fade-in-element">
                     <div class="card-image-wrapper">
                         <img src="assets/img/foto-yate.jpg" alt="Yate de Lujo" class="card-img">
                     </div>
                     <div class="card-body">
                         <h3 class="card-title white-text">Yate</h3>
-                        <p class="card-vibe"><span class="gold-text"></span>
-                        <p style="color: aliceblue;">Exclusividad & Lujo.</p>
-                        </p>
-                        <!-- <p class="card-text white-text">Espacio superior y comodidades premium. Diseñado para ocasiones de alto nivel donde el estatus y el confort son innegociables.</p> -->
-
+                        <div class="card-vibe">
+                            <p style="color: aliceblue;">Exclusividad & Lujo.</p>
+                        </div>
 
                         <button type="button" class="details-toggle" aria-expanded="false" aria-controls="panel-yate">
                             Ver detalles <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                         </button>
 
                         <div id="panel-yate" class="fleet-details" hidden>
-                            <div id="am-detalles-lancha" class="am-fleet-details" aria-hidden="true">
+                            <div id="am-detalles-yate" class="am-fleet-details">
                                 <div class="am-fleet-details-inner">
                                     <div class="am-services-included am-white-text">
                                         <h4>Servicio Estándar Incluye:</h4>
@@ -826,7 +822,7 @@
                                         <label><input type="radio" name="cap_yate" value="12"> 12</label>
                                     </div>
                                 </fieldset>
-                                <button type="button" class="cta-btn primary-cta reserve-btn">Quiero reservar</button>
+                                <button type="submit" class="cta-btn primary-cta reserve-btn">Quiero reservar</button>
                             </form>
                         </div>
                     </div>
@@ -835,7 +831,6 @@
             </div>
         </div>
     </section>
-
     <!-- FAQ (Sección Clara) -->
     <!-- ==========================================================================
    SECCIÓN PREGUNTAS FRECUENTES (ACTUALIZADA)
@@ -933,7 +928,8 @@
             <div class="footer-col">
                 <div class="footer-logo">
                     <!-- Ícono de referencia similar al del navbar -->
-                    <img src="assets/img/ruta-de-tu-logo.png" alt="Logo Embarcaciones Venezuela" class="footer-logo-img">
+                    <img src="assets/img/ruta-de-tu-logo.png" alt="Logo Embarcaciones Venezuela"
+                        class="footer-logo-img">
                     EMBARCACIONES VENEZUELA
                 </div>
                 <p class="footer-description">

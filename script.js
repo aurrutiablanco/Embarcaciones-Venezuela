@@ -232,10 +232,9 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   const displayImg = document.getElementById("dest-display-img");
   const cardTitle = document.getElementById("card-title");
-  const cardDesc = document.getElementById("card-desc"); // Opcional
+  const cardDesc = document.getElementById("card-desc");
 
   if (radioInputs.length && displayImg && cardTitle) {
-    // Función para actualizar los datos en el DOM
     const setDestinationData = (key) => {
       const data = destinationsData[key];
       if (!data) return;
@@ -248,7 +247,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    // 1. Forzar la carga inicial de la imagen/texto según el botón marcado por defecto
     const initialChecked = document.querySelector(
       'input[name="destination_select"]:checked',
     );
@@ -256,7 +254,6 @@ document.addEventListener("DOMContentLoaded", () => {
       setDestinationData(initialChecked.value);
     }
 
-    // 2. Escuchar cambios al hacer clic en los otros botones
     radioInputs.forEach((radio) => {
       radio.addEventListener("change", (e) => {
         const selectedKey = e.target.value;
@@ -322,7 +319,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const botonesAbrir = document.querySelectorAll(".abrir-modal-contacto");
   const modal = document.getElementById("modalContacto");
   const botonCerrar = document.getElementById("cerrarModal");
-  const reserveButtons = document.querySelectorAll(".reserve-btn");
 
   if (modal) {
     const openModal = (e) => {
@@ -332,11 +328,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     botonesAbrir.forEach((boton) => {
       boton.addEventListener("click", openModal);
-    });
-
-    // Añadimos los botones de reserva de la flota para que también abran el modal
-    reserveButtons.forEach((button) => {
-      button.addEventListener("click", openModal);
     });
 
     if (botonCerrar) {
@@ -353,18 +344,43 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ==========================================================================
-       10. COOKIES POP-UP / TERMS BANNER
+       10. RESERVA VÍA WHATSAPP (FLOTA)
+       ========================================================================== */
+  const bookingForms = document.querySelectorAll(".booking-form");
+  const WHATSAPP_PHONE = "584244585512";
+
+  bookingForms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const vesselType = form.getAttribute("data-vessel") || "embarcación";
+      const selectedRadio = form.querySelector('input[type="radio"]:checked');
+      const capacity = selectedRadio ? selectedRadio.value : "6";
+
+      // Formateo de artículo dinámico
+      let vesselPhrase = `un ${vesselType.toLowerCase()}`;
+      if (vesselType.toLowerCase() === "lancha") {
+        vesselPhrase = "una lancha";
+      }
+
+      const message = `Hola Embarcaciones Venezuela! Quiero reservar ${vesselPhrase} para ${capacity} personas, tienen disponibilidad?`;
+      const encodedUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+
+      window.open(encodedUrl, "_blank", "noopener,noreferrer");
+    });
+  });
+
+  /* ==========================================================================
+       11. COOKIES POP-UP / TERMS BANNER
        ========================================================================== */
   const banner = document.getElementById("terms-banner");
   const button = document.getElementById("accept-terms");
 
   if (banner && button) {
-    // Comprueba si el usuario ya aceptó anteriormente
     if (localStorage.getItem("termsAccepted") === "true") {
       banner.classList.add("hidden");
     }
 
-    // Al hacer clic, oculta el banner y guarda la preferencia
     button.addEventListener("click", () => {
       localStorage.setItem("termsAccepted", "true");
       banner.classList.add("hidden");
@@ -372,20 +388,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ==========================================================================
-       11. HERO CAROUSEL INTERACTIVO
+       12. HERO CAROUSEL INTERACTIVO
        ========================================================================== */
   function initHeroCarousel() {
     const slidesData = [
       {
-        src: "assets/videos/DJI_0134.MP4",
+        src: "assets/videos/video1.webm",
         alt: "Video 1 de 3: Navegación exclusiva en yate de lujo por Morrocoy",
       },
       {
-        src: "assets/videos/DJI_0139.MP4",
+        src: "assets/videos/video2.webm",
         alt: "Video 2 de 3: Lanchas deportivas de alta velocidad en aguas cristalinas",
       },
       {
-        src: "assets/videos/DJI_0141.MP4",
+        src: "assets/videos/video3.webm",
         alt: "Video 3 de 3: Recorrido VIP en peñeros ejecutivos en Cayo Sombrero",
       },
     ];
