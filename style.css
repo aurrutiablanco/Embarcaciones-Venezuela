@@ -1963,10 +1963,52 @@ header.menu-open {
     background-color 0.2s ease;
 }
 
+.whatsapp-float-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  white-space: nowrap;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background-color: #111827;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.3;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s ease;
+}
+
+.whatsapp-float-tooltip::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 0 6px 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent #111827;
+}
+
 /* Hover limpio sin animaciones estrafalarias */
-.whatsapp-float:hover {
+.whatsapp-float:hover,
+.whatsapp-float:focus-visible {
   background-color: #20ba5a;
   transform: scale(1.05);
+}
+
+.whatsapp-float:hover .whatsapp-float-tooltip,
+.whatsapp-float:focus-visible .whatsapp-float-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
 }
 
 /* Ajuste sutil para smartphones para que no tape contenido */
@@ -1977,6 +2019,12 @@ header.menu-open {
     font-size: 28px;
     bottom: 18px;
     right: 18px;
+  }
+
+  .whatsapp-float-tooltip {
+    white-space: normal;
+    max-width: 180px;
+    text-align: right;
   }
 }
 
