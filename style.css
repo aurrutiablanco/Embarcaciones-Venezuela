@@ -292,14 +292,22 @@ header.menu-open {
   color: var(--carnellan);
 }
 .nav-cta {
-  border: 1px solid var(--carnellan);
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
-  color: var(--carnellan) !important;
+  padding: 0.55rem 1.2rem 0.35rem 1.2rem;
+  color: var(--white) !important;
+  /* From https://css.glass */
+  background: rgba(195, 25, 26, 0.33);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.6px);
+  -webkit-backdrop-filter: blur(6.6px);
+  border: 1px solid rgba(195, 25, 26, 1);
 }
 .nav-cta:hover {
   background-color: var(--carnellan);
   color: var(--white) !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
 }
 .menu-toggle {
   display: none;
