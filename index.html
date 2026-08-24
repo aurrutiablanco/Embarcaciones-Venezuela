@@ -87,11 +87,13 @@
     </header>
 
 
-    <div id="terms-banner" class="terms-banner" role="region" aria-label="Aviso de condiciones">
-        <h3>Condiciones del sitio</h3>
-        <p>Al utilizar <strong>Embarcaciones Venezuela</strong>, confirmas que aceptas nuestros términos de servicio
-            y políticas de uso de la plataforma.</p>
-        <button id="accept-terms" class="btn btn-primary">Aceptar</button>
+    <div id="terms-banner" class="terms-banner" role="dialog" aria-labelledby="terms-banner-title" aria-describedby="terms-banner-text" hidden>
+        <button type="button" id="close-terms" class="terms-close" aria-label="Cerrar aviso de condiciones">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 id="terms-banner-title">Condiciones del sitio</h3>
+        <p id="terms-banner-text">Al utilizar <strong>Embarcaciones Venezuela</strong>, confirmas que aceptas nuestros términos de servicio y políticas de uso de la plataforma.</p>
+        <button type="button" id="accept-terms">Aceptar</button>
     </div>
 
 
