@@ -393,15 +393,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function initHeroCarousel() {
     const slidesData = [
       {
-        src: "assets/videos/video1.webm",
+        src: "assets/videos/video-1.webm",
         alt: "Video 1 de 3: Navegación exclusiva en yate de lujo por Morrocoy",
       },
       {
-        src: "assets/videos/video2.webm",
+        src: "assets/videos/video-2.webm",
         alt: "Video 2 de 3: Lanchas deportivas de alta velocidad en aguas cristalinas",
       },
       {
-        src: "assets/videos/video3.webm",
+        src: "assets/videos/video-3.webm",
         alt: "Video 3 de 3: Recorrido VIP en peñeros ejecutivos en Cayo Sombrero",
       },
     ];
