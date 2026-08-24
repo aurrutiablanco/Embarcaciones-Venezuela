@@ -292,14 +292,22 @@ header.menu-open {
   color: var(--carnellan);
 }
 .nav-cta {
-  border: 1px solid var(--carnellan);
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
-  color: var(--carnellan) !important;
+  padding: 0.55rem 1.2rem 0.35rem 1.2rem;
+  color: var(--white) !important;
+  /* From https://css.glass */
+  background: rgba(195, 25, 26, 0.33);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.6px);
+  -webkit-backdrop-filter: blur(6.6px);
+  border: 1px solid rgba(195, 25, 26, 1);
 }
 .nav-cta:hover {
   background-color: var(--carnellan);
   color: var(--white) !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
 }
 .menu-toggle {
   display: none;
@@ -1582,27 +1590,21 @@ header.menu-open {
   align-items: stretch; /* Permite estirar ambas columnas a la misma altura */
 }
 
-/* CARRUSEL RESTRUCTURADO (SINCRONIZADO EN ALTURA) */
+/* CARRUSEL: proporción cercana a 810x720 (un poco más alta para fotos verticales) */
 .split-image-slider {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  aspect-ratio: 1 / 1;
+  min-height: 380px;
 }
 
-.benefits-carousel {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  flex: 1;
-}
-
+.benefits-carousel,
 .benefits-track {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
 }
@@ -1614,8 +1616,9 @@ header.menu-open {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.85s ease-in-out;
   z-index: 1;
+  pointer-events: none;
 }
 
 .benefits-slide.active {
@@ -1623,11 +1626,26 @@ header.menu-open {
   z-index: 2;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .benefits-slide {
+    transition: none;
+  }
+}
+
 .benefits-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 58%;
   display: block;
+}
+
+.benefits-slide:nth-child(2) img {
+  object-position: center 72%;
+}
+
+.benefits-slide:nth-child(3) img {
+  object-position: center 48%;
 }
 
 /* Navegación y Accesibilidad (WCAG 2.2) */
@@ -1781,12 +1799,13 @@ header.menu-open {
 /* Ajustes Responsivos */
 @media (min-width: 992px) {
   .compact-benefits-layout {
-    grid-template-columns: 1fr 1fr; /* Dos columnas perfectamente alineadas */
+    grid-template-columns: 1.05fr 0.95fr;
     align-items: stretch;
   }
   .split-image-slider {
-    height: 100%;
-    min-height: 100%;
+    height: auto;
+    min-height: 440px;
+    aspect-ratio: 9 / 8; /* ~810x720, un poco más alto que el recorte anterior */
   }
 }
 
@@ -1798,8 +1817,9 @@ header.menu-open {
     grid-template-columns: 1fr;
   }
   .split-image-slider {
-    min-height: 260px;
-    height: 280px;
+    min-height: 340px;
+    height: auto;
+    aspect-ratio: 4 / 5;
   }
   .benefit-card {
     padding: 0.9rem 1rem;
@@ -1963,10 +1983,52 @@ header.menu-open {
     background-color 0.2s ease;
 }
 
+.whatsapp-float-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  white-space: nowrap;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background-color: #111827;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.3;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s ease;
+}
+
+.whatsapp-float-tooltip::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 0 6px 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent #111827;
+}
+
 /* Hover limpio sin animaciones estrafalarias */
-.whatsapp-float:hover {
+.whatsapp-float:hover,
+.whatsapp-float:focus-visible {
   background-color: #20ba5a;
   transform: scale(1.05);
+}
+
+.whatsapp-float:hover .whatsapp-float-tooltip,
+.whatsapp-float:focus-visible .whatsapp-float-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
 }
 
 /* Ajuste sutil para smartphones para que no tape contenido */
@@ -1977,6 +2039,12 @@ header.menu-open {
     font-size: 28px;
     bottom: 18px;
     right: 18px;
+  }
+
+  .whatsapp-float-tooltip {
+    white-space: normal;
+    max-width: 180px;
+    text-align: right;
   }
 }
 
