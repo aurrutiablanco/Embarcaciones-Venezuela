@@ -40,28 +40,79 @@ body {
 /* Nuevo estilo para posicionar el banner a la izquierda */
 .terms-banner {
   position: fixed;
-  bottom: 20px; /* Margen inferior igual al del botón de WS */
-  left: 20px; /* Margen izquierdo igual al del botón de WS */
-  max-width: 380px;
-  background: #ffffff;
+  bottom: 28px; /* Separado del viewport de abajo, perfectamente alineado con otros elementos flotantes */
+  left: 28px; /* Separado del viewport de la izquierda */
+  max-width: 340px; /* Un poco más pequeña y compacta (era 380px) */
+  width: calc(100% - 56px); /* Garantiza que no haya desbordamiento en pantallas pequeñas */
+  background: rgba(255, 255, 255, 0.90); /* Transparentoso al 90% */
+  backdrop-filter: blur(10px); /* Hermoso efecto de vidrio esmerilado (glassmorphism) */
+  -webkit-backdrop-filter: blur(10px);
   color: #111;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 18px 20px; /* Padding interno optimizado y más compacto */
+  border-radius: 12px; /* Esquinas más redondeadas y modernas (era 8px) */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); /* Sombra suave y sofisticada */
   z-index: 10000; /* Asegura que esté por encima de otros elementos */
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Borde blanco sutil para destacar el efecto de vidrio */
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .terms-banner h3 {
-  margin: 0 0 8px;
-  font-size: 1rem;
+  margin: 0 0 6px;
+  font-size: 0.95rem; /* Letra de título sutilmente más pequeña para equilibrar */
+  font-weight: 700;
+  color: #111;
 }
 .terms-banner p {
-  margin: 0 0 16px;
-  font-size: 0.875rem;
-  color: #555;
-  line-height: 1.4;
+  margin: 0 0 14px;
+  font-size: 0.8rem; /* Texto un poquito más compacto para legibilidad y elegancia */
+  color: #444; /* Contraste refinado y legible */
+  line-height: 1.45;
 }
+
+/* Botón de aceptar optimizado, elegante y con un diseño impecable */
+#accept-terms {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0088cc; /* Color azul primario de la marca */
+  color: #ffffff;
+  border: none;
+  padding: 8px 22px; /* Padding estilizado y cómodo */
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 6px; /* Borde suave */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Neusharp', sans-serif;
+  text-transform: uppercase; /* Coincide con la tipografía VIP de la página */
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0, 136, 204, 0.25); /* Sombra elegante azul */
+}
+
+#accept-terms:hover {
+  background-color: #006699; /* Azul más oscuro al pasar el cursor */
+  transform: translateY(-2px); /* Pequeña elevación interactiva */
+  box-shadow: 0 6px 16px rgba(0, 136, 204, 0.4); /* Brillo expandido al flotar */
+}
+
+#accept-terms:active {
+  transform: translateY(0);
+}
+
 .terms-banner.hidden {
-  display: none;
+  display: none !important;
+}
+
+/* Ajustes responsivos para smartphones */
+@media (max-width: 576px) {
+  .terms-banner {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: none;
+    padding: 16px;
+    border-radius: 12px;
+  }
 }
 
 
