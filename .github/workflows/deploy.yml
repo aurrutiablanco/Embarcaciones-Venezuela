@@ -24,19 +24,21 @@ jobs:
             set -e
             cd /var/www/ev4.antoniomarcoweb.com/public_html
 
-            # 1. Tomar propiedad temporal como superusuario para evitar bloqueos
-            sudo chown -R $USER:$USER .
-            sudo git config --global --add safe.directory /var/www/ev4.antoniomarcoweb.com/public_html
+            # 1. Tomar propiedad temporal garantizando el usuario actual
+            sudo chown -R $(whoami):$(whoami) .
 
-            # 2. Forzar sincronización exacta con main purgiando binarios antiguos
+            # 2. Aplicar configuracion segura de Git SIN sudo (para tu usuario)
+            git config --global --add safe.directory /var/www/ev4.antoniomarcoweb.com/public_html
+
+            # 3. Forzar sincronizacion exacta
             git fetch origin main
             git reset --hard origin/main
             git clean -fd
             git lfs pull
 
-            # 3. Restaurar permisos estrictos de seguridad para Apache
+            # 4. Restaurar permisos estrictos de seguridad para Apache
             sudo chown -R www-data:www-data .
             sudo chmod -R 775 .
 
-            # 4. Recargar servidor
+            # 5. Recargar servidor
             sudo systemctl reload apache2
