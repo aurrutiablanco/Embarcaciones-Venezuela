@@ -238,7 +238,7 @@ h4 {
   gap: 0.75rem;
   padding: 1.1rem 2.5rem;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 400;
   border-radius: 4px;
   transition: var(--transition-smooth);
   cursor: pointer;
@@ -314,9 +314,10 @@ header.menu-open {
 .nav-links a {
   color: rgba(255, 255, 255, 0.85);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
   text-decoration: none;
+  letter-spacing: 0.04em;
   transition: var(--transition-smooth);
 }
 .nav-links a:hover {
@@ -325,6 +326,7 @@ header.menu-open {
 .nav-cta {
   padding: 0.55rem 1.2rem 0.35rem 1.2rem;
   color: var(--white) !important;
+  font-weight: 400;
   /* From https://css.glass */
   background: rgba(195, 25, 26, 0.33);
   border-radius: 16px;
@@ -506,7 +508,7 @@ header.menu-open {
   padding: 0.55rem 1.1rem;
   min-height: 40px;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 400;
   text-decoration: none;
   border-radius: 6px;
   transition:
@@ -784,11 +786,12 @@ header.menu-open {
 }
 .benefit-card {
   padding: 2.5rem 1.5rem;
-  text-align: center;
+  text-align: left;
 }
 .benefit-card i {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  margin-bottom: 0;
+  line-height: 1;
   color: var(--carnellan);
 }
 .benefit-card h3 {
@@ -1008,10 +1011,6 @@ header.menu-open {
 .fade-in-element.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
-}
-.fade-in-element.scrolled-past {
-  opacity: 0.3;
-  transform: translateY(-20px) scale(0.95);
 }
 
 /* ==========================================================================
@@ -1553,7 +1552,7 @@ header.menu-open {
   background-color: transparent;
   color: var(--chinese-black, #0d111f);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 0.95rem;
   padding: 0.8rem 1rem 0.8rem 1.5rem;
   border: 2px solid var(--chinese-black, #0d111f);
@@ -1769,6 +1768,7 @@ header.menu-open {
   flex-direction: column;
   justify-content: center;
   flex: 1;
+  text-align: left;
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
@@ -1785,7 +1785,7 @@ header.menu-open {
 .card-header-flex {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.45rem;
   margin-bottom: 0.4rem;
 }
 
@@ -1796,27 +1796,18 @@ header.menu-open {
   line-height: 1.2;
 }
 
-/* Insignias para los íconos */
-.benefit-icon-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: rgba(195, 25, 26, 0.06);
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
+/* Íconos al mismo alto que el título de la tarjeta */
+.benefit-icon-badge,
 .benefit-icons-badge {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.3rem 0.6rem;
-  border-radius: 8px;
-  background: rgba(195, 25, 26, 0.06);
-  font-size: 0.95rem;
+  justify-content: center;
+  width: auto;
+  height: 1.05rem;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 1.05rem;
   flex-shrink: 0;
 }
 
@@ -1824,6 +1815,7 @@ header.menu-open {
   font-size: 0.88rem;
   line-height: 1.45;
   margin: 0;
+  text-align: left;
   color: var(--text-muted, #555555);
 }
 
@@ -2422,7 +2414,7 @@ header.menu-open {
   text-decoration: none;
   padding: 14px 28px;
   border-radius: 12px;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1.05rem;
   transition:
     transform 0.3s ease,

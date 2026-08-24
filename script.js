@@ -60,19 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, observerOptions);
 
     fadeElements.forEach((element) => appearOnScroll.observe(element));
-
-    window.addEventListener("scroll", () => {
-      fadeElements.forEach((element) => {
-        if (element.classList.contains("visible")) {
-          const rect = element.getBoundingClientRect();
-          if (rect.bottom < 150) {
-            element.classList.add("scrolled-past");
-          } else {
-            element.classList.remove("scrolled-past");
-          }
-        }
-      });
-    });
   }
 
   /* ==========================================================================
