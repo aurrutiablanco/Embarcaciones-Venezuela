@@ -146,7 +146,6 @@ body {
   }
 }
 
-
 /* Visibilidad de Foco para Teclado (WCAG 2.4.7) */
 .btn:focus-visible,
 .video-control-btn:focus-visible {
