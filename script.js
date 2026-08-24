@@ -421,17 +421,37 @@ document.addEventListener("DOMContentLoaded", () => {
        11. COOKIES POP-UP / TERMS BANNER
        ========================================================================== */
   const banner = document.getElementById("terms-banner");
-  const button = document.getElementById("accept-terms");
+  const acceptBtn = document.getElementById("accept-terms");
+  const closeBtn = document.getElementById("close-terms");
+  const TERMS_STORAGE_KEY = "ev_terms_accepted";
 
-  if (banner && button) {
-    if (localStorage.getItem("termsAccepted") === "true") {
+  if (banner && acceptBtn) {
+    const dismissTerms = () => {
+      try {
+        localStorage.setItem(TERMS_STORAGE_KEY, "true");
+      } catch (error) {
+        /* Si el almacenamiento está bloqueado, igual se cierra en esta visita */
+      }
+      banner.setAttribute("hidden", "");
       banner.classList.add("hidden");
+    };
+
+    let alreadyAccepted = false;
+    try {
+      alreadyAccepted = localStorage.getItem(TERMS_STORAGE_KEY) === "true";
+    } catch (error) {
+      alreadyAccepted = false;
     }
 
-    button.addEventListener("click", () => {
-      localStorage.setItem("termsAccepted", "true");
-      banner.classList.add("hidden");
-    });
+    if (!alreadyAccepted) {
+      banner.removeAttribute("hidden");
+      banner.classList.remove("hidden");
+    }
+
+    acceptBtn.addEventListener("click", dismissTerms);
+    if (closeBtn) {
+      closeBtn.addEventListener("click", dismissTerms);
+    }
   }
 
   /* ==========================================================================

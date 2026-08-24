@@ -37,81 +37,112 @@ body {
 }
 
 /*Cookies Pop-up*/
-/* Nuevo estilo para posicionar el banner a la izquierda */
 .terms-banner {
   position: fixed;
-  bottom: 28px; /* Separado del viewport de abajo, perfectamente alineado con otros elementos flotantes */
-  left: 28px; /* Separado del viewport de la izquierda */
-  max-width: 340px; /* Un poco más pequeña y compacta (era 380px) */
-  width: calc(100% - 56px); /* Garantiza que no haya desbordamiento en pantallas pequeñas */
-  background: rgba(255, 255, 255, 0.90); /* Transparentoso al 90% */
-  backdrop-filter: blur(10px); /* Hermoso efecto de vidrio esmerilado (glassmorphism) */
-  -webkit-backdrop-filter: blur(10px);
+  bottom: 20px;
+  left: 20px;
+  width: 350px;
+  height: 130px;
+  max-width: calc(100% - 40px);
+  background: rgba(244, 245, 248, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #111;
-  padding: 18px 20px; /* Padding interno optimizado y más compacto */
-  border-radius: 12px; /* Esquinas más redondeadas y modernas (era 8px) */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); /* Sombra suave y sofisticada */
-  z-index: 10000; /* Asegura que esté por encima de otros elementos */
-  border: 1px solid rgba(255, 255, 255, 0.4); /* Borde blanco sutil para destacar el efecto de vidrio */
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.terms-banner h3 {
-  margin: 0 0 6px;
-  font-size: 0.95rem; /* Letra de título sutilmente más pequeña para equilibrar */
-  font-weight: 700;
-  color: #111;
-}
-.terms-banner p {
-  margin: 0 0 14px;
-  font-size: 0.8rem; /* Texto un poquito más compacto para legibilidad y elegancia */
-  color: #444; /* Contraste refinado y legible */
-  line-height: 1.45;
+  padding: 10px 28px 10px 12px;
+  border-radius: 6px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+  z-index: 10000;
+  border: 1px solid rgba(13, 17, 31, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
 }
 
-/* Botón de aceptar optimizado, elegante y con un diseño impecable */
+.terms-banner[hidden] {
+  display: none !important;
+}
+
+.terms-close {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--carnellan);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.terms-close:hover {
+  color: var(--carnellan-hover);
+}
+
+.terms-banner h3 {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.2;
+  padding-right: 4px;
+}
+
+.terms-banner p {
+  margin: 0;
+  font-size: 0.62rem;
+  color: #444;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 #accept-terms {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #0088cc; /* Color azul primario de la marca */
+  align-self: flex-start;
+  background-color: #0088cc;
   color: #ffffff;
   border: none;
-  padding: 8px 22px; /* Padding estilizado y cómodo */
-  font-size: 0.8rem;
-  font-weight: 600;
-  border-radius: 6px; /* Borde suave */
+  padding: 4px 12px;
+  min-height: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  font-family: 'Neusharp', sans-serif;
-  text-transform: uppercase; /* Coincide con la tipografía VIP de la página */
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 10px rgba(0, 136, 204, 0.25); /* Sombra elegante azul */
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
 #accept-terms:hover {
-  background-color: #006699; /* Azul más oscuro al pasar el cursor */
-  transform: translateY(-2px); /* Pequeña elevación interactiva */
-  box-shadow: 0 6px 16px rgba(0, 136, 204, 0.4); /* Brillo expandido al flotar */
-}
-
-#accept-terms:active {
-  transform: translateY(0);
+  background-color: #006699;
 }
 
 .terms-banner.hidden {
   display: none !important;
 }
 
-/* Ajustes responsivos para smartphones */
 @media (max-width: 576px) {
   .terms-banner {
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
+    bottom: 14px;
+    left: 14px;
+    right: 14px;
     width: auto;
-    max-width: none;
-    padding: 16px;
-    border-radius: 12px;
+    height: auto;
+    min-height: 130px;
+    padding: 10px 26px 10px 12px;
+    border-radius: 6px;
   }
 }
 
