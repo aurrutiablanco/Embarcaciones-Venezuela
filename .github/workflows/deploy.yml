@@ -27,8 +27,9 @@ jobs:
             # 1. Tomar propiedad temporal garantizando el usuario actual
             sudo chown -R $(whoami):$(whoami) .
 
-            # 2. Aplicar configuracion segura de Git SIN sudo (para tu usuario)
+            # 2. Configurar Git y Autenticación de LFS desatendida
             git config --global --add safe.directory /var/www/ev4.antoniomarcoweb.com/public_html
+            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/aurrutiablanco/Embarcaciones-Venezuela.git
 
             # 3. Forzar sincronizacion exacta
             git fetch origin main
