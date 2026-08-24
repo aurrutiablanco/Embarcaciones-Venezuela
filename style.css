@@ -1590,27 +1590,21 @@ header.menu-open {
   align-items: stretch; /* Permite estirar ambas columnas a la misma altura */
 }
 
-/* CARRUSEL RESTRUCTURADO (SINCRONIZADO EN ALTURA) */
+/* CARRUSEL: proporción cercana a 810x720 (un poco más alta para fotos verticales) */
 .split-image-slider {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  aspect-ratio: 1 / 1;
+  min-height: 380px;
 }
 
-.benefits-carousel {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  flex: 1;
-}
-
+.benefits-carousel,
 .benefits-track {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
 }
@@ -1622,8 +1616,9 @@ header.menu-open {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.85s ease-in-out;
   z-index: 1;
+  pointer-events: none;
 }
 
 .benefits-slide.active {
@@ -1631,11 +1626,26 @@ header.menu-open {
   z-index: 2;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .benefits-slide {
+    transition: none;
+  }
+}
+
 .benefits-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 58%;
   display: block;
+}
+
+.benefits-slide:nth-child(2) img {
+  object-position: center 72%;
+}
+
+.benefits-slide:nth-child(3) img {
+  object-position: center 48%;
 }
 
 /* Navegación y Accesibilidad (WCAG 2.2) */
@@ -1789,12 +1799,13 @@ header.menu-open {
 /* Ajustes Responsivos */
 @media (min-width: 992px) {
   .compact-benefits-layout {
-    grid-template-columns: 1fr 1fr; /* Dos columnas perfectamente alineadas */
+    grid-template-columns: 1.05fr 0.95fr;
     align-items: stretch;
   }
   .split-image-slider {
-    height: 100%;
-    min-height: 100%;
+    height: auto;
+    min-height: 440px;
+    aspect-ratio: 9 / 8; /* ~810x720, un poco más alto que el recorte anterior */
   }
 }
 
@@ -1806,8 +1817,9 @@ header.menu-open {
     grid-template-columns: 1fr;
   }
   .split-image-slider {
-    min-height: 260px;
-    height: 280px;
+    min-height: 340px;
+    height: auto;
+    aspect-ratio: 4 / 5;
   }
   .benefit-card {
     padding: 0.9rem 1rem;

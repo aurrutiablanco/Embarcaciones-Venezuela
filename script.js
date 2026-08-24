@@ -283,6 +283,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (slides.length > 0) {
     let currentSlide = 0;
+    let autoplayId = null;
+    const AUTO_MS = 5000;
+    const carouselEl = document.querySelector(".benefits-carousel");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     const updateCarousel = (index) => {
       slides.forEach((slide, i) => {
@@ -294,10 +300,32 @@ document.addEventListener("DOMContentLoaded", () => {
       currentSlide = index;
     };
 
+    const goNext = () => {
+      updateCarousel((currentSlide + 1) % slides.length);
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayId !== null) {
+        clearInterval(autoplayId);
+        autoplayId = null;
+      }
+    };
+
+    const startAutoplay = () => {
+      if (prefersReducedMotion || slides.length < 2) return;
+      stopAutoplay();
+      autoplayId = setInterval(goNext, AUTO_MS);
+    };
+
+    const restartAutoplay = () => {
+      stopAutoplay();
+      startAutoplay();
+    };
+
     if (nextBtnBenefits) {
       nextBtnBenefits.addEventListener("click", () => {
-        const nextIndex = (currentSlide + 1) % slides.length;
-        updateCarousel(nextIndex);
+        goNext();
+        restartAutoplay();
       });
     }
 
@@ -305,12 +333,31 @@ document.addEventListener("DOMContentLoaded", () => {
       prevBtnBenefits.addEventListener("click", () => {
         const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
         updateCarousel(prevIndex);
+        restartAutoplay();
       });
     }
 
     dots.forEach((dot, index) => {
-      dot.addEventListener("click", () => updateCarousel(index));
+      dot.addEventListener("click", () => {
+        updateCarousel(index);
+        restartAutoplay();
+      });
     });
+
+    if (carouselEl && !prefersReducedMotion) {
+      carouselEl.addEventListener("mouseenter", stopAutoplay);
+      carouselEl.addEventListener("mouseleave", startAutoplay);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+
+    startAutoplay();
   }
 
   /* ==========================================================================
