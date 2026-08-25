@@ -533,7 +533,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ==========================================================================
-       12. HERO CAROUSEL INTERACTIVO
+       12. TOOLTIP AUTOMÁTICO DEL BOTÓN DE WHATSAPP (SOLO MÓVIL)
+       ========================================================================== */
+  const whatsappFloat = document.querySelector(".whatsapp-float");
+  if (whatsappFloat && window.matchMedia("(max-width: 768px)").matches) {
+    setTimeout(() => {
+      whatsappFloat.classList.add("show-tooltip");
+      setTimeout(() => {
+        whatsappFloat.classList.remove("show-tooltip");
+      }, 5000);
+    }, 10000);
+  }
+
+  /* ==========================================================================
+       13. HERO CAROUSEL INTERACTIVO
        ========================================================================== */
   function initHeroCarousel() {
     const slidesData = [
