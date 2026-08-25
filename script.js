@@ -120,144 +120,235 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ==========================================================================
-       6. CARRUSEL DE TESTIMONIOS
+       6. CARRUSEL DE TESTIMONIOS (CINTA CONTINUA HACIA LA IZQUIERDA)
        ========================================================================== */
   const track = document.querySelector(".slider-track");
-  const cards = document.querySelectorAll(".testimonial-card");
+  const testimonialSlider = document.querySelector(".testimonial-slider");
   const prevBtn = document.querySelector(".prev-btn");
   const nextBtn = document.querySelector(".next-btn");
-  const dotsContainer = document.querySelector(".slider-dots-container");
 
-  if (track && cards.length > 0 && dotsContainer && prevBtn && nextBtn) {
-    let currentIndex = 0;
+  if (track && testimonialSlider) {
+    const originalCards = Array.from(
+      track.querySelectorAll(".testimonial-card"),
+    );
 
-    const getVisibleCards = () => {
-      if (window.innerWidth >= 992) return 3;
-      if (window.innerWidth >= 600) return 2;
-      return 1;
-    };
+    if (originalCards.length > 0) {
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      const GAP_PX = 24; // 1.5rem, coincide con el gap del CSS
+      const SECONDS_PER_CARD = 5;
 
-    const getMaxIndex = () => Math.max(0, cards.length - getVisibleCards());
-
-    const createDots = () => {
-      dotsContainer.innerHTML = "";
-      const totalDots = getMaxIndex() + 1;
-
-      for (let i = 0; i < totalDots; i++) {
-        const dot = document.createElement("button");
-        dot.classList.add("dot");
-        dot.setAttribute("aria-label", `Ir a la página ${i + 1}`);
-        if (i === currentIndex) dot.classList.add("active");
-        dot.addEventListener("click", () => goToIndex(i));
-        dotsContainer.appendChild(dot);
-      }
-    };
-
-    const goToIndex = (index) => {
-      const maxIndex = getMaxIndex();
-      currentIndex = Math.min(Math.max(index, 0), maxIndex);
-
-      const cardWidth = cards[0].getBoundingClientRect().width;
-      const gap = 24;
-      const offset = (cardWidth + gap) * currentIndex;
-
-      track.style.transform = `translateX(-${offset}px)`;
-      updateControls();
-    };
-
-    const updateControls = () => {
-      const maxIndex = getMaxIndex();
-      prevBtn.disabled = currentIndex === 0;
-      nextBtn.disabled = currentIndex >= maxIndex;
-
-      const dots = dotsContainer.querySelectorAll(".dot");
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle("active", idx === currentIndex);
+      // Duplicamos el set de tarjetas para que el bucle sea perfecto e imperceptible.
+      originalCards.forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        track.appendChild(clone);
       });
-    };
 
-    prevBtn.addEventListener("click", () => goToIndex(currentIndex - 1));
-    nextBtn.addEventListener("click", () => goToIndex(currentIndex + 1));
+      let cardStep = 0;
+      let originalSetWidth = 0;
+      let speed = 0; // px por segundo
+      let offset = 0;
+      let isHovering = false;
+      let manualBusy = false;
+      let lastTimestamp = null;
+      let manualResumeId = null;
 
-    window.addEventListener("resize", () => {
-      createDots();
-      goToIndex(currentIndex);
-    });
+      const measure = () => {
+        const cardWidth = originalCards[0].getBoundingClientRect().width;
+        cardStep = cardWidth + GAP_PX;
+        originalSetWidth = originalCards.length * cardStep;
+        speed = cardStep / SECONDS_PER_CARD;
+        if (originalSetWidth > 0) {
+          offset = ((offset % originalSetWidth) + originalSetWidth) % originalSetWidth;
+        }
+      };
 
-    createDots();
-    updateControls();
+      const tick = (timestamp) => {
+        if (lastTimestamp === null) lastTimestamp = timestamp;
+        const dt = (timestamp - lastTimestamp) / 1000;
+        lastTimestamp = timestamp;
+
+        if (!prefersReducedMotion && !isHovering && !manualBusy) {
+          offset += speed * dt;
+          if (offset >= originalSetWidth) offset -= originalSetWidth;
+          track.style.transform = `translateX(-${offset}px)`;
+        }
+
+        requestAnimationFrame(tick);
+      };
+
+      const manualStep = (direction) => {
+        if (manualResumeId) clearTimeout(manualResumeId);
+        manualBusy = true;
+        track.classList.add("manual-step");
+
+        offset =
+          ((offset + direction * cardStep) % originalSetWidth + originalSetWidth) %
+          originalSetWidth;
+        track.style.transform = `translateX(-${offset}px)`;
+
+        manualResumeId = setTimeout(() => {
+          track.classList.remove("manual-step");
+          manualBusy = false;
+        }, 550);
+      };
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", () => manualStep(-1));
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => manualStep(1));
+      }
+
+      testimonialSlider.addEventListener("mouseenter", () => {
+        isHovering = true;
+      });
+      testimonialSlider.addEventListener("mouseleave", () => {
+        isHovering = false;
+      });
+
+      window.addEventListener("resize", measure);
+
+      measure();
+      track.style.transform = `translateX(-${offset}px)`;
+      requestAnimationFrame(tick);
+    }
   }
 
   /* ==========================================================================
-       7. SECCIÓN NUESTROS DESTINOS
+       7. SECCIÓN NUESTROS DESTINOS (AUTOPLAY + CROSSFADE + BARRA DE PROGRESO)
        ========================================================================== */
   const destinationsData = {
     sombrero: {
       title: "Cayo Sombrero",
       desc: "El ícono caribeño de Morrocoy. Famoso por sus dos extensas playas de arena blanca y aguas cristalinas turquesa.",
-      image: "assets/img/cayo sombrero.jpg",
     },
     juanes: {
       title: "Los Juanes",
       desc: "La piscina natural más exclusiva. Un bajo transparente en mar abierto sin orilla, perfecto para festejar desde la embarcación.",
-      image: "assets/img/Juanes1.jpg",
     },
     pescadores: {
       title: "Cayo Pescadores",
       desc: "Un santuario de calma absoluta. Conocido por sus aguas llanas, temperatura cálida y oleaje casi nulo.",
-      image: "assets/img/pescadores.jpg",
     },
     bajo360: {
       title: "Bajo 360",
       desc: "Impresionante panorámica en el mar. Un banco de arena cristalino rodeado de tonos azules infinitos.",
-      image: "assets/img/BAJO 360.webp",
     },
   };
 
-  const radioInputs = document.querySelectorAll(
-    'input[name="destination_select"]',
+  const radioInputs = Array.from(
+    document.querySelectorAll('input[name="destination_select"]'),
   );
-  const displayImg = document.getElementById("dest-display-img");
+  const destSlides = document.querySelectorAll(".dest-slide");
   const cardTitle = document.getElementById("card-title");
   const cardDesc = document.getElementById("card-desc");
+  const destRadioGroup = document.querySelector(".dest-radio-group");
 
-  if (radioInputs.length && displayImg && cardTitle) {
-    const setDestinationData = (key) => {
+  if (radioInputs.length && destSlides.length && cardTitle && destRadioGroup) {
+    const prefersReducedMotionDest = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    const keys = radioInputs.map((radio) => radio.value);
+    let currentIndex = Math.max(
+      keys.indexOf(radioInputs.find((r) => r.checked)?.value),
+      0,
+    );
+    let isHovering = false;
+
+    const setDestinationText = (key) => {
       const data = destinationsData[key];
       if (!data) return;
-
-      displayImg.src = data.image;
-      displayImg.alt = data.title;
       cardTitle.textContent = data.title;
-      if (cardDesc && data.desc) {
-        cardDesc.textContent = data.desc;
-      }
+      if (cardDesc && data.desc) cardDesc.textContent = data.desc;
     };
 
-    const initialChecked = document.querySelector(
-      'input[name="destination_select"]:checked',
-    );
-    if (initialChecked) {
-      setDestinationData(initialChecked.value);
+    const setActive = (index) => {
+      currentIndex = index;
+      const key = keys[currentIndex];
+
+      destSlides.forEach((slide) => {
+        slide.classList.toggle("active", slide.dataset.key === key);
+      });
+
+      radioInputs.forEach((radio, i) => {
+        radio.checked = i === currentIndex;
+      });
+
+      setDestinationText(key);
+
+      radioInputs.forEach((radio, i) => {
+        const label = radio.closest(".dest-radio-item");
+        if (!label) return;
+        label.classList.remove("animating", "paused");
+
+        if (i === currentIndex) {
+          const fill = label.querySelector(".dest-progress-fill");
+          if (fill) {
+            // Reinicia la animación desde 0% en cada cambio de destino.
+            fill.style.animation = "none";
+            void fill.offsetWidth;
+            fill.style.animation = "";
+          }
+          if (!prefersReducedMotionDest) {
+            label.classList.add("animating");
+            if (isHovering) label.classList.add("paused");
+          }
+        }
+      });
+    };
+
+    const goNext = () => {
+      setActive((currentIndex + 1) % keys.length);
+    };
+
+    // El avance automático está perfectamente sincronizado con la barra de
+    // progreso: al completar su animación de 5s, dispara el cambio de destino.
+    destRadioGroup.addEventListener("animationend", (e) => {
+      if (e.animationName !== "destFillProgress") return;
+      goNext();
+    });
+
+    const pauseActive = () => {
+      destRadioGroup
+        .querySelectorAll(".dest-radio-item.animating")
+        .forEach((label) => label.classList.add("paused"));
+    };
+
+    const resumeActive = () => {
+      if (isHovering || document.hidden) return;
+      destRadioGroup
+        .querySelectorAll(".dest-radio-item.animating.paused")
+        .forEach((label) => label.classList.remove("paused"));
+    };
+
+    radioInputs.forEach((radio, i) => {
+      radio.addEventListener("change", () => setActive(i));
+    });
+
+    if (!prefersReducedMotionDest) {
+      destRadioGroup.addEventListener("mouseenter", () => {
+        isHovering = true;
+        pauseActive();
+      });
+      destRadioGroup.addEventListener("mouseleave", () => {
+        isHovering = false;
+        resumeActive();
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          pauseActive();
+        } else {
+          resumeActive();
+        }
+      });
     }
 
-    radioInputs.forEach((radio) => {
-      radio.addEventListener("change", (e) => {
-        const selectedKey = e.target.value;
-
-        displayImg.style.opacity = "0.3";
-        cardTitle.style.opacity = "0";
-        if (cardDesc) cardDesc.style.opacity = "0";
-
-        setTimeout(() => {
-          setDestinationData(selectedKey);
-
-          displayImg.style.opacity = "1";
-          cardTitle.style.opacity = "1";
-          if (cardDesc) cardDesc.style.opacity = "1";
-        }, 200);
-      });
-    });
+    setActive(currentIndex);
   }
 
   /* ==========================================================================

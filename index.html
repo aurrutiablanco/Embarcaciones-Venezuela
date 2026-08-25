@@ -326,26 +326,40 @@ SECCIÓN BENEFICIOS (DISEÑO ULTRA COMPACTO & TARJETAS MEJORADAS)
                         <label class="dest-radio-item">
                             <input type="radio" name="destination_select" value="sombrero" checked>
                             <span class="radio-pill">Cayo Sombrero</span>
+                            <span class="dest-progress-bar"><span class="dest-progress-fill"></span></span>
                         </label>
                         <label class="dest-radio-item">
                             <input type="radio" name="destination_select" value="juanes">
                             <span class="radio-pill">Los Juanes</span>
+                            <span class="dest-progress-bar"><span class="dest-progress-fill"></span></span>
                         </label>
                         <label class="dest-radio-item">
                             <input type="radio" name="destination_select" value="pescadores">
                             <span class="radio-pill">Cayo Pescadores</span>
+                            <span class="dest-progress-bar"><span class="dest-progress-fill"></span></span>
                         </label>
                         <label class="dest-radio-item">
                             <input type="radio" name="destination_select" value="bajo360">
                             <span class="radio-pill">Bajo 360</span>
+                            <span class="dest-progress-bar"><span class="dest-progress-fill"></span></span>
                         </label>
                     </fieldset>
 
-                    <!-- Visor de imagen compacto -->
+                    <!-- Visor de imagen compacto (crossfade idéntico al carrusel de "¿Por qué elegirnos?") -->
                     <div class="dest-image-viewer">
-                        <img id="dest-display-img"
-                            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80"
-                            alt="Cayo Sombrero" class="dest-img">
+                        <div class="dest-slide active" data-key="sombrero">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80"
+                                alt="Cayo Sombrero" class="dest-img">
+                        </div>
+                        <div class="dest-slide" data-key="juanes">
+                            <img src="assets/img/Juanes1.jpg" alt="Los Juanes" class="dest-img">
+                        </div>
+                        <div class="dest-slide" data-key="pescadores">
+                            <img src="assets/img/pescadores.jpg" alt="Cayo Pescadores" class="dest-img">
+                        </div>
+                        <div class="dest-slide" data-key="bajo360">
+                            <img src="assets/img/BAJO 360.webp" alt="Bajo 360" class="dest-img">
+                        </div>
                     </div>
                 </div>
 
@@ -649,9 +663,6 @@ SECCIÓN BENEFICIOS (DISEÑO ULTRA COMPACTO & TARJETAS MEJORADAS)
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
-
-            <!-- Indicadores de Puntos -->
-            <div class="slider-dots-container"></div>
         </div>
     </section>
 
