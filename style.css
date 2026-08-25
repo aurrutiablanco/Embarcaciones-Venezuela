@@ -1142,8 +1142,24 @@ header.menu-open {
 .slider-track {
   display: flex;
   gap: 1.5rem;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
+}
+
+/* Transición suave únicamente para el paso manual (flechas); el scroll
+   automático continuo se controla por JS frame a frame sin transition,
+   para que se vea limpio e ininterrumpido. */
+.slider-track.manual-step {
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.testimonial-card[aria-hidden="true"] {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slider-track.manual-step {
+    transition: none;
+  }
 }
 
 /* Tarjeta Individual */
@@ -1244,14 +1260,7 @@ header.menu-open {
   cursor: not-allowed;
 }
 
-/* Indicadores de Puntos */
-.slider-dots-container {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-}
-
+/* Indicadores de Puntos (reutilizado por el carrusel de beneficios) */
 .dot {
   width: 10px;
   height: 10px;
@@ -1448,6 +1457,10 @@ header.menu-open {
 .dest-radio-item {
   cursor: pointer;
   user-select: none;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
 }
 
 .dest-radio-item input[type="radio"] {
@@ -1464,6 +1477,7 @@ header.menu-open {
   font-weight: 600;
   border-radius: 6px;
   transition: all 0.25s ease;
+  text-align: center;
 }
 
 .dest-radio-item:hover .radio-pill {
@@ -1476,21 +1490,92 @@ header.menu-open {
   box-shadow: 0 4px 10px rgba(195, 25, 26, 0.2);
 }
 
+/* Barra de progreso del mini-menú (idéntica en concepto a la del hero) */
+.dest-progress-bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: rgba(13, 17, 31, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.dest-radio-item input[type="radio"]:checked ~ .dest-progress-bar {
+  opacity: 1;
+}
+
+.dest-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background-color: var(--carnellan, #c3191a);
+  border-radius: 2px;
+}
+
+.dest-radio-item.animating .dest-progress-fill {
+  animation: destFillProgress 5s linear forwards;
+}
+
+.dest-radio-item.paused .dest-progress-fill {
+  animation-play-state: paused;
+}
+
+@keyframes destFillProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dest-radio-item.animating .dest-progress-fill {
+    animation: none;
+    width: 100%;
+  }
+}
+
 .dest-image-viewer {
   width: 100%;
   height: 380px; /* Altura controlada fija */
   border-radius: 12px;
   overflow: hidden;
   background-color: #0d111f;
+  position: relative;
+}
+
+/* Crossfade idéntico al carrusel de "¿Por qué elegirnos?" (.benefits-slide) */
+.dest-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.85s ease-in-out;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.dest-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dest-slide {
+    transition: none;
+  }
 }
 
 .dest-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition:
-    opacity 0.3s ease,
-    transform 0.4s ease;
+  display: block;
 }
 
 /* ====== COLUMNA DERECHA (TARJETA) ====== */
