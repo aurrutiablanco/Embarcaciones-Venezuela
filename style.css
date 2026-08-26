@@ -947,10 +947,19 @@ header.menu-open {
 .footer-container {
   position: relative;
   z-index: 2;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
 }
+
+.footer-top {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 4.5rem;
+  margin-bottom: 3rem;
+}
+
 .footer-cta-title {
   font-size: 2.2rem;
   color: var(--white);
@@ -2269,7 +2278,7 @@ header.menu-open {
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -2392,7 +2401,6 @@ header.menu-open {
   max-width: 1200px;
   margin: 30px auto 0;
   padding: 15px 20px 0;
-  border-top: 1px solid rgba(217, 217, 217, 0.1);
   text-align: center;
   font-size: 0.75rem;
   color: rgba(217, 217, 217, 0.7);
