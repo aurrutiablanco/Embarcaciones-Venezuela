@@ -36,6 +36,12 @@ body {
   background-color: #f4f5f8 !important;
 }
 
+@media (min-width: 768px) {
+  .separador-blanco {
+    background-color: #fff !important;
+  }
+}
+
 /*Cookies Pop-up*/
 .terms-banner {
   position: fixed;
