@@ -36,6 +36,12 @@ body {
   background-color: #f4f5f8 !important;
 }
 
+@media (min-width: 768px) {
+  .separador-blanco {
+    background-color: #fff !important;
+  }
+}
+
 /*Cookies Pop-up*/
 .terms-banner {
   position: fixed;
@@ -298,12 +304,10 @@ header.menu-open {
   flex-direction: row;
 }
 .logo-img {
-  height: 1.25em;
-  width: 1.25em;
+  height: 2.25em;
+  width: 2.25em;
   border-radius: 50%;
   object-fit: cover;
-  border: 1.5px solid var(--carnellan);
-  background-color: var(--white);
 }
 .nav-links {
   display: flex;
@@ -941,10 +945,18 @@ header.menu-open {
 .footer-container {
   position: relative;
   z-index: 2;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
 }
+
+.footer-top {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 4.5rem;
+}
+
 .footer-cta-title {
   font-size: 2.2rem;
   color: var(--white);
@@ -2263,7 +2275,7 @@ header.menu-open {
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -2384,9 +2396,8 @@ header.menu-open {
 /* --- Parte Inferior (Copyright) --- */
 .footer-bottom {
   max-width: 1200px;
-  margin: 30px auto 0;
+  margin: 0px auto 0;
   padding: 15px 20px 0;
-  border-top: 1px solid rgba(217, 217, 217, 0.1);
   text-align: center;
   font-size: 0.75rem;
   color: rgba(217, 217, 217, 0.7);

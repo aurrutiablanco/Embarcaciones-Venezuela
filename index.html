@@ -64,9 +64,11 @@
     <!-- Header & Navegación -->
     <header id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">
-                <img src="assets/img/ruta-de-tu-logo.png" alt="Logo Embarcaciones Venezuela" class="logo-img">
-                EMBARCACIONES VENEZUELA
+            <a href="#hero-section" class="logo" style="display: flex; align-items: center; gap: 0.5rem;">
+                <img src="assets/img/logo-minimalista.png" alt="Logo Embarcaciones Venezuela" class="logo-img">
+                <h2 style="font-size: 0.85rem; margin-top: 0.15rem;">
+                    EMBARCACIONES VENEZUELA
+                </h2>
             </a>
 
             <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú de navegación" aria-expanded="false">
@@ -80,6 +82,13 @@
                     <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#flota">Flota</a></li>
                     <li><a href="#faq">FAQ</a></li>
+                    <a href="https://www.instagram.com/embarcacionesvenezuela/" target="_blank" aria-label="Instagram"
+                        class="social-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
                     <li><a target="_blank" href="https://wa.me/584244585512" class="nav-cta">CONTACTAR</a></li>
                 </ul>
             </nav>
@@ -87,17 +96,19 @@
     </header>
 
 
-    <div id="terms-banner" class="terms-banner" role="dialog" aria-labelledby="terms-banner-title" aria-describedby="terms-banner-text" hidden>
+    <div id="terms-banner" class="terms-banner" role="dialog" aria-labelledby="terms-banner-title"
+        aria-describedby="terms-banner-text" hidden>
         <button type="button" id="close-terms" class="terms-close" aria-label="Cerrar aviso de condiciones">
             <span aria-hidden="true">&times;</span>
         </button>
         <h3 id="terms-banner-title">Condiciones del sitio</h3>
-        <p id="terms-banner-text">Al utilizar <strong>Embarcaciones Venezuela</strong>, confirmas que aceptas nuestros términos de servicio y políticas de uso de la plataforma.</p>
+        <p id="terms-banner-text">Al utilizar <strong>Embarcaciones Venezuela</strong>, confirmas que aceptas nuestros
+            términos de servicio y políticas de uso de la plataforma.</p>
         <button type="button" id="accept-terms">Aceptar</button>
     </div>
 
 
-    <section class="hero-carousel" aria-label="Experiencias Náuticas VIP en Morrocoy">
+    <section class="hero-carousel" id="hero-section" aria-label="Experiencias Náuticas VIP en Morrocoy">
         <!-- 1. Fondo de Video con Doble Búfer (Transición de 2s) -->
         <div class="video-container">
             <video id="hero-video-1" class="hero-video active" autoplay muted playsinline aria-hidden="true"
@@ -317,7 +328,8 @@ SECCIÓN BENEFICIOS (DISEÑO ULTRA COMPACTO & TARJETAS MEJORADAS)
 
                 <!-- Columna Izquierda: Controles e Imagen -->
                 <div class="dest-visual-column">
-                    <h2 class="section-title dark-text" style="text-align: left; margin-bottom: 1rem;">NUESTROS
+                    <h2 class="section-title dark-text"
+                        style="text-align: left; margin-top: 1rem; margin-bottom: 1rem;">NUESTROS
                         DESTINOS</h2>
 
                     <!-- Botones de selección -->
@@ -407,7 +419,7 @@ SECCIÓN BENEFICIOS (DISEÑO ULTRA COMPACTO & TARJETAS MEJORADAS)
    ========================================================================== -->
 
 
-    <div class="separador-AM" role="separator" aria-hidden="true"
+    <div class="separador-AM separador-blanco" role="separator" aria-hidden="true"
         style="display: flex; justify-content: center; align-items: center; padding: 2.5rem 0; width: 100%;">
         <span
             style="width: 90px; height: 2px; background-color: var(--carnellan, #C3191A); border-radius: 2px; opacity: 0.85; display: block;"></span>
@@ -421,7 +433,8 @@ SECCIÓN BENEFICIOS (DISEÑO ULTRA COMPACTO & TARJETAS MEJORADAS)
    ========================================================================== -->
     <section id="servicios" class="services-section bg-white">
         <div class="container">
-            <h2 class="section-title navy-text fade-in-element" style="margin-bottom: 1.5rem;">Servicios exclusivos</h2>
+            <h2 class="section-title navy-text fade-in-element" style="margin-top: 2rem; margin-bottom: 1.5rem;">
+                Servicios exclusivos</h2>
 
             <div class="compact-services-layout reverse-layout">
 
@@ -907,7 +920,7 @@ SECCIÓN BENEFICIOS (DISEÑO ULTRA COMPACTO & TARJETAS MEJORADAS)
         </div>
     </section>
 
-    <div class="separador-AM" role="separator" aria-hidden="true"
+    <div class="separador-AM" id="separador-aliados" role="separator" aria-hidden="true"
         style="display: flex; justify-content: center; align-items: center; padding: 2.5rem 0; width: 100%;">
         <span
             style="width: 90px; height: 2px; background-color: var(--carnellan, #C3191A); border-radius: 2px; opacity: 0.85; display: block;"></span>
@@ -936,76 +949,74 @@ SECCIÓN BENEFICIOS (DISEÑO ULTRA COMPACTO & TARJETAS MEJORADAS)
 
     <footer class="site-footer">
         <div class="footer-container">
+            <div class="footer-top">
+                <!-- Columna 1: Marca y Descripción -->
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <!-- Ícono de referencia similar al del navbar -->
+                        <img src="assets/img/ruta-de-tu-logo.png" alt="Logo Embarcaciones Venezuela"
+                            class="footer-logo-img">
+                        EMBARCACIONES VENEZUELA
+                    </div>
+                    <p class="footer-description">
+                        Disfruta de la mejor experiencia<br>a bordo en nuestros destinos.
+                    </p>
+                    <!-- Redes Sociales con colores de marca -->
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/embarcacionesvenezuela/" target="_blank"
+                            aria-label="Instagram" class="social-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/584244585512" target="_blank" aria-label="WhatsApp" class="social-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.006l-1.418 5.18 5.301-1.39a9.96 9.96 0 004.77 1.216h.004c5.505 0 9.988-4.478 9.989-9.985 0-2.668-1.038-5.176-2.925-7.063C17.18 3.039 14.675 2 12.012 2zm5.836 14.178c-.246.691-1.436 1.321-1.986 1.385-.515.06-1.185.086-3.411-.832-2.85-1.173-4.68-4.062-4.823-4.252-.142-.19-1.157-1.54-1.157-2.937 0-1.398.73-2.083.99-2.366.258-.284.562-.355.75-.355.188 0 .375.002.538.009.172.008.403-.065.63.48.228.545.776 1.897.844 2.036.069.139.115.302.023.485-.092.183-.139.297-.275.457-.137.16-.288.358-.412.481-.137.137-.28.287-.12.562.16.275.71 1.173 1.523 1.9 1.045.933 1.928 1.222 2.203 1.36.276.137.437.115.597-.068.16-.183.685-.798.868-1.072.183-.275.365-.229.616-.137.251.092 1.598.753 1.872.89.274.137.457.206.525.32.069.115.069.663-.177 1.354z" />
+                            </svg>
+                        </a>
 
-            <!-- Columna 1: Marca y Descripción -->
-            <div class="footer-col">
-                <div class="footer-logo">
-                    <!-- Ícono de referencia similar al del navbar -->
-                    <img src="assets/img/ruta-de-tu-logo.png" alt="Logo Embarcaciones Venezuela"
-                        class="footer-logo-img">
-                    EMBARCACIONES VENEZUELA
+                    </div>
                 </div>
-                <p class="footer-description">
-                    Disfruta de la mejor experiencia a bordo en nuestros destinos.
-                </p>
-            </div>
 
-            <!-- Columna 2: Navegación Principal -->
-            <div class="footer-col">
-                <h4 class="col-title">EXPLORAR</h4>
-                <ul class="footer-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#autoridad">Trayectoria y Confianza</a></li>
-                    <li><a href="#destinos">Nuestros Destinos</a></li>
-                    <li><a href="#flota">Nuestra Flota</a></li>
-                </ul>
-            </div>
+                <!-- Columna 2: Navegación Principal -->
+                <div class="footer-col">
+                    <h4 class="col-title">EXPLORAR</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero-section">Inicio</a></li>
+                        <li><a href="#autoridad">Trayectoria y Confianza</a></li>
+                        <li><a href="#destinos">Nuestros Destinos</a></li>
+                        <li><a href="#flota">Nuestra Flota</a></li>
+                    </ul>
+                </div>
 
-            <!-- Columna 3: Servicios y Ayuda -->
-            <div class="footer-col">
-                <h4 class="col-title">INFORMACIÓN</h4>
-                <ul class="footer-links">
-                    <li><a href="#servicios">Servicios Exclusivos</a></li>
-                    <li><a href="#beneficios">¿Por qué elegirnos?</a></li>
-                    <li><a href="#testimonios">Experiencias de Clientes</a></li>
-                    <li><a href="#faq">Preguntas Frecuentes (FAQ)</a></li>
-                </ul>
-            </div>
+                <!-- Columna 3: Servicios y Ayuda -->
+                <div class="footer-col">
+                    <h4 class="col-title">INFORMACIÓN</h4>
+                    <ul class="footer-links">
+                        <li><a href="#servicios">Servicios Exclusivos</a></li>
+                        <li><a href="#beneficios">¿Por qué elegirnos?</a></li>
+                        <li><a href="#testimonios">Experiencias de Clientes</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes (FAQ)</a></li>
+                    </ul>
+                </div>
 
-            <!-- Columna 4: Contacto y Redes -->
-            <div class="footer-col">
-                <h4 class="col-title">CONECTA</h4>
-                <ul class="footer-links">
-                    <li><a href="#" class="abrir-modal-contacto">Contactar al equipo</a></li>
-                    <li><a href="#aliados-comerciales" class="highlight-link">Hagamos negocio (Aliados)</a></li>
-                    <li><a href="#" class="highlight-link">-</a></li>
-                </ul>
-
-                <!-- Redes Sociales con colores de marca -->
-                <div class="social-icons">
-                    <a href="https://www.instagram.com/embarcacionesvenezuela/" target="_blank" aria-label="Instagram"
-                        class="social-btn">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                    </a>
-                    <a href="https://wa.me/584244585512" target="_blank" aria-label="WhatsApp" class="social-btn">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.006l-1.418 5.18 5.301-1.39a9.96 9.96 0 004.77 1.216h.004c5.505 0 9.988-4.478 9.989-9.985 0-2.668-1.038-5.176-2.925-7.063C17.18 3.039 14.675 2 12.012 2zm5.836 14.178c-.246.691-1.436 1.321-1.986 1.385-.515.06-1.185.086-3.411-.832-2.85-1.173-4.68-4.062-4.823-4.252-.142-.19-1.157-1.54-1.157-2.937 0-1.398.73-2.083.99-2.366.258-.284.562-.355.75-.355.188 0 .375.002.538.009.172.008.403-.065.63.48.228.545.776 1.897.844 2.036.069.139.115.302.023.485-.092.183-.139.297-.275.457-.137.16-.288.358-.412.481-.137.137-.28.287-.12.562.16.275.71 1.173 1.523 1.9 1.045.933 1.928 1.222 2.203 1.36.276.137.437.115.597-.068.16-.183.685-.798.868-1.072.183-.275.365-.229.616-.137.251.092 1.598.753 1.872.89.274.137.457.206.525.32.069.115.069.663-.177 1.354z" />
-                        </svg>
-                    </a>
+                <!-- Columna 4: Contacto y Redes -->
+                <div class="footer-col">
+                    <h4 class="col-title">CONECTA</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="abrir-modal-contacto">Contactar al equipo</a></li>
+                        <li><a href="#separador-aliados" class="highlight-link">Hagamos negocio (Aliados)</a></li>
+                    </ul>
 
                 </div>
             </div>
 
-        </div>
-
-        <!-- Copyright -->
-        <div class="footer-bottom">
-            <p>© 2026 Embarcaciones Venezuela. Todos los derechos reservados.</p>
-        </div>
+            <div class="footer-bottom">
+                <!-- Copyright -->
+                <p>© 2026 Embarcaciones Venezuela. Todos los derechos reservados.</p>
+            </div>
     </footer>
 
     <!-- BOTÓN FLOTANTE DE WHATSAPP -->
