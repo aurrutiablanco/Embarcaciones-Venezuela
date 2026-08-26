@@ -257,7 +257,6 @@ document.addEventListener("DOMContentLoaded", () => {
       keys.indexOf(radioInputs.find((r) => r.checked)?.value),
       0,
     );
-    let isHovering = false;
 
     const setDestinationText = (key) => {
       const data = destinationsData[key];
@@ -295,7 +294,6 @@ document.addEventListener("DOMContentLoaded", () => {
           }
           if (!prefersReducedMotionDest) {
             label.classList.add("animating");
-            if (isHovering) label.classList.add("paused");
           }
         }
       });
@@ -319,7 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const resumeActive = () => {
-      if (isHovering || document.hidden) return;
+      if (document.hidden) return;
       destRadioGroup
         .querySelectorAll(".dest-radio-item.animating.paused")
         .forEach((label) => label.classList.remove("paused"));
@@ -330,15 +328,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (!prefersReducedMotionDest) {
-      destRadioGroup.addEventListener("mouseenter", () => {
-        isHovering = true;
-        pauseActive();
-      });
-      destRadioGroup.addEventListener("mouseleave", () => {
-        isHovering = false;
-        resumeActive();
-      });
-
+      // Nota: el autoplay de "Nuestros Destinos" NO se pausa con el hover
+      // (a diferencia del carrusel de beneficios), solo con la pestaña oculta.
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
           pauseActive();
@@ -541,8 +532,8 @@ document.addEventListener("DOMContentLoaded", () => {
       whatsappFloat.classList.add("show-tooltip");
       setTimeout(() => {
         whatsappFloat.classList.remove("show-tooltip");
-      }, 5000);
-    }, 10000);
+      }, 6000);
+    }, 5000);
   }
 
   /* ==========================================================================
