@@ -304,12 +304,10 @@ header.menu-open {
   flex-direction: row;
 }
 .logo-img {
-  height: 1.25em;
-  width: 1.25em;
+  height: 2.25em;
+  width: 2.25em;
   border-radius: 50%;
   object-fit: cover;
-  border: 1.5px solid var(--carnellan);
-  background-color: var(--white);
 }
 .nav-links {
   display: flex;
